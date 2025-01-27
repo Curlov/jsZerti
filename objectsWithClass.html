@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objekte durch Klassen erstellen</title>
+</head>
+<body>
+<script>
+  class Answer {
+      #id;
+      #text;
+      #correct;
+      #cardId;
+
+      constructor(id, text, correct, cardId) {
+        this.#id = id;
+        this.#text = text;
+        this.#correct = correct;
+        this.#cardId = cardId;
+      }
+  }
+
+  class Card {
+    #id;
+    #question;
+    #cardBoxId;
+    #answers;
+
+    constructor(id, question, cardBoxId, answers) {
+      this.#id = id;
+      this.#question = question;
+      this.#cardBoxId = cardBoxId;
+      this.#answers =  answers;
+    }
+  }
+
+  class CardBox {
+    #id;
+    #cards = [];
+
+    constructor(id) {
+      this.#id = id;
+    }
+
+    loadCards(card) {
+      this.#cards = card;
+    }
+  }
+
+  // Objekte erstellen
+
+    const answer1 = new Answer(1, 'shape1.x ==  shape2.y',false, 1);
+    const answer2 = new Answer(2, '(shape1.x == shape2.x) && (shape1.y == shape2.y)', true, 1);
+    const answer3 = new Answer(3, 'shape1 == shape2', false, 1);
+    const answer4 = new Answer(4, 'Object.key(shape1) === Object.keys(shape2)', false, 1);
+    const answer5 = new Answer(5, 'False', true, 2);
+    const answer6 = new Answer(6, 'True', false, 2);
+    const answer7 = new Answer(7, '5', false, 2);
+    const answer8 = new Answer(8, '"5"', false, 2);
+
+    const card1 = new Card(1, 'Vergleiche zwei Shapes nach ihren x- und y-Koordinaten.', 1, [answer1, answer2, answer3, answer4]);
+    const card2 = new Card(2, 'What is the output of the following Javascript code?', 1, [answer5, answer6, answer7, answer8]);
+
+    const cardBox1 = new CardBox(1);
+    cardBox1.loadCards([card1, card2]);
+
+    console.log(cardBox1);
+
+
+</script>
+</body>
+</html>
