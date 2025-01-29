@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Frage 1
+    let shape1 = { x: 10, y: 20 };
+    let shape2 = { x: 10, y: 20 };
+    console.log(shape1.x == shape2.y); // false
+    console.log((shape1.x == shape2.x) && (shape1.y == shape2.y)); // true
+    // Die primitiven Datentypen haben den gleichen Wert
+    console.log(shape1 == shape2); // false
+    console.log(Object.keys(shape1) === Object.keys(shape2)); // false
+
+    // Frage 2
+    let num = 5;
+    let str = '5';
+    console.log(num == str); // true
+
+    // Frage 3
+    const point = { x: 10, y: 20, z: 30 };
+    console.log(Object.keys(point)); // Output: ["x", "y", "z"]
+
+    // Frage 4
+    let obj1 ={a:1};
+    let obj2 ={b:2};
+    let obj3 = Object.assign({c:3}, obj1, obj2);
+    console.log(obj3); // Output: {c: 3, a: 1, b: 2}
+
+    // Frage 5
+    let book = { title: 'JavaScript', author: 'Harper Lee' };
+    let library = Object.assign({}, book, {pages: 300});
+    // Object.assign übernimmt die Werte von book, ist aber ein neues Objekt
+    book.author = 'Jane Doe';
+    console.log(`${library.title} by ${library.author}, ${library.pages} pages`); // JavaScript by Harper Lee, 300 pages
+
+    // Frage 6
+    let shape = { x: 100, y: 100 }; // Objekt ohne Klasse
+    shape.show = function() {
+        console.log(this.x, this.y); // nachträglich wird dem Objekt eine Methode zugewiesen
+    };
+    shape.show(); // 100 100
+
+    // Frage 7
+    let building = { name: "Empire State Building", height: 443.2 };
+    console.log(building.height); // 443.2
+    console.log(building['height']); // 443.2
+
+    // Frage 8
+    let number = 77;
+    // ceil bedeutet Aufrunden auf ganze Zahlen
+    console.log(Math.ceil(number) === number);
+    console.log(number % 1 === 0);
+
+    // Frage 9
+    let shape10 = { x: 10, y: 20 };
+    let shape20 = shape10;
+    shape20.x = 0;
+    console.log(`${shape10.x} ${shape20.y}`); // Ausgabe 0 20
+
+    // Frage 10
+    let obj = {a:1};
+    let foo = obj;
+    obj.a = 2;
+    console.log(foo); // Ausgabe {a:2}
+
+    // Frage 11
+    const person = {firstName: 'John', lastName: 'Doe', age: 30};
+    console.log(person); // Gibt das Objekt aus, es wurde erfolgreich ein Objekt definiert
+
+    // Frage 12
+    let car = { model: "Tesla", year: 2022 };
+    let vehicle = {...car, color: "red"};
+    // vehicle ist eine Kopie von car
+    car.year = 2021;
+    console.log(`${vehicle.model} ${vehicle.year} ${vehicle.color}`); // Ausgabe Tesla, 2022, redd
+
+    // Frage 13
+    let point3 = {x: 100, y: 200};
+    let point4 = point3;
+    point4.x = 0;
+    console.log(point3.x) // Ausgabe 0
+
+    // Frage 14
+    const person3 = {firstName: 'John', lastName: 'Doe', age: 30};
+    console.log(Object.values(person3));
+
+    // Frage 15
+    const per = {"name":"John"};
+    console.log(per["name"]); // Ausgabe: John
+
+    // Frage 16
+    let pointa = {x: 100, y: 200};
+    let pointa2 = {...pointa, z: 300};
+    delete pointa.x;
+    console.log(`${pointa.x} ${pointa2.x}`); // Ausgabe: undefine 100
+
+    // Frage 17
+    const car2 = { model: "Tesla", year: 2022 }
+    car2.color = "red";
+    console.log(car2);
+
+    // Frage 18
+    let numbers = [1, 2, 3, 4];
+    let newNumbers = numbers.map(function(number) { return number * 2; });
+    console.log(newNumbers); // Ausgabe 2, 4, 6, 8
+
+    // Frage 19
+    let animal = { species: "dog", breed: "Labrador" };
+    let pet = {...animal, name: "Buddy"};
+    animal.species = "cat";
+    console.log(`${pet.species} ${pet.breed} ${pet.name}`); // Ausgabe Dog, Labrador, Buddy
+
+    // Frage 20
+    // What is the correct way to access the value of property "brand" in object "phone"?
+    // phone.brand; Ist korrekt
+
+    // Frage 21
+    // Which of the following expressions returns true if the object "point" has a property "x"?
+    const pointb = { x: 10, y: 20 };
+    console.log("x" in pointb); // true
+    console.log("z" in pointb); // false
+
+    // Frage 22
+    // What will be the value of x after the following code is executed?
+    let x = 10;
+    function add5(num) { num += 5;
+        return num;
+    }
+    x = add5(x);
+    console.log(x); // Ausgabe 15
+
+    // Frage 23
+    // What is the output of the following code?
+    let object1 = { prop1: "value1" };
+    let object2 = Object.create(object1);
+    object2.prop2 = "value2";
+    delete object2.prop1;
+    // Der delete Befehl hat keine Auswirkung weil prob1 nicht in object2 existiert sondern im Prototype object1
+    console.log(object2.prop1);
+
+    // Warum verhält sich das so?
+    // JavaScript-Objekte haben ein Prototypen-System. Wenn du auf eine Eigenschaft zugreifst, sucht JavaScript
+    // zunächst im aktuellen Objekt (object2) und dann im Prototypen (object1), falls die Eigenschaft nicht gefunden wird.
+
+    // Der delete-Operator entfernt nur eigene Eigenschaften eines Objekts und hat keinen Einfluss auf den Prototypen.
+
+    // Frage 24
+    // What is the output of the following code?
+    let obj1w = {a: 10, b: 20};
+    let obj2w = Object.create(obj1w);
+    obj2w.c = 30;
+    console.log(obj2w.a + " " + obj2w.b + " " + obj2w.c); // Ausgabe 10 20 30
+
+
+
+
+
+</script>
+
+</body>
+</html>

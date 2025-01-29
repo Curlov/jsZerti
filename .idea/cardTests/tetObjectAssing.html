@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="module">
+    const obj = ({a:1, b:2, c:3});
+    const obj2 = Object.assign({d:4}, obj);
+    obj.b = 10; // Beweis, obj2 ist ein neues Objekt - Auf die Reihenfolge achten!!
+    console.log(obj2);
+    console.log(obj);
+</script>
+
+</body>
+</html>
