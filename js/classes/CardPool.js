@@ -1,9 +1,23 @@
-export class CardPool {
-    #cards;
-    constructor() {
-    }
+import { Card } from './Card.js';
 
-    loadCard(card) {
-        this.#cards = card;
-    }
+export class CardPool {
+  /** @type {Array<Card>} */
+  #cards = [];
+
+  /**
+   * Loads a card.
+   * @param {Card} card
+   * @returns {void}
+   */
+  loadCard(card) {
+    this.#cards.push(card);
+  }
+
+  /**
+   * Gets the cards array. 
+   * @returns {Array<Card>}
+   */
+  get cards() {
+    return this.#cards;
+  }
 }
