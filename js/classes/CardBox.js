@@ -1,22 +1,56 @@
 export class CardBox {
     #id;
-    #cards;
+    #cards = [];
+    #currentIndex = 0;
 
     constructor(id) {
         this.#id = id;
-        this._id = id;
+
+    }
+    getNextCard() {
+        if (this.#currentIndex < this.#cards.length - 1) {
+            return this.#cards[++this.#currentIndex];
+        } else {
+            return this.#cards[this.#currentIndex];
+        }
     }
 
-    loadCards(card) {
-        this.#cards = card;
+    getPreviousCard() {
+        if (this.#currentIndex > 0) {
+            return this.#cards[--this.#currentIndex];
+        } else {
+            return this.#cards[this.#currentIndex];
+        }
     }
+
+    checkAnswer(userAnswer) {
+        const currentCard = this.#cards[this.#currentIndex];
+        console.log(currentCard);
+        const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
+        console.log(correctAnswer);
+        if(userAnswer === correctAnswer) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     get cards() {
         return this.#cards;
     }
-
+    loadCards(cards) {
+        this.#cards = cards;
+    }
 
     get id() {
-        return this._id;
+        return this.#id;
     }
+
+    set id(value) {
+        this.#id = value;
+    }
+
 }
+
+
