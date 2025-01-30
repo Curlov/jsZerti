@@ -8,7 +8,7 @@ export class CardBox {
 
     }
     getNextCard() {
-        if (this.#currentIndex < this.#cards.length - 1) {
+        if (this.#currentIndex < this.#cards.length) {
             return this.#cards[++this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
