@@ -120,9 +120,9 @@
 
     // Frage 21
     // Which of the following expressions returns true if the object "point" has a property "x"?
-    const pointb = { x: 10, y: 20 };
-    console.log("x" in pointb); // true
-    console.log("z" in pointb); // false
+    const pointbb = { x: 10, y: 20 };
+    console.log("x" in pointbb); // true
+    console.log("z" in pointbb); // false
 
     // Frage 22
     // What will be the value of x after the following code is executed?
@@ -155,6 +155,11 @@
     obj2w.c = 30;
     console.log(obj2w.a + " " + obj2w.b + " " + obj2w.c); // Ausgabe 10 20 30
 
+    // Frage 33
+    let pointA = { x: 10, y: 20 };
+    let pointB = {...pointA};
+    pointB.y = 300;
+    console.log(pointB); // Output: x: 10 y: 300
 
 
 
