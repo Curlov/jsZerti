@@ -28,7 +28,8 @@ export class CardBox {
         /*        const correctAnswers = currentCard.answers.filter(answer => answer.correct).map(answer => answer.text);*/
         /*        console.log(correctAnswer);
                 console.log(correctAnswers);*/
-        return currentCard.answers.find(answer => answer.correct).text;
+        return currentCard.answers.filter(answer => answer.correct);
+        // return currentCard.answers.find(answer => answer.correct).text;
     }
 
 
