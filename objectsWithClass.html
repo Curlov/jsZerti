@@ -94,6 +94,7 @@
 
             return cardBox;
         }
+
         // Show the current Card into the DOM
         const showCard = (currentCard) => {
             document.querySelector('#number').innerHTML = '#'+cardBox.cards.find(card => Number(card.id) === Number(currentCard)).id;
@@ -113,8 +114,8 @@
         // If start and end positions are given in the GET params from select.html, use them 
         // to choose cards from the pool. Otherwise, default to the first 10 cards
         const params = new URLSearchParams(window.location.search);
-        const start = params.get('start') || 0; // Default to 1 if no start param
-        const end = params.get('end') || 9;   // Default to 10 if no end param
+        const start = params.get('start') || 1; // Default to 1 if no start param
+        const end = params.get('end') || 10;   // Default to 10 if no end param
         const cardBox = loadCardsFromPool(start, end);
         cardBox.setCurrentIndex(start);
 
