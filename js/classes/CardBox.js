@@ -35,6 +35,13 @@ export class CardBox {
         }
     }
 
+    getCurrentIndex() {
+        return this.#currentIndex;
+    }
+
+    setCurrentIndex(index) {
+        this.#currentIndex = index;
+    }
 
     get cards() {
         return this.#cards;

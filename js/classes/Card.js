@@ -16,4 +16,17 @@ export class Card {
     get answers() {
         return this.#answers;
     }
+
+
+    get id() {
+        return this.#id;
+    }
+
+    get question() {
+        return this.#question;
+    }
+
+    get cardBoxId() {
+        return this.#cardBoxId;
+    }
 }
