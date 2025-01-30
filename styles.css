@@ -9,12 +9,11 @@ body {
 
 #box {
     width: 800px;
-    height: 450px;
+    height: 500px;
     border-radius: 40px;
-    background-color: #95886b;
-    /*border-color: #49495a;
-    border-style: solid;*/
+    background-color: #f8f5ef;
     padding-right: 30px;
+    padding-left: 30px;
     border: 5px solid #49495a;
 }
 
