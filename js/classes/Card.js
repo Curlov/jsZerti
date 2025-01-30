@@ -16,4 +16,8 @@ export class Card {
     get answers() {
         return this.#answers;
     }
+
+    get question() {
+        return this.#question;
+    }
 }

@@ -66,47 +66,15 @@
             </tr>
             <tr style="min-height: 20%; height: 20%;">
                 <td colspan="3" style="min-width: 100%; width: 100%; text-align: center;">
-                    <button onclick="">back</button>
+                    <button id="prev-question">back</button>
                     <button onclick="">check</button>
-                    <button onclick="">forward</button>
+                    <button id="next-question">forward</button>
                 </td>
             </tr>
         </table>
     </div>
 
-    <script type="module">
-
-        import {CardPool} from "./js/classes/CardPool.js";
-        import {CardBox} from './js/classes/CardBox.js';
-        import {cards} from './js/data/cards.js';
-
-        const loadCardsFromPool = (start, end) => {
-            // Sanitize user input to avoid invalid data
-            start = Math.max(1, start); // Ensure start is at least 1
-            end = Math.min(cards.length, end); // Ensure end is at most cards.length
-            // Create CardPool and load each card from data.js
-            const cardPool = new CardPool();
-            cards.forEach(card => cardPool.loadCard(card));
-
-            // Create CardBox object and load selected cards from the pool
-            const cardBox = new CardBox(1);
-            cardBox.loadCards(cardPool.cards.slice(start - 1, end));
-
-            return cardBox;
-        }
-
-        // If start and end positions are given in the GET params from select.html, use them 
-        // to choose cards from the pool. Otherwise, default to the first 10 cards
-        const params = new URLSearchParams(window.location.search);
-        const start = params.get('start') || 1; // Default to 1 if no start param
-        const end = params.get('end') || 10;   // Default to 10 if no end param
-
-        const cardBox = loadCardsFromPool(start, end);
-
-        console.log(cardBox);
-        // console.log(cardBox.cards[5].answers[2].text);
-
-
+    <script type="module" src="js/main.js">
     </script>
 </body>
 

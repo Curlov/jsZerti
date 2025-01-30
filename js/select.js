@@ -9,5 +9,5 @@ document.getElementById('submitCardRange').addEventListener('click', () => {
   const end = document.getElementById('endQuestion').value;
   
   // Werte als URL-Parameter übergeben
-  window.location.href = `objectsWithClass.html?start=${start}&end=${end}`;
+  window.location.href = `index.html?start=${start}&end=${end}`;
 });
