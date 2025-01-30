@@ -25,14 +25,10 @@ export class CardBox {
 
     checkAnswer(userAnswer) {
         const currentCard = this.#cards[this.#currentIndex];
-        console.log(currentCard);
-        const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
-        console.log(correctAnswer);
-        if(userAnswer === correctAnswer) {
-            return true;
-        } else {
-            return false;
-        }
+        /*        const correctAnswers = currentCard.answers.filter(answer => answer.correct).map(answer => answer.text);*/
+        /*        console.log(correctAnswer);
+                console.log(correctAnswers);*/
+        return currentCard.answers.find(answer => answer.correct).text;
     }
 
 
