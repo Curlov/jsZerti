@@ -10,7 +10,7 @@
 <body>
     <div id="box">
         <table id="table">
-            <tr style="min-height: 20%; height: 20%;">
+            <tr style="min-height: 33%; height: 33%;">
                 <td
                     style="min-width: 15%; max-width: 15%;width: 15%; font-style: italic; font-weight: bold; font-size: xx-large; text-align: center;border-bottom: 1px solid black; ">
                     <p id="number">
@@ -66,7 +66,7 @@
             </tr>
             <tr style="min-height: 20%; height: 20%;">
                 <td colspan="3" style="min-width: 100%; width: 100%; text-align: center;">
-                    <button onclick="">back</button>
+                    <button onclick="window.back()">back</button>
                     <button onclick="">check</button>
                     <button onclick="window.forward()">forward</button>
                 </td>
@@ -97,7 +97,7 @@
 
         // Show the current Card into the DOM
         const showCard = (currentCard) => {
-            document.querySelector('#number').innerHTML = '#'+cardBox.cards.find(card => Number(card.id) === Number(currentCard)).id;
+            document.querySelector('#number').innerHTML = '#'+cardBox.cards.find(card => Number(card.id) === Number(currentCard)).id || '#';
             document.querySelector('#question').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).question || 'Keine Frage gefunden';
             document.querySelector('#answerA').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[0].text || 'Keine Antwort gefunden';
             document.querySelector('#answerB').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[1].text || 'Keine Antwort gefunden';
@@ -107,6 +107,12 @@
 
         window.forward = function() {
             cardBox.getNextCard();
+            showCard(cardBox.getCurrentIndex());
+            console.log('Bin hier' + cardBox.getCurrentIndex());
+        }
+
+        window.back = function() {
+            cardBox.getPreviousCard();
             showCard(cardBox.getCurrentIndex());
             console.log('Bin hier' + cardBox.getCurrentIndex());
         }

@@ -1,7 +1,7 @@
 export class CardBox {
     #id;
     #cards = [];
-    #currentIndex = 0;
+    #currentIndex = 1;
 
     constructor(id) {
         this.#id = id;
@@ -16,7 +16,7 @@ export class CardBox {
     }
 
     getPreviousCard() {
-        if (this.#currentIndex > 0) {
+        if (this.#currentIndex > 1) {
             return this.#cards[--this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
@@ -28,11 +28,7 @@ export class CardBox {
         console.log(currentCard);
         const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
         console.log(correctAnswer);
-        if(userAnswer === correctAnswer) {
-            return true;
-        } else {
-            return false;
-        }
+        return userAnswer === correctAnswer;
     }
 
     getCurrentIndex() {
