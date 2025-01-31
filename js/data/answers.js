@@ -3,7 +3,7 @@ import { Answer } from "../classes/Answer.js";
 export const answers = [
 
     new Answer(1, 'shape1.x == shape2.y', false, 1),
-    new Answer(2, '(shape1.x == shape2.x) && (shape1.y == shape2.y)', true, 1),
+    new Answer(2, `(shape1.x == shape2.x) && (shape1.y == shape2.y)`, true, 1),
     new Answer(3, 'shape1 == shape2', false, 1),
     new Answer(4, 'Object.key(shape1) === Object.keys(shape2)', false, 1),
 
