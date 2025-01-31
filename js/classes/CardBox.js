@@ -5,10 +5,11 @@ export class CardBox {
 
     constructor(id) {
         this.#id = id;
-
     }
+
     getNextCard() {
-        if (this.#currentIndex < this.#cards.length - 1) {
+        this.resetStyles();
+        if (this.#currentIndex < this.#cards.length) {
             return this.#cards[++this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
@@ -16,6 +17,7 @@ export class CardBox {
     }
 
     getPreviousCard() {
+        this.resetStyles();
         if (this.#currentIndex > 0) {
             return this.#cards[--this.#currentIndex];
         } else {
@@ -23,12 +25,32 @@ export class CardBox {
         }
     }
 
-    checkAnswer(userAnswer) {
+    checkAnswer() {
         const currentCard = this.#cards[this.#currentIndex];
-        console.log(currentCard);
+        const checkboxes = document.querySelectorAll('.checkmark');
         const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
-        console.log(correctAnswer);
-        return userAnswer === correctAnswer;
+        console.log(`Correct Answer: ${correctAnswer}`);
+
+        checkboxes.forEach(checkbox => {
+            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            const answerText = label.innerHTML;
+            console.log(`Answer: ${answerText}`);
+
+            if (answerText === correctAnswer) {
+                label.style.color = 'green';
+                console.log("Correct!");
+            } else {
+                label.style.color = 'red';
+                console.log("Wrong!");
+            }
+        });
+    }
+
+    resetStyles() {
+        const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.color = '';
+        });
     }
 
     getCurrentIndex() {
@@ -42,6 +64,7 @@ export class CardBox {
     get cards() {
         return this.#cards;
     }
+
     loadCards(cards) {
         this.#cards = cards;
     }
@@ -53,7 +76,4 @@ export class CardBox {
     set id(value) {
         this.#id = value;
     }
-
 }
-
-

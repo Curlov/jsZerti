@@ -67,7 +67,7 @@
             <tr style="min-height: 20%; height: 20%;">
                 <td colspan="3" style="min-width: 100%; width: 100%; text-align: center;">
                     <button onclick="window.back()">back</button>
-                    <button onclick="">check</button>
+                    <button onclick="window.checkAnswer()">check</button>
                     <button onclick="window.forward()">forward</button>
                 </td>
             </tr>
@@ -81,6 +81,8 @@
         import {cards} from './js/data/cards.js';
 
         let currentCard = 0;
+
+
 
         const loadCardsFromPool = (start, end) => {
             // Sanitize user input to avoid invalid data
@@ -118,6 +120,11 @@
             showCard(cardBox.getCurrentIndex());
             console.log('Bin hier' + cardBox.getCurrentIndex());
         }
+        window.checkAnswer = function() {
+            cardBox.checkAnswer();
+        }
+
+
 
         // If start and end positions are given in the GET params from select.html, use them 
         // to choose cards from the pool. Otherwise, default to the first 10 cards
