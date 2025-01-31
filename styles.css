@@ -51,3 +51,10 @@ button:active {
     height: 20px;
     width: 20px;
 }
+.correct{
+  color: green;
+}
+.initial{
+    color: black;
+
+}
