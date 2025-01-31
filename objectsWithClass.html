@@ -80,6 +80,8 @@
         import {CardBox} from './js/classes/CardBox.js';
         import {cards} from './js/data/cards.js';
 
+        let currentCard = 0;
+
         const loadCardsFromPool = (start, end) => {
             // Sanitize user input to avoid invalid data
             start = Math.max(1, start); // Ensure start is at least 1
@@ -97,12 +99,12 @@
 
         // Show the current Card into the DOM
         const showCard = (currentCard) => {
-            document.querySelector('#number').innerHTML = '#'+cardBox.cards.find(card => Number(card.id) === Number(currentCard)).id || '#';
-            document.querySelector('#question').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).question || 'Keine Frage gefunden';
-            document.querySelector('#answerA').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[0].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerB').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[1].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerC').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[2].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerD').innerHTML = cardBox.cards.find(card => Number(card.id) === Number(currentCard)).answers[3].text || 'Keine Antwort gefunden';
+            document.querySelector('#number').innerHTML = '#'+cardBox.cards[currentCard].id || '#';
+            document.querySelector('#question').innerHTML = cardBox.cards[currentCard].question || 'Keine Frage gefunden';
+            document.querySelector('#answerA').innerHTML = cardBox.cards[currentCard].answers[0].text || 'Keine Antwort gefunden';
+            document.querySelector('#answerB').innerHTML = cardBox.cards[currentCard].answers[1].text || 'Keine Antwort gefunden';
+            document.querySelector('#answerC').innerHTML = cardBox.cards[currentCard].answers[2].text || 'Keine Antwort gefunden';
+            document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
         }
 
         window.forward = function() {
@@ -123,7 +125,7 @@
         const start = params.get('start') || 1; // Default to 1 if no start param
         const end = params.get('end') || 10;   // Default to 10 if no end param
         const cardBox = loadCardsFromPool(start, end);
-        cardBox.setCurrentIndex(start);
+
 
         console.log(cardBox);
 

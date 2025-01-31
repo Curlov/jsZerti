@@ -1,14 +1,14 @@
 export class CardBox {
     #id;
     #cards = [];
-    #currentIndex = 1;
+    #currentIndex = 0;
 
     constructor(id) {
         this.#id = id;
 
     }
     getNextCard() {
-        if (this.#currentIndex < this.#cards.length) {
+        if (this.#currentIndex < this.#cards.length - 1) {
             return this.#cards[++this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
@@ -16,7 +16,7 @@ export class CardBox {
     }
 
     getPreviousCard() {
-        if (this.#currentIndex > 1) {
+        if (this.#currentIndex > 0) {
             return this.#cards[--this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
