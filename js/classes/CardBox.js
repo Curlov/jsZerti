@@ -33,7 +33,7 @@ export class CardBox {
 
         checkboxes.forEach(checkbox => {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
-            const answerText = label.innerHTML;
+            const answerText = label.textContent;
             console.log(`Answer: ${answerText}`);
 
             if (answerText === correctAnswer) {
