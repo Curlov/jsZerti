@@ -25,6 +25,8 @@ export class CardBox {
         }
     }
 
+
+
     checkAnswer() {
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
@@ -76,4 +78,23 @@ export class CardBox {
     set id(value) {
         this.#id = value;
     }
+
+    verAnswers(collectAnswers) {
+        const currentCard = this.#cards[this.#currentIndex];
+
+        if (collectAnswers[currentCard.id]) {
+            const answerIds = collectAnswers[currentCard.id]
+
+            answerIds.forEach(function (answerId) {
+                const checkbox = document.querySelector(answerId);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+
+        }
+
+    }
+
+
 }
