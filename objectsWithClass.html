@@ -107,6 +107,8 @@
             document.querySelector('#answerB').innerHTML = cardBox.cards[currentCard].answers[1].text || 'Keine Antwort gefunden';
             document.querySelector('#answerC').innerHTML = cardBox.cards[currentCard].answers[2].text || 'Keine Antwort gefunden';
             document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
+
+            cardBox.checkedAnswers();
         }
 
         window.forward = function() {
