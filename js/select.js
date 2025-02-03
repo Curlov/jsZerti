@@ -11,3 +11,6 @@ document.getElementById('submitCardRange').addEventListener('click', () => {
   // Werte als URL-Parameter übergeben
   window.location.href = `objectsWithClass.html?start=${start}&end=${end}`;
 });
+
+
+//Beim Blättern soll angezeigt werden, was ich zuvor angeklickt habe
