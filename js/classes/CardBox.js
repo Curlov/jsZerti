@@ -10,7 +10,7 @@ export class CardBox {
 
     getNextCard() {
         this.resetStyles();
-        if (this.#currentIndex < this.#cards.length) {
+        if (this.#currentIndex < this.#cards.length -1) {
             return this.#cards[++this.#currentIndex];
         } else {
             return this.#cards[this.#currentIndex];
