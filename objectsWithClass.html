@@ -69,6 +69,7 @@
                     <button onclick="window.back()">back</button>
                     <button onclick="window.checkAnswer()">check</button>
                     <button onclick="window.forward()">forward</button>
+                    <button onclick="window.saveSession()">save</button>
                 </td>
             </tr>
         </table>
@@ -141,7 +142,19 @@
         showCard(cardBox.getCurrentIndex());
 
 
+        let collectedAnswers = ['1', ['2','3']];
 
+        window.saveSession = function () {
+            const sessionData = {
+                date: new Date().toISOString(),
+                // collectedAnswers: JSON.parse(localStorage.getItem('collectedAnswers')) || [],
+                collectedAnswers: collectedAnswers,
+                cards: cardBox.cards
+            }
+            localStorage.setItem('sessionData', JSON.stringify(sessionData));
+
+            console.log('Gespeichert', sessionData);
+        }
 
     </script>
 </body>
