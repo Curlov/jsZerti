@@ -26,9 +26,15 @@ export class CardBox {
         }
     }
 
-
+    resetStyles() {
+        const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.color = '';
+        });
+    }
 
     checkAnswer() {
+        this.collectAnswer();
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
         const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
@@ -49,6 +55,25 @@ export class CardBox {
         });
     }
 
+    collectAnswer() {
+        const cardId = this.#cards[this.#currentIndex].id;
+        const answerIds = [];
+        const checkboxes = document.querySelectorAll('.checkmark');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+            answerIds.push(checkbox.id);}
+        })
+        const cardIndex = this.#collectAnswers.findIndex(
+            collectAnswer => collectAnswer.cardId === cardId
+        );
+        if (cardIndex !== -1) {
+            this.#collectAnswers[cardIndex] = { cardId, answerIds };
+        } else {
+            this.#collectAnswers.push({cardId, answerIds});
+        }
+        console.log(this.#collectAnswers);
+
+    }
     checkedAnswers() {
         const currentCard = this.#cards[this.#currentIndex];
 
@@ -70,15 +95,6 @@ export class CardBox {
                 }
             });
         }
-    }
-
-
-
-    resetStyles() {
-        const labels = document.querySelectorAll('label');
-        labels.forEach(label => {
-            label.style.color = '';
-        });
     }
 
     getCurrentIndex() {
@@ -104,7 +120,4 @@ export class CardBox {
     set id(value) {
         this.#id = value;
     }
-
-
-
 }
