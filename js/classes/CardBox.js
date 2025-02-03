@@ -44,11 +44,8 @@ export class CardBox {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
             const answerText = label.textContent;
             console.log(`Answer: ${answerText}`);
-            console.log(checkbox.id);
-
 
             if (answerText === correctAnswer) {
-
                 label.style.color = 'green';
                 console.log("Correct!");
             } else {
