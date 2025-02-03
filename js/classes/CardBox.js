@@ -74,6 +74,28 @@ export class CardBox {
         console.log(this.#collectAnswers);
 
     }
+    checkedAnswers() {
+        const currentCard = this.#cards[this.#currentIndex];
+
+        const checkboxes = document.querySelectorAll('.checkmark');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        const savedAnswer = this.#collectAnswers.find(
+            collectAnswer => collectAnswer.cardId === currentCard.id
+        );
+
+        if (savedAnswer) {
+            savedAnswer.answerIds.forEach(answerId => {
+                const checkbox = document.querySelector(`#${answerId}`);
+
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+        }
+    }
 
     getCurrentIndex() {
         return this.#currentIndex;
