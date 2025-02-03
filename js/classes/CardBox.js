@@ -2,6 +2,7 @@ export class CardBox {
     #id;
     #cards = [];
     #currentIndex = 0;
+    #collectAnswers = [];
 
     constructor(id) {
         this.#id = id;
@@ -25,6 +26,8 @@ export class CardBox {
         }
     }
 
+
+
     checkAnswer() {
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
@@ -45,6 +48,31 @@ export class CardBox {
             }
         });
     }
+
+    checkedAnswers() {
+        const currentCard = this.#cards[this.#currentIndex];
+
+        const checkboxes = document.querySelectorAll('.checkmark');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        const savedAnswer = this.#collectAnswers.find(
+            collectAnswer => collectAnswer.cardId === currentCard.id
+        );
+
+        if (savedAnswer) {
+            savedAnswer.answerIds.forEach(answerId => {
+                const checkbox = document.querySelector(`#${answerId}`);
+
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+        }
+    }
+
+
 
     resetStyles() {
         const labels = document.querySelectorAll('label');
@@ -76,4 +104,7 @@ export class CardBox {
     set id(value) {
         this.#id = value;
     }
+
+
+
 }
