@@ -210,6 +210,96 @@ export const answers = [
     new Answer(165, 'Dog',false, 42),
     new Answer(166, 'Animal', false, 42),
     new Answer(167, 'true', true, 42),
-    new Answer(168, 'false', false, 42)
+    new Answer(168, 'false', false, 42),
+
+    new Answer(169, 'true true true', true, 43),
+    new Answer(170, 'false false true', false, 43),
+    new Answer(171, 'true false true', false, 43),
+    new Answer(172, 'false false false', false, 43),
+
+    new Answer(173, 'x() { return this._x; }', false, 44),
+    new Answer(174, 'get x() { return this._x; }', false, 44),
+    new Answer(175, 'this.x = function() { return this._x; }', false, 44),
+    new Answer(176, 'set x(value) { this._x = value; }', true, 44),
+
+    new Answer(177, 'User = new User("John", "Admin");', false, 45),
+    new Answer(178, 'new User("John", "Admin");', false, 45),
+    new Answer(179, 'User("John", "Admin");', false, 45),
+    new Answer(180, 'let User = {name: "John", role: "Admin"}', true, 45),
+
+    new Answer(181, 'class Shape { constructor(sides) { sides = sides; } calculateArea() { // implementation } }', false, 46),
+    new Answer(182, 'class Shape { constructor(sides) { this.sides = sides; } calculateArea() { // implementation } }', false, 46),
+    new Answer(183, 'class Shape { calculateArea() { // implementation } constructor(sides) { _sides = sides; } }', false, 46),
+    new Answer(184, 'class Shape { constructor(sides) { this._sides = sides; } calculateArea() { // implementation } }', true, 46),
+
+    new Answer(185, 'constructor', true, 47),
+    new Answer(186, 'Name of the class', false, 47),
+    new Answer(187, 'constructor "name"', false, 47),
+    new Answer(188, 'this', false, 47),
+
+    new Answer(189, 'test = 10;', true, 48),
+    new Answer(190, 'this.test = 10;', false, 48),
+    new Answer(191, 'var test = 10;', false, 48),
+    new Answer(192, 'let test = 10;', false, 48),
+
+    new Answer(193, 'Is available only in class instances', false, 49),
+    new Answer(194, 'Is bound to the class only will not be available in any objects which are instances from it.', true, 49),
+    new Answer(195, 'Available for both the class and instances of the class', false, 49),
+    new Answer(196, 'Is only available within the class', false, 49),
+
+    new Answer(197, 'Classes take memory priority', false, 50),
+    new Answer(198, 'Classes must be declared at the beginning of the code', false, 50),
+    new Answer(199, 'Classes are the most important components of the language', false, 50),
+    new Answer(200, 'Classes can be written to variables, among other things.', true, 50),
+
+    new Answer(201, 'function Rectangle(width, height) { this.width = width; this.height = height; this.calcArea = function() { return this.width * this.height; } }', false, 51),
+    new Answer(202, 'class Rectangle(width, height) { this.width = width; this.height = height; this.calcArea = function() {  return this.width * this.height; } }', false, 51),
+    new Answer(203, 'class Rectangle { constructor(width, height); this.width = width; this.height = height; calcArea() {  return width * height; } }', false, 51),
+    new Answer(204, 'class Rectangle { constructor(width, height) { this.width = width;  this.height = height; } calcArea() { return this.width * this.height; }}', true, 51),
+
+    new Answer(205, 'greet: function() { console.log(Hello, I am ${this.name}); }', false, 52),
+    new Answer(206, 'greet() { console.log(Hello, I am ${this.name}); }', true, 52),
+    new Answer(207, 'this.greet = function() { console.log(Hello, I am ${this.name}); }', false, 52),
+    new Answer(208, 'function greet() { console.log(Hello, I am ${this.name}); }', false, 52),
+
+    new Answer(209, 'Vehicle car = new Vehicle("Toyota");', false, 53),
+    new Answer(210, 'Vehicle("Toyota");', false, 53),
+    new Answer(211, 'let car = new Vehicle; car.make = "Toyota";', true, 53),
+    new Answer(212, 'let car = new Vehicle("Toyota");', false, 53),
+
+    new Answer(213, 'price: 0;', false, 54),
+    new Answer(214, 'this.price = 0;', true, 54),
+    new Answer(215, 'var price = 0;', false, 54),
+    new Answer(216, 'let price = 0;', false, 54),
+
+    new Answer(217, 'showInfo = function() {console.log("Hi");};', false, 55),
+    new Answer(218, 'this.showInfo = function() {console.log("Hi");};', true, 55),
+    new Answer(219, 'static showInfo() {console.log("Hi");};', false, 55),
+    new Answer(220, 'function showInfo() {console.log("Hi");};', false, 55),
+
+    new Answer(221, '[]', true, 56),
+    new Answer(222, '["x", "y"]', false, 56),
+    new Answer(223, '["sides"]', false, 56),
+    new Answer(224, '["x", "y", "sides"]', false, 56),
+
+    new Answer(225, 'ReferenceError: a is not defined', false, 57),
+    new Answer(226, 'Error: a.test is not a function', false, 57),
+    new Answer(227, '10', true, 57),
+    new Answer(228, 'undefined', false, 57),
+
+    new Answer(229, 'showInfo: function() { console.log("Hi"); };', false, 58),
+    new Answer(230, 'showInfo() { console.log("Hi"); };', true, 58),
+    new Answer(231, 'function showInfo() { console.log("Hi"); };', false, 58),
+    new Answer(232, 'showInfo = function() { console("Hi"); };', false, 58),
+
+    new Answer(233, '10', true, 59),
+    new Answer(234, 'undefined', false, 59),
+    new Answer(235, 'NaN', false, 59),
+    new Answer(236, 'null', false, 59),
+
+    new Answer(237, 'false', false, 60),
+    new Answer(238, 'Magazine', false, 60),
+    new Answer(239, 'true', true, 60),
+    new Answer(240, 'Book', false, 60)
 
 ];
