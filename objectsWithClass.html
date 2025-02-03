@@ -142,13 +142,12 @@
         showCard(cardBox.getCurrentIndex());
 
 
-        let collectedAnswers = ['1', ['2','3']];
 
         window.saveSession = function () {
             const sessionData = {
                 date: new Date().toISOString(),
                 // collectedAnswers: JSON.parse(localStorage.getItem('collectedAnswers')) || [],
-                collectedAnswers: collectedAnswers,
+                collectedAnswers: cardBox.collectAnswers,
                 cards: cardBox.cards
             }
             localStorage.setItem('sessionData', JSON.stringify(sessionData));
