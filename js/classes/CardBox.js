@@ -60,11 +60,9 @@ export class CardBox {
         const savedAnswer = this.#collectAnswers.find(
             collectAnswer => collectAnswer.cardId === currentCard.id
         );
-
         if (savedAnswer) {
             savedAnswer.answerIds.forEach(answerId => {
                 const checkbox = document.querySelector(`#${answerId}`);
-
                 if (checkbox) {
                     checkbox.checked = true;
                 }
