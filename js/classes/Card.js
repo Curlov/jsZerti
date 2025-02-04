@@ -1,5 +1,3 @@
-import {answers} from "../data/answers.js";
-
 export class Card {
     #id;
     #question;
@@ -16,7 +14,6 @@ export class Card {
     get answers() {
         return this.#answers;
     }
-
 
     get id() {
         return this.#id;

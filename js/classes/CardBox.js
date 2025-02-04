@@ -38,41 +38,43 @@ export class CardBox {
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
         const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
-        console.log(`Correct Answer: ${correctAnswer}`);
 
         checkboxes.forEach(checkbox => {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
             const answerText = label.textContent;
-            console.log(`Answer: ${answerText}`);
 
             if (answerText === correctAnswer) {
                 label.style.color = 'green';
-                console.log("Correct!");
             } else {
                 label.style.color = 'red';
-                console.log("Wrong!");
             }
         });
     }
 
     collectAnswer() {
+        // Ruft die ID der aktuellen Karte ab
         const cardId = this.#cards[this.#currentIndex].id;
         const answerIds = [];
+        // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = document.querySelectorAll('.checkmark');
+        // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
-            answerIds.push(checkbox.id);}
-        })
+                // Wenn die Checkbox ausgewählt ist, wird ihre ID zum Array hinzugefügt
+                answerIds.push(checkbox.id);
+            }
+        });
+        // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
         const cardIndex = this.#collectAnswers.findIndex(
             collectAnswer => collectAnswer.cardId === cardId
         );
         if (cardIndex !== -1) {
+            // Wenn bereits eine Antwort für diese Karte existiert, wird sie aktualisiert
             this.#collectAnswers[cardIndex] = { cardId, answerIds };
         } else {
-            this.#collectAnswers.push({cardId, answerIds});
+            // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
+            this.#collectAnswers.push({ cardId, answerIds });
         }
-        console.log(this.#collectAnswers);
-
     }
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
@@ -100,11 +102,11 @@ export class CardBox {
         }
     }
 
-    getCurrentIndex() {
+    get currentIndex() {
         return this.#currentIndex;
     }
 
-    setCurrentIndex(index) {
+    set currentIndex(index) {
         this.#currentIndex = index;
     }
 
@@ -131,5 +133,4 @@ export class CardBox {
     setCollectedAnswers(savedAnswers) {
         this.#collectAnswers = savedAnswers;
     }
-    
 }

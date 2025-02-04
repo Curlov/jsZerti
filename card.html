@@ -66,107 +66,16 @@
             </tr>
             <tr style="min-height: 20%; height: 20%;">
                 <td colspan="3" style="min-width: 100%; width: 100%; text-align: center;">
-                    <button onclick="window.back()">back</button>
-                    <button onclick="window.checkAnswer()">check</button>
-                    <button onclick="window.forward()">forward</button>
-                    <button onclick="window.saveSession()">save</button>
+                    <button id="back-btn">back</button>
+                    <button id="check-btn">check</button>
+                    <button id="forward-btn">forward</button>
+                    <button id="save-btn">save</button>
                 </td>
             </tr>
         </table>
     </div>
 
-    <script type="module">
-
-        import {CardPool} from "./js/classes/CardPool.js";
-        import {CardBox} from './js/classes/CardBox.js';
-        import {cards} from './js/data/cards.js';
-
-        let currentCard = 0;
-
-
-
-        const loadCardsFromPool = (start, end) => {
-            // Sanitize user input to avoid invalid data
-            start = Math.max(1, start); // Ensure start is at least 1
-            end = Math.min(cards.length, end); // Ensure end is at most cards.length
-            // Create CardPool and load each card from data.js
-            const cardPool = new CardPool();
-            cards.forEach(card => cardPool.loadCard(card));
-
-            // Create CardBox object and load selected cards from the pool
-            const cardBox = new CardBox(1);
-            // start - 1 as the array starts with index 0
-            cardBox.loadCards(cardPool.cards.slice(start - 1, end));
-
-            return cardBox;
-        }
-
-        // Show the current Card into the DOM
-        const showCard = (currentCard) => {
-            document.querySelector('#number').innerHTML = '#'+cardBox.cards[currentCard].id || '#';
-            document.querySelector('#question').innerHTML = cardBox.cards[currentCard].question || 'Keine Frage gefunden';
-            document.querySelector('#answerA').innerHTML = cardBox.cards[currentCard].answers[0].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerB').innerHTML = cardBox.cards[currentCard].answers[1].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerC').innerHTML = cardBox.cards[currentCard].answers[2].text || 'Keine Antwort gefunden';
-            document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
-
-            cardBox.checkedAnswers();
-        }
-
-        window.forward = function() {
-            cardBox.collectAnswer()
-            cardBox.getNextCard();
-            showCard(cardBox.getCurrentIndex());
-            console.log('Bin hier' + cardBox.getCurrentIndex());
-        }
-
-        window.back = function() {
-            cardBox.collectAnswer()
-            cardBox.getPreviousCard();
-            showCard(cardBox.getCurrentIndex());
-            console.log('Bin hier' + cardBox.getCurrentIndex());
-        }
-        window.checkAnswer = function() {
-            cardBox.checkAnswer();
-        }
-
-
-
-        // If start and end positions are given in the GET params from index.html, use them 
-        // to choose cards from the pool. Otherwise, default to the first 10 cards
-        const params = new URLSearchParams(window.location.search);
-        const start = params.get('start') || 1; // Default to 1 if no start param
-        const end = params.get('end') || 10;   // Default to 10 if no end param
-        const cardBox = loadCardsFromPool(start, end);
-
-        console.log(cardBox);
-
-        // console.log(cardBox.cards[5].answers[2].text);
-
-        // funktion um gegebene antworten im local storage zu speichern
-        // inkl. datum- u. zeitangabe und aller zugehöriger cards
-        window.saveSession = function () {
-            const sessionData = {
-                date: new Date().toISOString(),
-                collectAnswers: cardBox.collectedAnswers,
-                cards: cardBox.cards
-            }
-            localStorage.setItem('sessionData', JSON.stringify(sessionData));
-        }
-        // funktion um bereits gegebene antworten aus dem local storage zu laden
-        // und collectAnswers werden in cardbox gesetzt
-        window.loadSession = function () {
-            const sessionData = JSON.parse(localStorage.getItem('sessionData'));
-
-            if (sessionData && sessionData.collectAnswers) {
-                cardBox.setCollectedAnswers(sessionData.collectAnswers);
-            }
-        }
-
-        window.loadSession();
-        showCard(cardBox.getCurrentIndex());
-
-    </script>
+    <script type="module" src="js/card.js"></script>
 </body>
 
 </html>
