@@ -5,7 +5,7 @@ const totalNumberOfCards =  cards.length;
 document.querySelector('#totalNumberOfCards').innerHTML = totalNumberOfCards;
 
 // Eventlistener on button to select a set of cards
-document.getElementById('submitCardRange').addEventListener('click', () => {
+document.querySelector('#submitCardRange').addEventListener('click', () => {
   // Read start and end question
   const start = document.querySelector('#startQuestion').value;
   const end = document.querySelector('#endQuestion').value;
