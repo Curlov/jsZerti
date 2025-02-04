@@ -146,6 +146,9 @@
         // funktion um gegebene antworten im local storage zu speichern
         // inkl. datum- u. zeitangabe und aller zugehöriger cards
         window.saveSession = function () {
+            // zuerst aktuelle antworten aus collectAnswer() sammeln und speichern sobald save gedrückt wird
+            cardBox.collectAnswer();
+
             const sessionData = {
                 date: new Date().toISOString(),
                 collectAnswers: cardBox.collectedAnswers,
@@ -162,6 +165,8 @@
                 cardBox.setCollectedAnswers(sessionData.collectAnswers);
             }
         }
+
+
 
         window.loadSession();
         showCard(cardBox.getCurrentIndex());
