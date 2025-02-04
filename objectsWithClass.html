@@ -142,22 +142,28 @@
 
         // console.log(cardBox.cards[5].answers[2].text);
 
-        showCard(cardBox.getCurrentIndex());
-
-
-        let collectedAnswers = ['1', ['2','3']];
-
+        // funktion um gegebene antworten im local storage zu speichern
+        // inkl. datum- u. zeitangabe und aller zugehöriger cards
         window.saveSession = function () {
             const sessionData = {
                 date: new Date().toISOString(),
-                // collectedAnswers: JSON.parse(localStorage.getItem('collectedAnswers')) || [],
-                collectedAnswers: collectedAnswers,
+                collectAnswers: cardBox.collectedAnswers,
                 cards: cardBox.cards
             }
             localStorage.setItem('sessionData', JSON.stringify(sessionData));
-
-            console.log('Gespeichert', sessionData);
         }
+        // funktion um bereits gegebene antworten aus dem local storage zu laden
+        // und collectAnswers werden in cardbox gesetzt
+        window.loadSession = function () {
+            const sessionData = JSON.parse(localStorage.getItem('sessionData'));
+
+            if (sessionData && sessionData.collectAnswers) {
+                cardBox.setCollectedAnswers(sessionData.collectAnswers);
+            }
+        }
+
+        window.loadSession();
+        showCard(cardBox.getCurrentIndex());
 
     </script>
 </body>
