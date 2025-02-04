@@ -44,17 +44,11 @@ button:hover {
 button:active {
     background-color: black;
 }
+
 .checkmark {
     position: relative;
     top: 0;
     left: 0;
     height: 20px;
     width: 20px;
-}
-.correct{
-  color: green;
-}
-.initial{
-    color: black;
-
 }
