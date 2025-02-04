@@ -1,3 +1,5 @@
+import { answers} from "../data/answers.js";
+
 export class Card {
     #id;
     #question;
