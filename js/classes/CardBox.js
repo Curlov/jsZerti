@@ -56,42 +56,54 @@ export class CardBox {
     }
 
     collectAnswer() {
+        // Ruft die ID der aktuellen Karte ab
         const cardId = this.#cards[this.#currentIndex].id;
         const answerIds = [];
+        // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = document.querySelectorAll('.checkmark');
+        // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
-            answerIds.push(checkbox.id);}
-        })
+                // Wenn die Checkbox ausgewählt ist, wird ihre ID zum Array hinzugefügt
+                answerIds.push(checkbox.id);
+            }
+        });
+        // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
         const cardIndex = this.#collectAnswers.findIndex(
             collectAnswer => collectAnswer.cardId === cardId
         );
         if (cardIndex !== -1) {
+            // Wenn bereits eine Antwort für diese Karte existiert, wird sie aktualisiert
             this.#collectAnswers[cardIndex] = { cardId, answerIds };
         } else {
-            this.#collectAnswers.push({cardId, answerIds});
+            // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
+            this.#collectAnswers.push({ cardId, answerIds });
         }
+        // Gibt das aktualisierte Array der gesammelten Antworten in der Konsole aus
         console.log(this.#collectAnswers);
 
     }
+
+    // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
     checkedAnswers() {
         const currentCard = this.#cards[this.#currentIndex];
 
+        // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
         checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
+            checkbox.checked = false; // Alle Kontrollkästchen auf "nicht geprüft" setzen
         });
 
+        // Gespeicherte Antworten für die aktuelle Karte finden
         const savedAnswer = this.#collectAnswers.find(
             collectAnswer => collectAnswer.cardId === currentCard.id
         );
-
+        // Wenn gespeicherte Antworten existieren
         if (savedAnswer) {
-            savedAnswer.answerIds.forEach(answerId => {
-                const checkbox = document.querySelector(`#${answerId}`);
-
+            savedAnswer.answerIds.forEach(answerId => { // Für jede gespeicherte Antwort
+                const checkbox = document.querySelector(`#${answerId}`); // Das entsprechende Kontrollkästchen auswählen
                 if (checkbox) {
-                    checkbox.checked = true;
+                    checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
                 }
             });
         }

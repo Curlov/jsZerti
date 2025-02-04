@@ -95,6 +95,7 @@
 
             // Create CardBox object and load selected cards from the pool
             const cardBox = new CardBox(1);
+            // start - 1 as the array starts with index 0
             cardBox.loadCards(cardPool.cards.slice(start - 1, end));
 
             return cardBox;
@@ -131,7 +132,7 @@
 
 
 
-        // If start and end positions are given in the GET params from select.html, use them 
+        // If start and end positions are given in the GET params from index.html, use them 
         // to choose cards from the pool. Otherwise, default to the first 10 cards
         const params = new URLSearchParams(window.location.search);
         const start = params.get('start') || 1; // Default to 1 if no start param
