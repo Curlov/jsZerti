@@ -56,21 +56,30 @@ export class CardBox {
     }
 
     collectAnswer() {
+        // Ruft die ID der aktuellen Karte ab
         const cardId = this.#cards[this.#currentIndex].id;
         const answerIds = [];
+        // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = document.querySelectorAll('.checkmark');
+        // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
-            answerIds.push(checkbox.id);}
-        })
+                // Wenn die Checkbox ausgewählt ist, wird ihre ID zum Array hinzugefügt
+                answerIds.push(checkbox.id);
+            }
+        });
+        // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
         const cardIndex = this.#collectAnswers.findIndex(
             collectAnswer => collectAnswer.cardId === cardId
         );
         if (cardIndex !== -1) {
+            // Wenn bereits eine Antwort für diese Karte existiert, wird sie aktualisiert
             this.#collectAnswers[cardIndex] = { cardId, answerIds };
         } else {
-            this.#collectAnswers.push({cardId, answerIds});
+            // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
+            this.#collectAnswers.push({ cardId, answerIds });
         }
+        // Gibt das aktualisierte Array der gesammelten Antworten in der Konsole aus
         console.log(this.#collectAnswers);
 
     }
