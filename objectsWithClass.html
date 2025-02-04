@@ -113,12 +113,14 @@
         }
 
         window.forward = function() {
+            cardBox.collectAnswer()
             cardBox.getNextCard();
             showCard(cardBox.getCurrentIndex());
             console.log('Bin hier' + cardBox.getCurrentIndex());
         }
 
         window.back = function() {
+            cardBox.collectAnswer()
             cardBox.getPreviousCard();
             showCard(cardBox.getCurrentIndex());
             console.log('Bin hier' + cardBox.getCurrentIndex());
