@@ -120,4 +120,12 @@ export class CardBox {
     set id(value) {
         this.#id = value;
     }
+
+    get collectedAnswers() {
+        return this.#collectAnswers;
+    }
+
+    setCollectedAnswers(savedAnswers) {
+        this.#collectAnswers = savedAnswers;
+    }
 }
