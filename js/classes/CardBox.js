@@ -128,4 +128,5 @@ export class CardBox {
     setCollectedAnswers(savedAnswers) {
         this.#collectAnswers = savedAnswers;
     }
+    
 }
