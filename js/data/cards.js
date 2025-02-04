@@ -322,4 +322,5 @@ export const cards = [
         'class Magazine extends Book {}; let article = new Magazine(); console.log(article instanceof Book);',
         1,  answers.filter(answer => answer.cardId === 60))
 
+
 ];
