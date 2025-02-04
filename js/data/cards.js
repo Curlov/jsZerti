@@ -228,4 +228,5 @@ export const cards = [
         'console.log(dog instanceof Animal);<br>',
         1,  answers.filter(answer => answer.cardId === 42))
 
+
 ];
