@@ -33,13 +33,13 @@ const showCard = (currentCard) => {
 document.querySelector('#forward-btn').addEventListener('click', () => {
   cardBox.collectAnswer()
   cardBox.getNextCard();
-  showCard(cardBox.getCurrentIndex());
+  showCard(cardBox.currentIndex);
 });
 
 document.querySelector('#back-btn').addEventListener('click', () => {
   cardBox.collectAnswer()
   cardBox.getPreviousCard();
-  showCard(cardBox.getCurrentIndex());
+  showCard(cardBox.currentIndex);
 });
 
 document.querySelector('#check-btn').addEventListener('click', () => {
@@ -79,4 +79,4 @@ const loadSession = function() {
 
 loadSession();
 
-showCard(cardBox.getCurrentIndex());
+showCard(cardBox.currentIndex);
