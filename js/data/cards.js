@@ -226,6 +226,100 @@ export const cards = [
         'class Animal {};<br>' +
         'class Dog extends Animal {}; let dog = new Dog();<br>' +
         'console.log(dog instanceof Animal);<br>',
-        1,  answers.filter(answer => answer.cardId === 42))
+        1,  answers.filter(answer => answer.cardId === 42)),
+    new Card(43, 'What is the output of the following code snippet?<br>' +
+        'class Shape{};<br>' +
+        'class Pyramid extends Shape{};<br>' +
+        'class SquareBasedPyramid extends Pyramid {};<br>' +
+        'let shape = new SquareBasedPyramid();<br>' +
+        'console.log(`${shape instanceof Shape} ${shape instanceof Pyramid} ${shape instanceof SquareBasedPyramid}`);<br>',
+        1,  answers.filter(answer => answer.cardId === 43)),
+    new Card(44, 'There is one line missing in the code below:<br>' +
+        'class A {<br>' +
+        '_x = 0;<br>' +
+        '// Insert line of code here<br>' +
+        '}<br>' +
+        'let a = new A();<br>' +
+        'a.x = 10;<br>' +
+        'console.log(a._x);<br>' +
+        'Select the correct missing line so that the executed code results in the following console output: 10',
+        1,  answers.filter(answer => answer.cardId === 44)),
+    new Card(45, 'What is the correct syntax for creating a "User" object with the name "John" and role "Admin"? (note no previous class has been defined)',
+        1,  answers.filter(answer => answer.cardId === 45)),
+    new Card(46, 'What is the correct code for declaring a class Shape that has a method calculateArea and a private property _sides which can be set in the constructor?',
+        1,  answers.filter(answer => answer.cardId === 46)),
+    new Card(47, 'A class may have a constructor called...',
+        1,  answers.filter(answer => answer.cardId === 47)),
+    new Card(48, 'What line of code should be inserted into the A class definition to declare a property named test and initialize it with the value 10?<br>' +
+        'class A {<br>' +
+        '// insert code here<br>' +
+        '}',
+        1,  answers.filter(answer => answer.cardId === 48)),
+    new Card(49, 'A static method defined in a class is...',
+        1,  answers.filter(answer => answer.cardId === 49)),
+    new Card(50, 'JavaScript classes are first-class citizens, which means that...',
+        1,  answers.filter(answer => answer.cardId === 50)),
+
+    new Card(51, 'What is the correct code to declare a class "Rectangle" with a constructor that takes two arguments "width" and "height", and a method "calcArea" that calculates and returns the area of the Rectangle instance?',
+        1,  answers.filter(answer => answer.cardId === 51)),
+    new Card(52, 'What line of code should be inserted into the Person class definition to add a method greet to the class that outputs "Hello, I am [name]"?<br>' +
+        'class Person { constructor(name)<br>' +
+        '{<br>' +
+        'this.name = name;<br>' +
+        '// insert code here<br>' +
+        '}<br>' +
+        '}',
+        1,  answers.filter(answer => answer.cardId === 52)),
+    new Card(53, 'What is the correct syntax for creating an instance of the class Vehicle with the property make set to "Toyota"? (assuming there\'s no constructor)',
+        1,  answers.filter(answer => answer.cardId === 53)),
+    new Card(54, 'What line of code should be inserted into the Product class definition to add a property price to the class?<br>' +
+        'class Product {<br>' +
+        'constructor(name)<br>' +
+        '{<br>' +
+        'this.name = name;<br>' +
+        '// insert code here<br>' +
+        '}<br>' +
+        '}',
+        1,  answers.filter(answer => answer.cardId === 54)),
+    new Card(55, 'Which line of code should be inserted in the following code snippet to declare a method showInfo in class A that displays the string "Hi" in the console?<br>' +
+        'class A { constructor(){<br>' +
+        '// insert line of code here<br>' +
+        '}<br>' +
+        '}<br>' +
+        'let a = new A(); a.showInfo();',
+        1,  answers.filter(answer => answer.cardId === 55)),
+    new Card(56, 'Analyze the following code: class Shape {<br>' +
+        '#x = 0;<br>' +
+        '#y = 0;<br>' +
+        'sides= 3;<br>' +
+        '}<br>' +
+        'let shape = new Shape(); console.log(Object.keys(shape));',
+        1,  answers.filter(answer => answer.cardId === 56)),
+    new Card(57, 'What will be the result of the code below? class A {<br>' +
+        '_test = 0;<br>' +
+        'set test(value) {this._test = value;<br>' +
+        '}<br>' +
+        '}<br>' +
+        'let a = new A(); a.test = 10; console.log(a._test);',
+        1,  answers.filter(answer => answer.cardId === 57)),
+    new Card(58, 'What line of code should be inserted in the class A definition to produce the output "Hi" when the code is executed?<br>' +
+        'class A<br>' +
+        '{<br>' +
+        '//Insert line of code here<br>' +
+        '}<br>' +
+        'let a = new A(); a.showInfo();',
+        1,  answers.filter(answer => answer.cardId === 58)),
+    new Card(59, 'What will appear in the console as a result of executing the following code snippet?<br>' +
+        'class A {<br>' +
+        '_test = 0;<br>' +
+        'set test(value) { this._test = value;<br>' +
+        '}<br>' +
+        '}<br>' +
+        'let a = new A(); a.test = 10; console.log(a._test);',
+        1,  answers.filter(answer => answer.cardId === 59)),
+    new Card(60, 'What is the output of the following code snippet?<br>' +
+        'class Book {};<br>' +
+        'class Magazine extends Book {}; let article = new Magazine(); console.log(article instanceof Book);',
+        1,  answers.filter(answer => answer.cardId === 60))
 
 ];
