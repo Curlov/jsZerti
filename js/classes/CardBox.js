@@ -38,19 +38,15 @@ export class CardBox {
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
         const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
-        console.log(`Correct Answer: ${correctAnswer}`);
 
         checkboxes.forEach(checkbox => {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
             const answerText = label.textContent;
-            console.log(`Answer: ${answerText}`);
 
             if (answerText === correctAnswer) {
                 label.style.color = 'green';
-                console.log("Correct!");
             } else {
                 label.style.color = 'red';
-                console.log("Wrong!");
             }
         });
     }
@@ -79,9 +75,6 @@ export class CardBox {
             // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
             this.#collectAnswers.push({ cardId, answerIds });
         }
-        // Gibt das aktualisierte Array der gesammelten Antworten in der Konsole aus
-        console.log(this.#collectAnswers);
-
     }
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
@@ -109,11 +102,11 @@ export class CardBox {
         }
     }
 
-    getCurrentIndex() {
+    get currentIndex() {
         return this.#currentIndex;
     }
 
-    setCurrentIndex(index) {
+    set currentIndex(index) {
         this.#currentIndex = index;
     }
 
@@ -140,5 +133,4 @@ export class CardBox {
     setCollectedAnswers(savedAnswers) {
         this.#collectAnswers = savedAnswers;
     }
-    
 }
