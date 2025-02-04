@@ -74,22 +74,27 @@ export class CardBox {
         console.log(this.#collectAnswers);
 
     }
+
+    // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
     checkedAnswers() {
         const currentCard = this.#cards[this.#currentIndex];
 
+        // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
         checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
+            checkbox.checked = false; // Alle Kontrollkästchen auf "nicht geprüft" setzen
         });
 
+        // Gespeicherte Antworten für die aktuelle Karte finden
         const savedAnswer = this.#collectAnswers.find(
             collectAnswer => collectAnswer.cardId === currentCard.id
         );
+        // Wenn gespeicherte Antworten existieren
         if (savedAnswer) {
-            savedAnswer.answerIds.forEach(answerId => {
-                const checkbox = document.querySelector(`#${answerId}`);
+            savedAnswer.answerIds.forEach(answerId => { // Für jede gespeicherte Antwort
+                const checkbox = document.querySelector(`#${answerId}`); // Das entsprechende Kontrollkästchen auswählen
                 if (checkbox) {
-                    checkbox.checked = true;
+                    checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
                 }
             });
         }
