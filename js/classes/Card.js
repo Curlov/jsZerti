@@ -1,16 +1,18 @@
 
 import { answers} from "../data/answers.js";
+import { sections} from "../data/sections.js";
+
 
 export class Card {
     #id;
     #question;
-    #cardBoxId;
+    #sectionId;
     #answers;
 
-    constructor(id, question, cardBoxId) {
+    constructor(id, question, sectionId) {
         this.#id = id;
         this.#question = question;
-        this.#cardBoxId = cardBoxId;
+        this.#sectionId = sectionId;
         this.#answers =  answers.filter(answer => answer.cardId === id);
     }
 
@@ -26,7 +28,7 @@ export class Card {
         return this.#question;
     }
 
-    get cardBoxId() {
-        return this.#cardBoxId;
+    get sectionId() {
+        return this.#sectionId;
     }
 }

@@ -13,3 +13,5 @@ document.querySelector('#submitCardRange').addEventListener('click', () => {
   // Redirect to card.html with start and end as GET params 
   window.location.href = `card.html?start=${start}&end=${end}`;
 });
+
+
