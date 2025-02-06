@@ -25,7 +25,6 @@ function submitCardRange() {
 
     // Fehlermeldung
     const errorMessage = document.querySelector('#error-message');
-    console.log(errorMessage);
     errorMessage.classList.add('d-none');
 
     // Prüfen ob Start und End angegeben wurden und ob die Kartennummern gültig sind.
