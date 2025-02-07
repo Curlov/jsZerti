@@ -339,7 +339,275 @@ export const cards = [
     new Card(60, 'What is the output of the following code snippet?<br>' +
         'class Book {};<br>' +
         'class Magazine extends Book {}; let article = new Magazine(); console.log(article instanceof Book);',
-        sections[1].id)
+        sections[1].id),
+
+    new Card(61, 'What will be the output of the following code?<br>' +
+        'class Rectangle {<br>' +
+        '_width = 0;<br>' +
+        '_height = 0;<br>' +
+        'set width(value) { this._width = value; }<br>' +
+        'get width() { return this._width; }<br>' +
+        'set height(value) { this._height = value; }<br>' +
+        'get height() { return this._height; }<br>' +
+        '}<br>' +
+        'let rectangle = new Rectangle();<br>' +
+        'rectangle.width = 10;<br>' +
+        'rectangle.height = 5;<br>' +
+        'console.log(rectangle.width * rectangle.height);',
+        sections[2].id),
+
+    new Card(62, 'What is the output of the following code snippet?<br>' +
+        'class Rectangle {};<br>' +
+        'let square = new Rectangle(); console.log(square instanceof Rectangle);',
+        sections[2].id),
+
+    new Card(63, 'What line of code should be inserted into the Car class definition to add a method drive to the class that outputs "Driving [make] [model]"?<br>' +
+        'class Car { constructor(make, model) {<br>' +
+        'this.make = make; this.model = model;<br>' +
+        '// insert code here<br>' +
+        '}<br>' +
+        '}',
+        sections[2].id),
+
+    new Card(64, 'Analyze the following code:<br>' +
+        'class Point {<br>' +
+        'constructor(x, y) {<br>' +
+        'this.x = x; this.y = y;<br>' +
+        '}<br>' +
+        'setColor(color) { this.color = color; }<br>' +
+        '}<br>' +
+        'let point = new Point(0, 200); point.setColor("red");<br>' +
+        'What properties does "point" have?',
+        sections[2].id),
+
+    new Card(65, 'In the following code snippet, what line of code should be inserted to declare a method named showInfo that outputs the string "Hi" to the console?<br>' +
+        'class A {<br>' +
+        '// insert code here<br>' +
+        '}<br>' +
+        'let a = new A(); console.log(a.showInfo());',
+        sections[2].id),
+
+    new Card(66, 'If, if in the declaration of class B, you want it to inherit from A. You would write...',
+        sections[2].id),
+
+    new Card(67, 'What will be the output of the following code:<br>' +
+        'class Circle {<br>' +
+        '_radius = 0;<br>' +
+        'set radius(value) { this._radius = value; }<br>' +
+        'get radius() { return this._radius; }<br>' +
+        '}<br>' +
+        'let circle = new Circle();<br>' +
+        'circle.radius = 5;<br>' +
+        'console.log(circle.radius);',
+        sections[2].id),
+
+    new Card(68, 'What line of code should be inserted in the following code snippet to declare a private property _number and initialize it with the value 30?<br>' +
+        'class Person {<br>' +
+        '// insert line of code here<br>' +
+        '}<br>' +
+        'let person = new Person();person._name = "John"; console.log(person._name);',
+        sections[2].id),
+
+    new Card(69, 'What line of code should be inserted in the following code snippet to declare a private property _age and initialize it with the value 30?<br>' +
+        'class Person {<br>' +
+        '// insert line of code here<br>' +
+        '}<br>' +
+        'let person = new Person(); person._age = 30; console.log(person._age);',
+        sections[2].id),
+
+    new Card(70, 'In the following code snippet, what line of code should be inserted to declare a property x and initialize it with the value 10?<br>' +
+        'class A {<br>' +
+        '// insert line of code here<br>' +
+        '}<br>' +
+        'let a = new A(); a._x = 10; console.log(a._x);',
+        sections[2].id),
+
+    new Card(71, 'What will appear in the console as a result of executing the following code snippet?<br>' +
+        'class User {<br>' +
+        'constructor(name, role) {<br>' +
+        'this.name = name; this.role = role;<br>' +
+        '}<br>' +
+        '}<br>' +
+        'let user = new User("John", "admin");<br>' +
+        'console.log(`${typeof(user)} ${user instanceof User}`);',
+        sections[2].id),
+
+    new Card(72, 'What will appear on the console when the following code is executed:<br>' +
+        'class Square {<br>' +
+        '_sideLength = 0;<br>' +
+        'set sideLength(value) { this._sideLength = value; }<br>' +
+        'get sideLength() { return this._sideLength; }<br>' +
+        '}<br>' +
+        'let square = new Square();<br>' +
+        'square.sideLength = 10;<br>' +
+        'console.log(square.sideLength);',
+        sections[2].id),
+
+    new Card(73, 'Analyze the following code<br>' +
+        'class Shape {<br>' +
+        'getName() { return "Shape"; }<br>' +
+        '}<br>' +
+        'class Circle extends Shape {<br>' +
+        'getName() { return "Circle"; }<br>' +
+        'test(x) { return x ? this.getName() : super.getName(); }<br>' +
+        '}<br>' +
+        'let circle = new Circle();<br>' +
+        'console.log(`${circle.test(true)} ${circle.test(false)}`);',
+        sections[2].id),
+
+    new Card(74, 'What will be the output when the following code is executed:<br>' +
+        'class Vehicle {<br>' +
+        '_make = "";<br>' +
+        'set make(value) { this._make = value; }<br>' +
+        'get make() { return this._make; }<br>' +
+        '}<br>' +
+        'class Car extends Vehicle {<br>' +
+        '_model = "";<br>' +
+        'set model(value) { this._model = value; }<br>' +
+        'get model() { return this._model; }<br>' +
+        '}<br>' +
+        'let car = new Car();<br>' +
+        'car.make = "Toyota";<br>' +
+        'car.model = "Camry";<br>' +
+        'console.log(`${car.make} ${car.model}`);',
+        sections[2].id),
+
+    new Card(75, 'What will be the output when the following code is executed:<br>' +
+        'class Car {<br>' +
+        '_brand = "";<br>' +
+        'set brand(value) { this._brand = value; }<br>' +
+        'get brand() { return this._brand; }<br>' +
+        '}<br>' +
+        'let car = new Car();<br>' +
+        'car.brand = "Toyota";<br>' +
+        'console.log(car.brand);',
+        sections[2].id),
+
+    new Card(76, 'Which of the following options is the correct code to declare a class Circle with a radius property, a method to set the radius and a method to calculate the area?',
+        sections[2].id),
+
+    new Card(77, 'Analyze the following code<br>' +
+        'let Shape = class {};<br>' +
+        'The syntax is:',
+        sections[2].id),
+
+    new Card(78, 'What is the correct code to declare a class Point with a constructor that takes two arguments x and y, and a method setColor that sets the color property of the Point instance?',
+        sections[2].id),
+
+    new Card(79, 'What is the output of the following code snippet?<br>' +
+        'class Base {<br>' +
+        'greeting() { return "Hello from Base"; }<br>' +
+        '}<br>' +
+        'class Child extends Base {<br>' +
+        'greeting() { return "Hello from Child"; }<br>' +
+        'sayGreeting() { return super.greeting(); }<br>' +
+        '}<br>' +
+        'let child = new Child();<br>' +
+        'console.log(child.sayGreeting());',
+        sections[2].id),
+
+    new Card(80, 'What is the output of the following code snippet?<br>' +
+        'class User {};<br>' +
+        'let user = new User();<br>' +
+        'console.log(`${typeof(user)} ${user instanceof User}`);',
+        sections[2].id),
+
+    new Card(81, 'Analyze the following code:<br>' +
+        'console.log(`${Boolean(true)} ${Boolean("false")} ${Number(false)} ${Number("false")}`);<br>' +
+        'What will appear on the console as a result of code execution',
+        sections[3].id),
+
+    new Card(82, 'What is the output of the following code?<br>' +
+        'console.log(`${Boolean(false)} ${Boolean("false")} ${Number(false)} ${Number("false")}`);',
+        sections[3].id),
+
+    new Card(83, 'What is the result of the following expression:<br>' +
+        'typeof(null)',
+        sections[3].id),
+
+    new Card(84, 'What is the value of the following expression:<br>' +
+        '"5" + 3',
+        sections[3].id),
+
+    new Card(85, 'What is the value of the following expression:<br>' +
+        'var x = 10;<br>' +
+        'var y = 20;<br>' +
+        'var z = (y > x) ? "y is greater than x" : "y is not greater than x";',
+        sections[3].id),
+
+    new Card(86, 'What will be the value of result after the following code is executed?<br>' +
+        'var num1 = 10;<br>' +
+        'var num2 = 20;<br>' +
+        'var result = (num2 === 20) ? "yes" : "no";',
+        sections[3].id),
+
+    new Card(87, 'A call to Date.now() will return:',
+        sections[3].id),
+
+    new Card(88, 'What will be the value of result after the following code is executed?<br>' +
+        'var name = "John";<br>' +
+        'var result = (typeof(name) === "string") ? true : false;',
+        sections[3].id),
+
+    new Card(89, 'What will be logged to the console after the following code is executed?<br>' +
+        'var num1 = 10;<br>' +
+        'var num2 = 20;<br>' +
+        'console.log(num1 < num2);',
+        sections[3].id),
+
+    new Card(90, 'Which methods allows you to replace selected elements of an array with other elements given in the method call?',
+        sections[3].id),
+
+    new Card(91, 'What should be inserted at the marked location in the following code to log the second y value in the points array to the console?<br>' +
+        'let points = [{x: 10, y: 20}, {x: 0, y: 30}, {x: 20, y: 100}];<br>' +
+        '//Insert line here',
+        sections[3].id),
+
+    new Card(92, 'What is the output of the following code?<br>' +
+        'var name = "John";<br>' +
+        'var result = (typeof name === "string") ? true : false;<br>' +
+        'console.log(result);<br>' +
+        'var num1 = 10;<br>' +
+        'var num2 = 20;<br>' +
+        'console.log(num1 < num2);<br>' +
+        'let points = [{x: 10, y: 20}, {x: 0, y: 30}, {x: 20, y: 100}];<br>' +
+        'console.log(points[1].y);',
+        sections[3].id),
+
+    new Card(93, 'What will be the value of result after the following code is executed?<br>' +
+        'var num = 10;<br>' +
+        'var result = (num >= 10) ? "Greater or Equal to 10" : "Less than 10";',
+        sections[3].id),
+
+    new Card(94, 'What will be logged to the console after the following code is executed?<br>' +
+        'var myArray = [1, 2, 3, 4, 5];<br>' +
+        'console.log(myArray.length);',
+        sections[3].id),
+
+    new Card(95, 'Which of the following statements about an object of the Set class is not true?',
+        sections[3].id),
+
+    new Card(96, 'Which of the following statements about an object of the Map class is not true?',
+        sections[3].id),
+
+    new Card(97, 'The shape object can be converted to JSON format using the built-in command:',
+        sections[3].id),
+
+    new Card(98, 'What will appear in the console as a result of code execution?<br>' +
+        'console.log(`${Math.floor(5.4)} ${Math.ceil(1.2)} ${Math.round(2.5)}`);',
+        sections[3].id),
+
+    new Card(99, 'What will appear in the console as a result of code execution?<br>' +
+        'console.log(`${"str".match("a")}`);',
+        sections[3].id),
+
+    new Card(100, 'What is the value of result after the following code is executed?<br>' +
+        'var str = "Hello World!";<br>' +
+        'var result = str.toUpperCase();',
+        sections[3].id),
+
+
+
 
 
 ];
