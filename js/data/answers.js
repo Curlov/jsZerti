@@ -348,9 +348,9 @@ export const answers = [
     new Answer(276, 'this._age = 0;', true, 69),
 
     new Answer(277, 'let _x = 0;', false, 70),
-    new Answer(278, 'this._x = 0;', true, 70),
+    new Answer(278, 'this._x = 0;', false, 70),
     new Answer(279, 'var _x = 0;', false, 70),
-    new Answer(280, '_x = 0;', false, 70),
+    new Answer(280, '_x = 0;', true, 70),
 
     new Answer(281, 'object true', true, 71),
     new Answer(282, 'User true', false, 71),
