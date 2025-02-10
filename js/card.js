@@ -27,9 +27,15 @@ const loadCardsFromPool = (start, end, selectedSections) => {
   return cardBox;
 }
 
+function getSectionTitle(sectionId) {
+  const section = sections.find(s => s.id === sectionId);
+  return section ? section.title : '';
+}
+
 // Show the current Card into the DOM
 const showCard = (currentCard) => {
   document.querySelector('#number').innerHTML = '#' + cardBox.cards[currentCard].id || '#';
+  document.querySelector('#section').innerHTML = getSectionTitle(cardBox.cards[currentCard].sectionId || '');
   document.querySelector('#question').innerHTML = cardBox.cards[currentCard].question || 'Keine Frage gefunden';
   document.querySelector('#answerA').innerHTML = cardBox.cards[currentCard].answers[0].text || 'Keine Antwort gefunden';
   document.querySelector('#answerB').innerHTML = cardBox.cards[currentCard].answers[1].text || 'Keine Antwort gefunden';
