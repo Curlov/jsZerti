@@ -7,35 +7,74 @@
   <title>Auswahl Fragen</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for the "i" icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-  <div class="container mt-5 d-flex justify-content-center align-items-center">
-    <div class="row justify-content-center w-100">
-      <div class="col-12 col-md-8 col-lg-6">
-        <div class="card shadow-sm p-4">
-          <h5 class="text-center mb-4">Wähle einen Bereich aus Karten aus unserem Pool, den du bearbeiten möchtest:</h5>
-          <p class="text-center mb-4">Derzeit befinden sich <span id="totalNumberOfCards"></span> Karten in dem Pool!
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm p-4">
+        <h5 class="text-center mb-4">Wähle einen Bereich aus Karten aus unserem Pool, den du bearbeiten möchtest:</h5>
+        <p class="text-center mb-4">Derzeit befinden sich <span id="totalNumberOfCards"></span> Karten in dem Pool!
+        </p>
+        <!-- Sections with Info Button -->
+        <div class="checkbox-container mb-3">
+          <p>
+            Choose the category
+            <button type="button" class="btn btn-sm btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#infoModal" id="uniqueButton">
+              <i class="fas fa-info-circle"></i>
+            </button>
           </p>
-          <div class="form-group mb-4">
-            <label for="startQuestion" class="form-label">Startfrage</label>
-            <input type="number" id="startQuestion" class="form-control" value="" placeholder="Startfrage eingeben">
+        </div>
+
+        <!-- Modal for Additional Info -->
+        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">Categories Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h6>Classless Objects</h6>
+                <p>Basic object creation, handling object properties, using dot and bracket notations, property existence tests, property enumeration methods, object comparison techniques, object copying mechanisms, methods implementation, and organizing and configuring objects.</p>
+
+                <h6>Classes and Class-based Approach</h6>
+                <p>Class design and declarations, creating objects from classes, class properties management, getters and setters, class inheritance, static members, and comparison between classes and constructors.</p>
+
+                <h6>Built-in Objects</h6>
+                <p>Utilizing constructors like Number and String, Date object handling, Array and its advanced methods, Set and Map data type collections, using objects as data structures, JSON object processing, Math object for mathematical operations, regular expressions, and extending built-in types.</p>
+
+                <h6>Advanced Functions</h6>
+                <p>Extended function parameter handling, closures and IIFEs, call forwarding mechanism, decorating functions, generators and iterators, asynchronous events handling with callback functions, promises and their advanced chaining techniques, async and await for promise handling, and asynchronous network requests.</p>
+              </div>
+            </div>
           </div>
-          <div class="form-group mb-4">
-            <label for="endQuestion" class="form-label">Endfrage</label>
-            <input type="number" id="endQuestion" class="form-control" value="" placeholder="Endfrage eingeben">
-          </div>
-          <div class="d-none" id="error-message" role="alert">Fehler</div>
-          <div class="d-flex justify-content-center">
-            <button id="submitCardRange" class="btn btn-primary btn-lg">Karten anfordern</button>
-          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="startQuestion" class="form-label">Startfrage</label>
+          <input type="number" id="startQuestion" class="form-control" value="" placeholder="Startfrage eingeben">
+        </div>
+        <div class="form-group mb-4">
+          <label for="endQuestion" class="form-label">Endfrage</label>
+          <input type="number" id="endQuestion" class="form-control" value="" placeholder="Endfrage eingeben">
+        </div>
+        <div class="d-none mb-3" id="error-message" role="alert">Fehler</div>
+        <div class="d-flex justify-content-center">
+          <button id="submitCardRange" class="btn btn-primary btn-lg">Karten anfordern</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Main JavaScript -->
-  <script type="module" src="./js/index.js"></script>
+<!-- Main JavaScript -->
+<script type="module" src="./js/index.js"></script>
+<!-- Bootstrap JS (for modal functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -52,3 +52,7 @@ button:active {
     height: 20px;
     width: 20px;
 }
+small{
+    color: #b5b5b5;
+    font-size: 12px;
+}

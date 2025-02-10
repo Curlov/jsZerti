@@ -1,4 +1,5 @@
 import {cards} from "./data/cards.js";
+import {sections} from "./data/sections.js";
 
 // How many cards are in the pool? Display it to the user.
 const totalNumberOfCards = cards.length;
@@ -51,9 +52,35 @@ function submitCardRange() {
         errorMessage.classList.remove('d-none');
         return;
     }
+    const selectedSections = Array.from(document.querySelectorAll('.checkbox-container input:checked')).map(checkbox => parseInt(checkbox.value));
 
     // Redirect to card.html with start and end as GET params
-    window.location.href = `card.html?start=${start}&end=${end}`;
+    window.location.href = `card.html?start=${start}&end=${end}&sections=${selectedSections.join(',')}`;
+
+
 }
+
+
+//Checkboxes
+
+const containerEl = document.querySelector('.checkbox-container');
+sections.forEach(section => {
+    const sectionCards = cards.filter(element => {
+        return element.sectionId === section.id;
+    });
+
+    const divEl = document.createElement("div");
+    const labelEl = document.createElement("label");
+    const checkboxEl = document.createElement("input");
+    checkboxEl.type = 'checkbox';
+    checkboxEl.value = section.id;
+    checkboxEl.style.marginRight = "10px";
+
+
+    labelEl.appendChild(checkboxEl);
+    labelEl.appendChild(document.createTextNode(`${section.title} (${sectionCards.length} cards)`));
+    divEl.appendChild(labelEl);
+    containerEl.appendChild(divEl);
+});
 
 
