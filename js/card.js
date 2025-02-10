@@ -4,13 +4,20 @@ import { cards } from './data/cards.js';
 import {Section} from "./classes/Section.js"
 import {sections} from "./data/sections.js";
 
-const loadCardsFromPool = (start, end) => {
+const loadCardsFromPool = (start, end, selectedSections) => {
   // Sanitize user input to avoid invalid data
   start = Math.max(1, start); // Ensure start is at least 1
   end = Math.min(cards.length, end); // Ensure end is at most cards.length
+
+  // Filter cards based on selected sections
+  let filteredCards = cards;
+  if (selectedSections.length > 0) {
+    filteredCards = cards.filter(card => selectedSections.includes(card.sectionId));
+  }
+
   // Create CardPool and load each card from data.js
   const cardPool = new CardPool();
-  cards.forEach(card => cardPool.loadCard(card));
+  filteredCards.forEach(card => cardPool.loadCard(card));
 
   // Create CardBox object and load selected cards from the pool
   const cardBox = new CardBox(1);
@@ -53,7 +60,9 @@ document.querySelector('#check-btn').addEventListener('click', () => {
 const params = new URLSearchParams(window.location.search);
 const start = params.get('start') || 1; // Default to 1 if no start param
 const end = params.get('end') || 10;   // Default to 10 if no end param
-const cardBox = loadCardsFromPool(start, end);
+const selectedSections = params.get('sections') ? params.get('sections').split(',').map(Number) : [];
+const cardBox = loadCardsFromPool(start, end, selectedSections);
+
 
 // funktion um gegebene antworten im local storage zu speichern
 // inkl. datum- u. zeitangabe und aller zugehöriger cards
