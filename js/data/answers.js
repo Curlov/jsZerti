@@ -502,4 +502,305 @@ export const answers = [
     new Answer(399, '"Hello World!"', false, 100),
     new Answer(400, '11', false, 100),
 
+    new Answer(401, 'true 0 8', true, 101),
+    new Answer(402, 'true 0 7', false, 101),
+    new Answer(403, 'true 1 8', false, 101),
+    new Answer(404, '1 1 8', false, 101),
+
+    new Answer(405, 'new Date(Date.now()).getFullYear();', true, 102),
+    new Answer(406, 'new Date.now().getFullYear();', false, 102),
+    new Answer(407, 'Date.now().getYear();', false, 102),
+    new Answer(408, 'Date().getFullYear();', false, 102),
+
+    new Answer(409, 'let result = x.reduce((x, y) => x + y, 1000)', true, 103),
+    new Answer(410, 'let result = x.reduce((x, y) => x + 1000, y)', false, 103),
+    new Answer(411, 'let result = x.reduce((x, y) => x, 1000 + y)', false, 103),
+    new Answer(412, 'let result = x.reduce((x, y) => x - y, 1000)', false, 103),
+
+    new Answer(413, '[2, 3, 4]', true, 104),
+    new Answer(414, '[1, 2, 3, 4, 5]', false, 104),
+    new Answer(415, '[1, 2, 3, 4]', false, 104),
+    new Answer(416, '[4, 5]', false, 104),
+
+    new Answer(417, '"Hello"', true, 105),
+    new Answer(418, '"Hello World"', false, 105),
+    new Answer(419, '" World!"', false, 105),
+    new Answer(420, '"llo W"', false, 105),
+
+    new Answer(421, '[4, 5]', true, 106),
+    new Answer(422, '[1, 2, 3, 4, 5]', false, 106),
+    new Answer(423, '[3, 4, 5]', false, 106),
+    new Answer(424, '[1, 2, 3]', false, 106),
+
+    new Answer(425, '[3, 4]', true, 107),
+    new Answer(426, '[1, 2, 3, 4, 5]', false, 107),
+    new Answer(427, '[1, 2, 5]', false, 107),
+    new Answer(428, '[1, 2, 3, 4, 5, 3, 4]', false, 107),
+
+    new Answer(429, '[1, 2, 6, 7, 8, 3, 4, 5]', true, 108),
+    new Answer(430, '[1, 2, 3, 4, 5]', false, 108),
+    new Answer(431, '[6, 7, 8]', false, 108),
+    new Answer(432, '[1, 2, 3, 4, 5, 6, 7, 8]', false, 108),
+
+    new Answer(433, '[1, 2, 6, 7, 8, 4, 5]', true, 109),
+    new Answer(434, '[1, 2, 3, 4, 5]', false, 109),
+    new Answer(435, '[1, 2, 6, 7, 8, 3, 4, 5]', false, 109),
+    new Answer(436, '[1, 2, 6, 7, 8, 5]', false, 109),
+
+    new Answer(437, '"1-2-3-4-5"', true, 110),
+    new Answer(438, '[1, 2, 3, 4, 5]', false, 110),
+    new Answer(439, '"1,2,3,4,5"', false, 110),
+    new Answer(440, '"5-4-3-2-1"', false, 110),
+
+    new Answer(441, '"apple-banana-cherry"', true, 111),
+    new Answer(442, '["apple", "banana", "cherry"]', false, 111),
+    new Answer(443, '"apple,banana,cherry"', false, 111),
+    new Answer(444, '"cherry-banana-apple"', false, 111),
+
+    new Answer(445, '[2, 4]', true, 112),
+    new Answer(446, '[1, 2, 3, 4, 5]', false, 112),
+    new Answer(447, '[4]', false, 112),
+    new Answer(448, '[4, 2]', false, 112),
+
+    new Answer(449, '[1, 2, 3, 4, 5]', true, 113),
+    new Answer(450, '[3, 1, 4, 2, 5]', false, 113),
+    new Answer(451, '[5, 4, 3, 2, 1]', false, 113),
+    new Answer(452, '[1, 2, 4, 5, 3]', false, 113),
+
+    new Answer(453, '[2, 4, 6, 8, 10]', true, 114),
+    new Answer(454, '[1, 2, 3, 4, 5]', false, 114),
+    new Answer(455, '[10, 8, 6, 4, 2]', false, 114),
+    new Answer(456, '[1, 4, 9, 16, 25]', false, 114),
+
+    new Answer(457, '[25, 30]', true, 115),
+    new Answer(458, '[20, 25, 30]', false, 115),
+    new Answer(459, '[{name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}]', false, 115),
+    new Answer(460, '[20]', false, 115),
+
+    new Answer(461, '{John: 20, Jane: 25, Jim: 30}', true, 116),
+    new Answer(462, '[{name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}]', false, 116),
+    new Answer(463, '[20, 25, 30]', false, 116),
+    new Answer(464, '{20, 25, 30}', false, 116),
+
+    new Answer(465, '12', true, 117),
+    new Answer(466, '[5, 12, 8, 130, 44]', false, 117),
+    new Answer(467, '[12, 130, 44]', false, 117),
+    new Answer(468, 'undefined', false, 117),
+
+    new Answer(469, '"Th* q**ck br*wn f*x"', true, 118),
+    new Answer(470, '"Th* qck brwn fx"', false, 118),
+    new Answer(471, '"Th* quck brwn fx"', false, 118),
+    new Answer(472, '"Th qck brwn fx."', false, 118),
+
+    new Answer(473, '["H", "W"]', true, 119),
+    new Answer(474, '["Hello", "World"]', false, 119),
+    new Answer(475, '["H", "E", "L", "L", "0", "W", "0", "R", "L", "D"]', false, 119),
+    new Answer(476, 'null', false, 119),
+
+    new Answer(477, 'Lion', true, 120),
+    new Answer(478, 'Animal', false, 120),
+    new Answer(479, 'undefined', false, 120),
+    new Answer(480, 'ReferenceError', false, 120),
+
+    new Answer(481, 'The car is a Ford F-150.', true, 121),
+    new Answer(482, 'The car is a undefined undefined.', false, 121),
+    new Answer(483, 'TypeError: car.displayMakeAndModel.bind is not a function.', false, 121),
+    new Answer(484, 'The car is a Tesla Model S.', false, 121),
+
+    new Answer(485, '"Hello, my name is John" "Hello, my name is Jane"', true, 122),
+    new Answer(486, '"Hello, my name is John" "Hello, my name is undefined"', false, 122),
+    new Answer(487, '"Hello, my name is John" "Hello, my name is John"', false, 122),
+    new Answer(488, '"Hello, my name is undefined" "Hello, my name is undefined"', false, 122),
+
+    new Answer(489, 'Hello, I am John Doe', true, 123),
+    new Answer(490, 'ReferenceError: person is not defined', false, 123),
+    new Answer(491, 'TypeError: greetFriend is not a function', false, 123),
+    new Answer(492, 'Hello, I am undefined', false, 123),
+
+    new Answer(493, 'fetch(\'https://api.example.com/data\').then((response) => response.json()).then((json) => console.log(json));', true, 124),
+    new Answer(494, 'fetch(\'https://api.example.com/data\').then((response) => response.json().text()).then((json) => console.log(json));', false, 124),
+    new Answer(495, 'fetch(\'https://api.example.com/data\',{ method: \'GET\', headers: { \'Content-Type\': \'application/json\' }, }).then((response) => response.json()) .then((json) => console.log(json));', false, 124),
+    new Answer(496, 'fetch(\'https://api.example.com/data\').then((response) => response.text()).then((data) => JSON.parse(data)).then((json) => console.log(json));', false, 124),
+
+    new Answer(497, 'function outerFunction() { var outerVariable = "outer"; return function innerFunction() { return outerVariable; }}', true, 125),
+    new Answer(498, 'var outerVariable = "outer";function outerFunction() { return function innerFunction() { return outerVariable; }}', false, 125),
+    new Answer(499, 'var outerVariable = "outer";function outerFunction() { var innerFunction = function() { return outerVariable; } return innerFunction;}', false, 125),
+    new Answer(500, 'function outerFunction() { var outerVariable = "outer"; function innerFunction() { return outerVariable; } innerFunction(); }', false, 125),
+
+    new Answer(501, '[3, 42, \'foo\']', true, 126),
+    new Answer(502, '[3, 42, Promise { \'foo\' }]', false, 126),
+    new Answer(503, '[Promise { 3 }, 42, Promise { \'foo\' }]', false, 126),
+    new Answer(504, '[Promise { 3 }, Promise { 42 }, Promise { \'foo\' }]', false, 126),
+
+    new Answer(505, '5, because a is defined as undefined and is therefore treated as the default value', true, 127),
+    new Answer(506, 'NaN, because undefined is not a valid value for a number.', false, 127),
+    new Answer(507, 'NaN, because a is not defined', false, 127),
+    new Answer(508, '5, because both a and b are defined as default parameters', false, 127),
+
+    new Answer(509, '1, 2, 3, true', true, 128),
+    new Answer(510, '1, 2, undefined, false', false, 128),
+    new Answer(511, '1, 2, 3, false', false, 128),
+    new Answer(512, '1, 2, undefined, true', false, 128),
+
+    new Answer(513, '{x: 1, b: { y: 2 }, z: 3}', true, 129),
+    new Answer(514, '{ x: 1, y: 2, z: 3}', false, 129),
+    new Answer(515, '{ y: 2 }', false, 129),
+    new Answer(516, 'undefined', false, 129),
+
+    new Answer(517, '7', true, 130),
+    new Answer(518, '12', false, 130),
+    new Answer(519, '-1', false, 130),
+    new Answer(520, '1', false, 130),
+
+    new Answer(521, '10, because the reduce function will sum up all elements in the numbers array and return the result', true, 131),
+    new Answer(522, 'NaN, because add is not a valid function for the reduce method to use.', false, 131),
+    new Answer(523, 'undefined, because reduce is not a method of the Array object in JavaScript', false, 131),
+    new Answer(524, '0, because the second argument 0 passed to reduce will override any values in the numbers array', false, 131),
+
+    new Answer(525, 'Hello, Jane', true, 132),
+    new Answer(526, 'Uncaught TypeError: Cannot read property \'name\' of undefined', false, 132),
+    new Answer(527, 'Hello, John', false, 132),
+    new Answer(528, '[Function: greet]', false, 132),
+
+    new Answer(529, 'My name is Jane', true, 133),
+    new Answer(530, 'ReferenceError', false, 133),
+    new Answer(531, 'My name is John', false, 133),
+    new Answer(532, 'TypeError', false, 133),
+
+    new Answer(533, 'async/await is easier to read and write than Promises.', true, 134),
+    new Answer(534, 'async/await is the old way of doing asynchronous programming in JavaScript, and Promises are the new way.', false, 134),
+    new Answer(535, 'async/await is faster than Promises.', false, 134),
+    new Answer(536, 'There is no difference, they are the same thing.', false, 134),
+
+    new Answer(537, 'function add(a = 0, b = 0) {return a + b;}', true, 135),
+    new Answer(538, 'function add(a = 0; b = 0) {return a + b;}', false, 135),
+    new Answer(539, 'function add(a = 0, b) {return a + b;}', false, 135),
+    new Answer(540, 'function add(a, b) = 0 {return a + b;}', false, 135),
+
+    new Answer(541, 'Hello, my name is John and I know JavaScript, HTML and CSS', true, 136),
+    new Answer(542, 'TypeError: Cannot read property \'name\' of undefined', false, 136),
+    new Answer(543, 'Hello, my name is John and I know undefined, undefined, undefined', false, 136),
+    new Answer(544, 'Hello, my name is undefined and I know JavaScript, HTML, CSS', false, 136),
+
+    new Answer(545, '{ x: 1, y: 2 }', true, 137),
+    new Answer(546, '{ x: 1 }', false, 137),
+    new Answer(547, '{ y: 2 }', false, 137),
+    new Answer(548, 'undefined', false, 137),
+
+    new Answer(549, '15', true, 138),
+    new Answer(550, '10', false, 138),
+    new Answer(551, '20', false, 138),
+    new Answer(552, '5', false, 138),
+
+    new Answer(553, '10 10 false', true, 139),
+    new Answer(554, '10 undefined false', false, 139),
+    new Answer(555, '10 10 true', false, 139),
+    new Answer(556, 'undefined 10 false', false, 139),
+
+    new Answer(557, 'function *gen() {}', true, 140),
+    new Answer(558, 'gen() => {}', false, 140),
+    new Answer(559, 'function gen() {}', false, 140),
+    new Answer(560, '*gen() {}', false, 140),
+
+    new Answer(561, '.then() is used to handle resolved values, while .catch() is used to handle rejected values.', true, 141),
+    new Answer(562, 'None of the above', false, 141),
+    new Answer(563, 'Both methods can be used to handle resolved and rejected values interchangeably.', false, 141),
+    new Answer(564, '.catch() is used to handle resolved values, while .then() is used to handle rejected values.', false, 141),
+
+    new Answer(565, 'A generator function can pause and resume its execution, while a regular function runs to completion every time it is called', true, 142),
+    new Answer(566, 'A generator function is always asynchronous, while a regular function can be either asynchronous or synchronous.', false, 142),
+    new Answer(567, 'A generator function returns a generator object, while a regular function returns an array', false, 142),
+    new Answer(568, 'A generator function can only be used once, while a regular function can be called multiple times', false, 142),
+
+    new Answer(569, '[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]', true, 143),
+    new Answer(570, '[0, 2, 3, 5, 8, 13, 21, 34, 55, 89]', false, 143),
+    new Answer(571, '[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]', false, 143),
+    new Answer(572, '[1, 2, 3, 5, 8, 13, 21, 34, 55, 89]', false, 143),
+
+    new Answer(573, 'Finished "Promise Resolved"', true, 144),
+    new Answer(574, 'Error', false, 144),
+    new Answer(575, 'Nothing', false, 144),
+    new Answer(576, '"Promise Resolved" "Finished"', false, 144),
+
+    new Answer(577, '1, 2, 3, false', true, 145),
+    new Answer(578, '1, 2, 3, true', false, 145),
+    new Answer(579, '1, 2, undefined, true', false, 145),
+    new Answer(580, '1, 2, undefined, false', false, 145),
+
+    new Answer(581, 'Jane Smith', true, 146),
+    new Answer(582, 'Jane Doe', false, 146),
+    new Answer(583, 'undefined undefined', false, 146),
+    new Answer(584, 'John Doe', false, 146),
+
+    new Answer(585, '{ name: \'John\', age: 30 }', true, 147),
+    new Answer(586, '{ age: 30 }', false, 147),
+    new Answer(587, '{ age: 30, name: \'John\'}', false, 147),
+    new Answer(588, '[object Object]', false, 147),
+
+    new Answer(589, '15', true, 148),
+    new Answer(590, '10', false, 148),
+    new Answer(591, '5', false, 148),
+    new Answer(592, 'NaN', false, 148),
+
+    new Answer(593, '1 2 3 undefined', true, 149),
+    new Answer(594, '1 2 3 Error', false, 149),
+    new Answer(595, 'undefined undefined undefined undefined', false, 149),
+    new Answer(596, '1 2 3 null', false, 149),
+
+    new Answer(597, '6', true, 150),
+    new Answer(598, '9', false, 150),
+    new Answer(599, '12', false, 150),
+    new Answer(600, '15', false, 150),
+
+    new Answer(601, 'Use the await keyword before the Promise.', true, 151),
+    new Answer(602, 'Use a .then() block to handle the resolved value.', false, 151),
+    new Answer(603, 'Wrap the Promise in a setTimeout() call.', false, 151),
+    new Answer(604, 'None of the above.', false, 151),
+
+    new Answer(605, '1 2', true, 152),
+    new Answer(606, '1 undefined', false, 152),
+    new Answer(607, 'undefined undefined', false, 152),
+    new Answer(608, '2 3', false, 152),
+
+    new Answer(609, '0 0.6931471805599453 1 NaN', true, 153),
+    new Answer(610, 'NaN NaN NaN NaN', false, 153),
+    new Answer(611, '0 NaN 1 NaN', false, 153),
+    new Answer(612, '0 0.6931471805599453 1 NaN', false, 153),
+
+    new Answer(613, 'Promise 1', true, 154),
+    new Answer(614, 'Error', false, 154),
+    new Answer(615, 'Promise 2', false, 154),
+    new Answer(616, '[Promise 2, Promise 1]', false, 154),
+
+    new Answer(617, '8', true, 155),
+    new Answer(618, 'undefined', false, 155),
+    new Answer(619, '3', false, 155),
+    new Answer(620, '5', false, 155),
+
+    new Answer(621, '0 1 2', true, 156),
+    new Answer(622, 'NaN NaN NaN', false, 156),
+    new Answer(623, 'null null null', false, 156),
+    new Answer(624, 'undefined undefined undefined', false, 156),
+
+    new Answer(625, '30', true, 157),
+    new Answer(626, 'undefined', false, 157),
+    new Answer(627, '10', false, 157),
+    new Answer(628, '20', false, 157),
+
+    new Answer(629, 'Resolved! Then Called', true, 158),
+    new Answer(630, 'An error message', false, 158),
+    new Answer(631, 'Resolved!', false, 158),
+    new Answer(632, 'Then Called', false, 158),
+
+    new Answer(633, '"done" "done2"', true, 159),
+    new Answer(634, 'None of the above', false, 159),
+    new Answer(635, '"done2"', false, 159),
+    new Answer(636, '"done"', false, 159),
+
+    new Answer(637, 'Hello John Doe', true, 160),
+    new Answer(638, 'TypeError: this.fullName is not a function', false, 160),
+    new Answer(639, 'Hello undefined undefined', false, 160),
+    new Answer(640, 'undefined Hello John Doe', false, 160),
+
+
 ];
