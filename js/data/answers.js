@@ -300,6 +300,206 @@ export const answers = [
     new Answer(237, 'false', false, 60),
     new Answer(238, 'Magazine', false, 60),
     new Answer(239, 'true', true, 60),
-    new Answer(240, 'Book', false, 60)
+    new Answer(240, 'Book', false, 60),
+
+    new Answer(241, '50', true, 61),
+    new Answer(242, '5', false, 61),
+    new Answer(243, '10', false, 61),
+    new Answer(244, '0', false, 61),
+
+    new Answer(245, 'true', true, 62),
+    new Answer(246, 'Rectangle', false, 62),
+    new Answer(247, 'square', false, 62),
+    new Answer(248, 'false', false, 62),
+
+    new Answer(249, 'function drive() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
+    new Answer(250, 'drive() { console.log(`Driving ${this.make} ${this.model}`); }', true, 63),
+    new Answer(251, 'this.drive = function() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
+    new Answer(252, 'drive: function() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
+
+    new Answer(253, 'color', false, 64),
+    new Answer(254, 'x, y, color', true, 64),
+    new Answer(255, 'x, y', false, 64),
+    new Answer(256, 'None of the above', false, 64),
+
+    new Answer(257, 'let showInfo = function() { console.log("Hi"); }', false, 65),
+    new Answer(258, 'showInfo = function() { return "Hi"; }', false, 65),
+    new Answer(259, 'showInfo() { return "Hi"; }', true, 65),
+    new Answer(260, 'function showInfo() { return "Hi"; }', false, 65),
+
+    new Answer(261, 'class B inherits A', false, 66),
+    new Answer(262, 'class B extends A', true, 66),
+    new Answer(263, 'class A inherits A', false, 66),
+    new Answer(264, 'class A inherits B', false, 66),
+
+    new Answer(265, '0', false, 67),
+    new Answer(266, 'undefined', false, 67),
+    new Answer(267, 'null', false, 67),
+    new Answer(268, '5', true, 67),
+
+    new Answer(269, '_name = 30;', false, 68),
+    new Answer(270, 'constructor() { this._name = 30 }', false, 68),
+    new Answer(271, 'var _name = 30;', false, 68),
+    new Answer(272, 'let _name = 30;', false, 68),
+
+    new Answer(273, 'var _age = 0;', false, 69),
+    new Answer(274, '_age = 0;', false, 69),
+    new Answer(275, 'let _age = 0;', false, 69),
+    new Answer(276, 'this._age = 0;', true, 69),
+
+    new Answer(277, 'let _x = 0;', false, 70),
+    new Answer(278, 'this._x = 0;', true, 70),
+    new Answer(279, 'var _x = 0;', false, 70),
+    new Answer(280, '_x = 0;', false, 70),
+
+    new Answer(281, 'object true', true, 71),
+    new Answer(282, 'User true', false, 71),
+    new Answer(283, 'object false', false, 71),
+    new Answer(284, 'User false', false, 71),
+
+    new Answer(285, '10', true, 72),
+    new Answer(286, 'undefined', false, 72),
+    new Answer(287, '0', false, 72),
+    new Answer(288, 'TypeError', false, 72),
+
+    new Answer(289, 'Circle Shape', true, 73),
+    new Answer(290, 'Shape Circle', false, 73),
+    new Answer(291, 'Shape Shape', false, 73),
+    new Answer(292, 'Circle Circle', false, 73),
+
+    new Answer(293, 'Toyota Camry', true, 74),
+    new Answer(294, 'undefined Camry', false, 74),
+    new Answer(295, 'Toyota undefined', false, 74),
+    new Answer(296, 'Camry Toyota', false, 74),
+
+    new Answer(297, 'Toyota', true, 75),
+    new Answer(298, 'undefined Toyota', false, 75),
+    new Answer(299, 'null', false, 75),
+    new Answer(300, 'undefined', false, 75),
+
+    new Answer(301, 'class Circle { constructor(radius) { this.radius = radius; } setRadius(radius) { this.radius = radius; } calculateArea() { return Math.PI * this.radius * this.radius; } }', true, 76),
+    new Answer(302, 'class Circle { constructor(r) { this.r = r; } setRadius(radius) { this.r = radius; } calculateArea() { return Math.PI * this.r * this.r; } }', false, 76),
+    new Answer(303, 'class Circle { setRadius(radius) { this.radius = radius; } calculateArea() { return Math.PI * this.radius * this.radius; } constructor(radius) { this.radius = radius; } }', false, 76),
+    new Answer(304, 'class Circle { constructor(radius) { this.radius = radius; } setRadius(r) { this.radius = r; } calculateArea(radius) { return Math.PI * radius * radius; } }', false, 76),
+
+    new Answer(305, 'Correct', true, 77),
+    new Answer(306, 'Incorrect, should instead be class Shape {};', false, 77),
+    new Answer(307, 'Incorrect, the class definition cannot be empty.', false, 77),
+    new Answer(308, 'Incorrect, class definition should not be followed with a semi-colon', false, 77),
+
+    new Answer(309, 'class Point { constructor(x, y) {  this.x = x; this.y = y; } } Point.prototype.setColor = function(color) { this.color = color; }', true, 78),
+    new Answer(310, 'class Point { constructor(x, y); setColor(color) { this.color = color; }}', false, 78),
+    new Answer(311, 'class Point { constructor(x, y) {  this.x = x;  this.y = y; } setColor = function(color) {  this.color = color; }}', false, 78),
+    new Answer(312, 'function Point(x, y) { this.x = x; this.y = y; } Point.prototype.setColor = function(color) { this.color = color; }', false, 78),
+
+    new Answer(313, 'Hello from Base', true, 79),
+    new Answer(314, 'Error', false, 79),
+    new Answer(315, 'Hello from Child', false, 79),
+    new Answer(316, 'undefined', false, 79),
+
+    new Answer(317, 'object true', true, 80),
+    new Answer(318, 'User true', false, 80),
+    new Answer(319, 'string false', false, 80),
+    new Answer(320, 'object false', false, 80),
+
+    new Answer(321, 'true true 0 NaN', true, 81),
+    new Answer(322, 'false true 0 1', false, 81),
+    new Answer(323, 'false false 0 NaN', false, 81),
+    new Answer(324, 'true false 0 NaN', false, 81),
+
+    new Answer(325, 'false true 0 NaN', true, 82),
+    new Answer(326, 'false false 0 NaN', false, 82),
+    new Answer(327, 'true true 1 0', false, 82),
+    new Answer(328, 'false true 0 0', false, 82),
+
+    new Answer(329, 'object', true, 83),
+    new Answer(330, 'number', false, 83),
+    new Answer(331, 'undefined', false, 83),
+    new Answer(332, 'null', false, 83),
+
+    new Answer(333, '"53"', true, 84),
+    new Answer(334, '8', false, 84),
+    new Answer(335, '53', false, 84),
+    new Answer(336, 'TypeError', false, 84),
+
+    new Answer(337, '"y is greater than x"', true, 85),
+    new Answer(338, '10', false, 85),
+    new Answer(339, '20', false, 85),
+    new Answer(340, '"y is not greater than x"', false, 85),
+
+    new Answer(341, '"yes"', true, 86),
+    new Answer(342, '10', false, 86),
+    new Answer(343, '20', false, 86),
+    new Answer(344, '"no"', false, 86),
+
+    new Answer(345, 'The number of milliseconds since 00:00:00 on 1 January 1970', true, 87),
+    new Answer(346, 'The number of seconds since 00:00:00 on 1 January 1970', false, 87),
+    new Answer(347, 'The current Date as a DateTime object', false, 87),
+    new Answer(348, 'The number of milliseconds since 00:00:00 on 1 January 2000', false, 87),
+
+    new Answer(349, 'true', true, 88),
+    new Answer(350, '"John"', false, 88),
+    new Answer(351, 'false', false, 88),
+    new Answer(352, '"string"', false, 88),
+
+    new Answer(353, 'true', true, 89),
+    new Answer(354, '10', false, 89),
+    new Answer(355, '20', false, 89),
+    new Answer(356, 'false', false, 89),
+
+    new Answer(357, 'splice', true, 90),
+    new Answer(358, 'slice', false, 90),
+    new Answer(359, 'set', false, 90),
+    new Answer(360, 'replace', false, 90),
+
+    new Answer(361, 'console.log(points[1].y);', true, 91),
+    new Answer(362, 'console.log(points[2].y);', false, 91),
+    new Answer(363, 'console.log(points.y[1]);', false, 91),
+    new Answer(364, 'console.log(points.x[1]);', false, 91),
+
+    new Answer(365, 'true true 30', true, 92),
+    new Answer(366, '"John" true 100', false, 92),
+    new Answer(367, '"string" false 100', false, 92),
+    new Answer(368, 'true true 20', false, 92),
+
+    new Answer(369, '"Greater or Equal to 10"', true, 93),
+    new Answer(370, '10', false, 93),
+    new Answer(371, '"Less than 10"', false, 93),
+    new Answer(372, 'true', false, 93),
+
+    new Answer(373, '5', true, 94),
+    new Answer(374, '1,2,3,4,5', false, 94),
+    new Answer(375, '[1, 2, 3, 4, 5]', false, 94),
+    new Answer(376, '0', false, 94),
+
+    new Answer(377, 'Each element of an object of the Set class consists of a key and a value', true, 95),
+    new Answer(378, 'The Set class does exist in javascript', false, 95),
+    new Answer(379, 'Order of data in a Set does not matter', false, 95),
+    new Answer(380, 'Set has an add method to insert elements', false, 95),
+
+    new Answer(381, 'Elements with the same key can be repeated in a Map object, provided they have different values', true, 96),
+    new Answer(382, 'You can use the spread operator on the Map class', false, 96),
+    new Answer(383, 'The set method is used to insert a new element into a Map object', false, 96),
+    new Answer(384, 'Map objects do exist in JavaScript', false, 96),
+
+    new Answer(385, 'JSON.stringify(shape);', true, 97),
+    new Answer(386, 'JSON.parse(shape);', false, 97),
+    new Answer(387, 'JSON(shape);', false, 97),
+    new Answer(388, 'shape.toJSON();', false, 97),
+
+    new Answer(389, '5 2 3', true, 98),
+    new Answer(390, '6 2 3', false, 98),
+    new Answer(391, '6 1 2', false, 98),
+    new Answer(392, '5 1 3', false, 98),
+
+    new Answer(393, 'null', true, 99),
+    new Answer(394, 'false', false, 99),
+    new Answer(395, '-1', false, 99),
+    new Answer(396, '0', false, 99),
+
+    new Answer(397, '"HELLO WORLD!"', true, 100),
+    new Answer(398, '"hello world!"', false, 100),
+    new Answer(399, '"Hello World!"', false, 100),
+    new Answer(400, '11', false, 100),
 
 ];
