@@ -13,6 +13,8 @@ export class CardBox {
         if (this.#currentIndex < this.#cards.length -1) {
             return this.#cards[++this.#currentIndex];
         } else {
+            const resultMessage = document.querySelector("#result-message");
+            resultMessage.innerHTML = this.getProzentCorrectAnswers();
             return this.#cards[this.#currentIndex];
         }
     }
@@ -101,6 +103,49 @@ export class CardBox {
             });
         }
     }
+    getProzentCorrectAnswers() {
+        let correctCount = 0;
+        let cardCount = 0;
+
+        this.#collectAnswers.forEach(collected => {
+            // Finden der Karte anhand der cardId, wenn die Karte nicht gefunden wird oder keine Antworten existieren, überspringen
+            const card = this.#cards.find(c => c.id === collected.cardId);
+            if (!card || collected.answerIds.length === 0) {
+                // Entfernt Karten ohne Antworten oder nicht existierende Karten
+                return;
+            }
+            // Verknüpfen von checkbox.id mit dem Index (A → 0, B → 1, C → 2, D → 3)
+            const checkboxMap = { checkboxA: 0, checkboxB: 1, checkboxC: 2, checkboxD: 3 };
+            const answers = card.answers || []; // Alle möglichen Antworten für diese Karte holen
+
+            // Überprüfen, ob die ausgewählten Antworten korrekt sind
+            const userCorrect = collected.answerIds.map(checkboxId => {
+                const answerIndex = checkboxMap[checkboxId];
+                return answers[answerIndex]?.correct || false; // если индекс выходит за пределы, возвращаем false
+            });
+            // Zählen der richtigen Antworten für die Karte
+            const correctAnswersForCard = userCorrect.filter(isCorrect => isCorrect === true).length;
+
+            if (correctAnswersForCard > 0) {
+                correctCount += correctAnswersForCard; // Добавляем правильные ответы
+            }
+            // Nur Karten berücksichtigen, für die Antworten abgegeben wurden
+            cardCount += 1;
+        });
+
+        const percentage = cardCount === 0 ? 0 : (correctCount / cardCount) * 100;
+        // Bestanden/Nicht Bestanden Logik
+        const resultMessage = percentage >= 70
+            ? `<span style="color: green; font-weight: bold;">Bestanden</span>`
+            : `<span style="color: red; font-weight: bold;">Nicht Bestanden</span>`;
+        // Ergebnisstring mit den Prozentsätzen zurückgeben
+        return `${cardCount} Fragen wurden beantwortet.<br>` +
+            `Davon waren ${correctCount} Antworten korrekt.<br>` +
+            `Das sind ${percentage.toFixed(2)}% (${Math.round(percentage)}%) von den beantworteten Fragen.<br><br>` +
+            resultMessage;
+
+    }
+
 
     get currentIndex() {
         return this.#currentIndex;
