@@ -605,9 +605,330 @@ export const cards = [
         'var str = "Hello World!";<br>' +
         'var result = str.toUpperCase();',
         sections[3].id),
+    new Card(101, 'Analyze the following code:<br>' +
+        'let str = "sample string";<br>' +
+        'console.log(`${str.includes(\'s\')} ${str.index0f(\'s\')} ${str.lastIndex0f(\'s\')}`);<br>' +
+        'What will appear in the console?',
+        sections[3].id),
 
+    new Card(102, 'Which line of code returns the current year?',
+        sections[3].id),
 
+    new Card(103, 'There is one line missing in the code below:<br>' +
+        'let x = [1, 2, 3, 4];<br>' +
+        '// Insert line of code here<br>' +
+        'console.log(result);<br>' +
+        'Which missing line will result in the console output "1010"',
+        sections[3].id),
 
+    new Card(104, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.slice(1, 4);',
+        sections[3].id),
+
+    new Card(105, 'What will be the value of result after the following code is executed?<br>' +
+        'var str = "Hello World!";<br>' +
+        'var result = str.slice(0, 5);',
+        sections[3].id),
+
+    new Card(106, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.slice(3);',
+        sections[3].id),
+
+    new Card(107, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.splice(2, 2);',
+        sections[3].id),
+
+    new Card(108, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.splice(2, 0, 6, 7, 8);',
+        sections[3].id),
+
+    new Card(109, 'What will be the value of arr after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'arr.splice(2, 1, 6, 7, 8);',
+        sections[3].id),
+
+    new Card(110, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.join("-");',
+        sections[3].id),
+
+    new Card(111, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = ["apple", "banana", "cherry"];<br>' +
+        'var result = arr.join("-");',
+        sections[3].id),
+
+    new Card(112, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.filter(function(num) { return num % 2 === 0; });',
+        sections[3].id),
+
+    new Card(113, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [3, 1, 4, 2, 5];<br>' +
+        'var result = arr.sort();',
+        sections[3].id),
+
+    new Card(114, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [1, 2, 3, 4, 5];<br>' +
+        'var result = arr.map(function(num) { return num * 2; });',
+        sections[3].id),
+
+    new Card(115, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [{name: \'John\', age: 20}, {name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}];<br>' +
+        'var result = arr.map(function(obj) { return obj.age; }).filter(function(age) { return age >= 25; });',
+        sections[3].id),
+
+    new Card(116, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [{name: \'John\', age: 20}, {name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}];<br>' +
+        'var result = arr.reduce(function(acc, obj) { acc[obj.name] = obj.age; return acc; }, {});',
+        sections[3].id),
+
+    new Card(117, 'What will be the value of result after the following code is executed?<br>' +
+        'var arr = [5, 12, 8, 130, 44];<br>' +
+        'var result = arr.find(function(element) { return element > 10; });',
+        sections[3].id),
+
+    new Card(118, 'What will be the value of result after the following code is executed?<br>' +
+        'var str = "The quick brown fox";<br>' +
+        'var result = str.replace(/[aeiou]/gi, \'*\');',
+        sections[3].id),
+
+    new Card(119, 'What will be the value of result after the following code is executed?<br>' +
+        'var str = "Hello, World!";<br>' +
+        'var result = str.match(/[A-Z]/g);',
+        sections[3].id),
+
+    new Card(120, 'What will be the value of result after the following code is executed?<br>' +
+        'function Animal(name) { this.name = name; }<br>' +
+        'Animal.prototype.getName = function() { return this.name; };<br>' +
+        'var a = new Animal("Lion");<br>' +
+        'var result = a.getName();',
+        sections[3].id),
+
+    new Card(121, 'What is the result of the following code and why?<br>' +
+        'const car = { make: \'Tesla\', model: \'Model S\', displayMakeAndModel: function() { console.log(`The car is a ${this.make} ${this.model}.`); } };<br>' +
+        'const truck = { make: \'Ford\', model: \'F-150\' };<br>' +
+        'const displayTruckMakeAndModel = car.displayMakeAndModel.bind(truck);<br>' +
+        'displayTruckMakeAndModel();',
+        sections[3].id),
+
+    new Card(122, 'What will be the output of the following code?<br>' +
+        'const person = { name: "John", sayHello: function() { return `Hello, my name is ${this.name}`; } };<br>' +
+        'const sayHelloJohn = person.sayHello.bind({ name: "John" });<br>' +
+        'const sayHelloJane = person.sayHello.bind({ name: "Jane" });<br>' +
+        'console.log(sayHelloJohn());<br>' +
+        'console.log(sayHelloJane());',
+        sections[3].id),
+
+    new Card(123, 'What will the following code return when executed?<br>' +
+        'let person = { name: "John Doe", greet: function() { console.log(`Hello, I am ${this.name}`); } };<br>' +
+        'let greetFriend = person.greet.bind(person);<br>' +
+        'greetFriend();',
+        sections[3].id),
+
+    new Card(124, 'What is the correct way to make a GET request using the fetch API and extract JSON data from the response body?',
+        sections[3].id),
+
+    new Card(125, 'Which of the following correctly implements a JavaScript closure?',
+        sections[3].id),
+
+    new Card(126, 'What will be the output in the console after the Promise.all method is executed?<br>' +
+        'const promise1 = Promise.resolve(3);<br>' +
+        'const promise2 = 42;<br>' +
+        'const promise3 = new Promise((resolve, reject) => { setTimeout(resolve, 100, \'foo\'); });<br>' +
+        'Promise.all([promise1, promise2, promise3]).then((values) => { console.log(values); });',
+        sections[3].id),
+
+    new Card(127, 'What is the result of the following code, and why?<br>' +
+        'function add(a = 0, b = 0) { return a + b; }<br>' +
+        'console.log(add(undefined, 5));',
+        sections[3].id),
+
+    new Card(128, 'What is the output of the following code?<br>' +
+        'let array = [1, 2, 3];<br>' +
+        'let iterator = array[Symbol.iterator]();<br>' +
+        'console.log(iterator.next().value);<br>' +
+        'console.log(iterator.next().value);<br>' +
+        'console.log(iterator.next().value);<br>' +
+        'console.log(iterator.next().done);',
+        sections[3].id),
+
+    new Card(129, 'What will be the output of the following code?<br>' +
+        'const a = { x: 1 };<br>' +
+        'const b = { y: 2 };<br>' +
+        'const c = { ...a, b, z: 3 };<br>' +
+        'console.log(c);',
+        sections[3].id),
+
+    new Card(130, 'What will be the value of result after the following code is executed?<br>' +
+        'let funA = function(a, b) { return a + b; }<br>' +
+        'let decor = function(fn) { return function(arg1, arg2) { let result = fn(arg1, arg2); console.log(`result ${result}`); return result; } };<br>' +
+        'let funB = decor(funA);<br>' +
+        'let result = funB(3, 4);',
+        sections[3].id),
+
+    new Card(131, 'What will the following code output and why?<br>' +
+        'let numbers = [1, 2, 3, 4];<br>' +
+        'let add = (x, y) => x + y;<br>' +
+        'let result = numbers.reduce(add, 0);<br>' +
+        'console.log(result);',
+        sections[3].id),
+
+    new Card(132, 'What will the output be after executing the following code?<br>' +
+        'let person = { name: "John", greet: function () { return `Hello, ${this.name}`; } };<br>' +
+        'let friend = { name: "Jane" };<br>' +
+        'let greetFriend = person.greet.call(friend);<br>' +
+        'console.log(greetFriend);',
+        sections[3].id),
+
+    new Card(133, 'What will be the output of the following code?<br>' +
+        'let person = { name: \'John\', introduce: function() { console.log`(My name is ${this.name}`); } };<br>' +
+        'let introduce = person.introduce;<br>' +
+        'let person2 = { name: \'Jane\' };<br>' +
+        'introduce.call(person2);',
+        sections[3].id),
+
+    new Card(134, 'What is the difference between the async/await and Promises in JavaScript?',
+        sections[3].id),
+
+    new Card(135, 'Which of the following is the correct way to define a function with default parameters in JavaScript?',
+        sections[3].id),
+
+    new Card(136, 'What will the following code log to the console?<br>' +
+        'let obj = { name: "John" };<br>' +
+        'let greeting = function(a, b, c) { return `Hello, my name is ${this.name} and I know ${a}, ${b} and ${c}`; };<br>' +
+        'let func = greeting.bind(obj, "JavaScript", "HTML", "CSS");<br>' +
+        'console.log(func());',
+        sections[3].id),
+
+    new Card(137, 'What will be the output of the following code?<br>' +
+        'const a = { x: 1 };<br>' +
+        'const b = { y: 2 };<br>' +
+        'const c = { ...a, ...b };<br>' +
+        'console.log(c);',
+        sections[3].id),
+
+    new Card(138, 'What will be the value of result after the following code is executed?<br>' +
+        'function outer(x) { return function inner(y) { return x + y; }; }<br>' +
+        'var add5 = outer(5);<br>' +
+        'var result = add5(10);',
+        sections[3].id),
+
+    new Card(139, 'What is the correct output of the following code:<br>' +
+        'var obj = { value: 10 };<br>' +
+        'var foo = function() { console.log(this.value); };<br>' +
+        'var bar = function() { console.log(this.value); };<br>' +
+        'var boundFoo = foo.call(obj);<br>' +
+        'var boundBar = bar.bind(obj)();<br>' +
+        'console.log(boundFoo === boundBar);',
+        sections[3].id),
+
+    new Card(140, 'Which of the following is the correct syntax for creating a generator function in JavaScript?',
+        sections[3].id),
+
+    new Card(141, 'What is the difference between .then() and .catch() methods in JavaScript Promises?',
+        sections[3].id),
+
+    new Card(142, 'What is the difference between using a generator function and a regular function to produce a sequence of values in JavaScript?',
+        sections[3].id),
+
+    new Card(143, 'What will be the output of the following code?<br>' +
+        'function* fibonacci() { let [prev, curr] = [0, 1]; while (true) { [prev, curr] = [curr, prev + curr]; yield curr; }}<br>' +
+        'const sequence = fibonacci(); let result = []; for (let i = 0; i < 10; i++) { result.push(sequence.next().value); }<br>' +
+        'console.log(result);',
+        sections[3].id),
+
+    new Card(144, 'What is the output of the following code and why?<br>' +
+        'let p = new Promise((resolve, reject) => { setTimeout(() => { resolve("Promise Resolved"); }, 1000); });<br>' +
+        'p.then(result => console.log(result)); console.log("Finished");',
+        sections[3].id),
+
+    new Card(145, 'What will the following code return when executed?<br>' +
+        'let myIterable = { *[Symbol.iterator]() { yield 1; yield 2; yield 3; }};<br>' +
+        'let iterator = myIterable[Symbol.iterator]();<br>' +
+        'console.log(iterator.next().value); console.log(iterator.next().value); console.log(iterator.next().value); console.log(iterator.next().done);',
+        sections[3].id),
+
+    new Card(146, 'What is the output of the code below?<br>' +
+        'const person = { firstName: \'John\', lastName: \'Doe\', getFullName: function() { return this.firstName + \' \' + this.lastName; }};<br>' +
+        'const printName = person.getFullName.bind({firstName: \'Jane\', lastName: \'Smith\'}); console.log(printName());',
+        sections[3].id),
+
+    new Card(147, 'What will be the output of the following code?<br>' +
+        'let obj1 = {name: "John"}; let obj2 = {age: 30};<br>' +
+        'let merge = function(a, b) { return {...a, ...b}; };<br>' +
+        'console.log(merge(obj1, obj2));',
+        sections[3].id),
+
+    new Card(148, 'What is the output of the following code snippet?<br>' +
+        'function add(a = 5, b = 10) { return a + b; }<br>' +
+        'console.log(add());',
+        sections[3].id),
+
+    new Card(149, 'What is the expected output of the following JavaScript code?<br>' +
+        'function* generator() { yield 1; yield 2; yield 3; }<br>' +
+        'const gen = generator();<br>' +
+        'console.log(gen.next().value); console.log(gen.next().value); console.log(gen.next().value); console.log(gen.next().value);',
+        sections[3].id),
+
+    new Card(150, 'What is the output of the following code?<br>' +
+        'const add = (a, b) => a + b;<br>' +
+        'const double = n => add(n, n);<br>' +
+        'console.log(double(3));',
+        sections[3].id),
+
+    new Card(151, 'What is the correct way to wait for the result of a Promise before returning the final value in an asynchronous function?',
+        sections[3].id),
+
+    new Card(152, 'What is the output of the following JavaScript code?<br>' +
+        'let promise = new Promise((resolve, reject) => { setTimeout(() => { resolve(1) }, 2000) });<br>' +
+        'promise.then((value) => { console.log(value); return value + 1; }).then((value) => { console.log(value); });',
+        sections[3].id),
+
+    new Card(153, 'What will the following code output and why?<br>' +
+        'function logNum(num = 0, base = 10) { console.log(Math.log(num) / Math.log(base)); }<br>' +
+        'logNum(); logNum(2); logNum(2, 2); logNum(undefined, 2);',
+        sections[3].id),
+
+    new Card(154, 'What will be the output in the following code, when executed?<br>' +
+        'const p1 = new Promise((resolve, reject) => { setTimeout(() => resolve("Promise 1"), 1000); });<br>' +
+        'const p2 = new Promise((resolve, reject) => { setTimeout(() => resolve("Promise 2"), 2000); });<br>' +
+        'Promise.race([p1, p2]).then((value) => { console.log(value); });',
+        sections[3].id),
+
+    new Card(155, 'What will be the output of the following code?<br>' +
+        'function outerFunction(num) { return function innerFunction(num2) { return num + num2; }; }<br>' +
+        'let add5 = outerFunction(5); console.log(add5(3));',
+        sections[3].id),
+
+    new Card(156, 'What is the output of the following JavaScript code?<br>' +
+        'function* idMaker() { let index = 0; while (true) yield index++; }<br>' +
+        'let gen = idMaker(); console.log(gen.next().value); console.log(gen.next().value); console.log(gen.next().value);',
+        sections[3].id),
+
+    new Card(157, 'What will be the output of the following code?<br>' +
+        'var x = 10; var obj = { x: 20, method: function() { console.log(this.x); }};<br>' +
+        'var func = obj.method.bind({x: 30}); func();',
+        sections[3].id),
+
+    new Card(158, 'What is the result of the following code?<br>' +
+        'const promise = new Promise((resolve, reject) => { setTimeout(() => { resolve("Resolved!"); }, 2000); });<br>' +
+        'promise.then(response => { console.log(response); return "Then Called"; }).then(response => console.log(response)).catch(error => console.log(error));',
+        sections[3].id),
+
+    new Card(159, 'What will the following JavaScript code log to the console?<br>' +
+        'let promise = new Promise((resolve, reject) => { resolve("done"); });<br>' +
+        'promise.then(data => { console.log(data); return "done2"; }).then(data => { console.log(data); });',
+        sections[3].id),
+
+    new Card(160, 'What will be the output of the following JavaScript code?<br>' +
+        'const person = { firstName: \'John\', lastName: \'Doe\', fullName: function() { return `${this.firstName} ${this.lastName}`; }};<br>' +
+        'const printPersonName = function(greeting) { console.log(`${greeting} ${this.fullName()}`); };<br>' +
+        'printPersonName.call(person, \'Hello\');',
+        sections[3].id),
 
 
 ];
