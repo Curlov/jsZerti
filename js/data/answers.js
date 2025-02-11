@@ -5,7 +5,7 @@ export const answers = [
     new Answer(1, 'shape1.x == shape2.y', false, 1),
     new Answer(2, `(shape1.x == shape2.x) && (shape1.y == shape2.y)`, true, 1),
     new Answer(3, 'shape1 == shape2', false, 1),
-    new Answer(4, 'Object.key(shape1) === Object.keys(shape2)', false, 1),
+    new Answer(4, 'Object.keys(shape1) === Object.keys(shape2)', false, 1),
 
     new Answer(5, 'False', true, 2),
     new Answer(6, 'True', false, 2),
@@ -34,12 +34,12 @@ export const answers = [
 
     new Answer(25, 'building("height")', false, 7),
     new Answer(26, 'building.height', true, 7),
-    new Answer(27, 'building["height"]', false, 7),
+    new Answer(27, 'building["height"]', true, 7),
     new Answer(28, 'building.height();', false, 7),
 
     new Answer(29, 'Number.isNaN(number)', false, 8),
     new Answer(30, 'number.isInteger()', false, 8),
-    new Answer(31, 'Math.ceil(number) === number', false, 8),
+    new Answer(31, 'Math.ceil(number) === number', true, 8),
     new Answer(32, 'number % 1 === 0', true, 8),
 
     new Answer(33, '200 100', false, 9),
@@ -54,7 +54,7 @@ export const answers = [
 
     new Answer(41, "const person = {firstName: 'Jane', lastName: 'Doe', age: 30};", true, 11),
     new Answer(42, "const person = new Object('firstName' = 'Jane', 'lastName' = 'Doe', 'age' = 30);", false, 11),
-    new Answer(43, "const person = {'firstName': 'Jane', 'lastName': 'Doe', 'age': 30};", false, 11),
+    new Answer(43, "const person = {'firstName': 'Jane', 'lastName': 'Doe', 'age': 30};", true, 11),
     new Answer(44, "const person('firstName' = 'Jane', 'lastName' = 'Doe', 'age' = 30);", false, 11),
 
     new Answer(45, 'Tesla 2021 red', false, 12),
@@ -258,8 +258,8 @@ export const answers = [
     new Answer(204, 'class Rectangle { constructor(width, height) { this.width = width;  this.height = height; } calcArea() { return this.width * this.height; }}', true, 51),
 
     new Answer(205, 'greet: function() { console.log(Hello, I am ${this.name}); }', false, 52),
-    new Answer(206, 'greet() { console.log(Hello, I am ${this.name}); }', true, 52),
-    new Answer(207, 'this.greet = function() { console.log(Hello, I am ${this.name}); }', false, 52),
+    new Answer(206, 'greet() { console.log(Hello, I am ${this.name}); }', false, 52),
+    new Answer(207, 'this.greet = function() { console.log(Hello, I am ${this.name}); }', true, 52),
     new Answer(208, 'function greet() { console.log(Hello, I am ${this.name}); }', false, 52),
 
     new Answer(209, 'Vehicle car = new Vehicle("Toyota");', false, 53),
@@ -277,9 +277,9 @@ export const answers = [
     new Answer(219, 'static showInfo() {console.log("Hi");};', false, 55),
     new Answer(220, 'function showInfo() {console.log("Hi");};', false, 55),
 
-    new Answer(221, '[]', true, 56),
+    new Answer(221, '[]', false, 56),
     new Answer(222, '["x", "y"]', false, 56),
-    new Answer(223, '["sides"]', false, 56),
+    new Answer(223, '["sides"]', true, 56),
     new Answer(224, '["x", "y", "sides"]', false, 56),
 
     new Answer(225, 'ReferenceError: a is not defined', false, 57),
@@ -338,7 +338,7 @@ export const answers = [
     new Answer(268, '5', true, 67),
 
     new Answer(269, '_name = 30;', false, 68),
-    new Answer(270, 'constructor() { this._name = 30 }', false, 68),
+    new Answer(270, 'constructor() { this._name = 30 }', true, 68),
     new Answer(271, 'var _name = 30;', false, 68),
     new Answer(272, 'let _name = 30;', false, 68),
 
