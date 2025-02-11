@@ -15,14 +15,14 @@ export const cards = [
         sections[0].id),
 
     new Card(3,'How can you list all the keys of the object "point"?<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(4,'What will be the result of executing the following code: <br>' +
         'let obj1 = {a: 1};<br>' +
         'let obj2 = {b: 2};<br>' +
         'let obj3 = Object.assign({c: 3}, obj1, obj2);<br>' +
         'console.log(obj3);<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(5,'What will appear on the console after executing the following code?<br>' +
         'let book = { title: "To Kill a Mockingbird", author: "Harper Lee" };<br>' +
@@ -73,7 +73,7 @@ export const cards = [
 
     new Card(14, 'How can you list the values assigned to all properties<br>' +
         'of the person object { name: "Emily", age: 25, city: "New York" }?<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(15, 'What is the correct way to access the name property<br>' +
         'in the person object { "name": "Jane Doe" }?<br>',
@@ -137,7 +137,7 @@ export const cards = [
         'let z = 30;<br>' +
         'let obj = {x, y, z};<br>' +
         'console.log(Object.keys(obj));',
-        sections[0].id),
+        sections[2].id),
 
     new Card(26, 'What will be the output of the following code?<br>' +
         'let arr = [1, 2, 3, 4];<br>' +
@@ -162,7 +162,7 @@ export const cards = [
         'let obj = {a: 1, b: 2};<br>' +
         'let clone = Object.assign({}, obj); clone.a = 3;<br>' +
         'console.log(obj.a, clone.a);<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(30, 'What is the expression that will check if the key age is present in the person object<br> ' +
         '{ name: "John Smith", age: 32 };<br>',
@@ -191,25 +191,25 @@ export const cards = [
         sections[0].id),
 
     new Card(36, 'How can you check if the object "point" is frozen?',
-        sections[0].id),
+        sections[2].id),
 
     new Card(37, 'What will be the output of the following code? let point = {x: 100, y: 100};<br>' +
         'let point2 = Object.assign({}, point, {x: 0, z: 300}); console.log(${point2.x} ${point2.y} ${point2.z});<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(38, 'What will appear on the console after executing the following code?<br>' +
         'let point = {x: 100, y: 200};<br>' +
         'let point2 = Object.assign({}, point);<br>' +
         'point2.x = 0;<br>' +
         'console.log(${point.x} ${point2.x});<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(39, 'What will appear on the console after executing the following code?<br>' +
         'let shape = {x: 100, y: 100};<br>' +
         'let shape2 = object.assign({}, shape, {x: 0, z: 200});<br>' +
         'shape.y = 0;<br>' +
         'console.log(`${shape2.x} ${shape2.y} ${shape2.z}`);<br>',
-        sections[0].id),
+        sections[2].id),
 
     new Card(40, 'What will appear on the console after executing the following code?<br>' +
         'let shape = {x: 100, y: 100};<br>' +
@@ -249,7 +249,7 @@ export const cards = [
         sections[1].id),
 
     new Card(45, 'What is the correct syntax for creating a "User" object with the name "John" and role "Admin"? (note no previous class has been defined)',
-        sections[1].id),
+        sections[0].id),
 
     new Card(46, 'What is the correct code for declaring a class Shape that has a method calculateArea and a private property _sides which can be set in the constructor?',
         sections[1].id),
