@@ -39,13 +39,14 @@ export class CardBox {
         this.collectAnswer();
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
-        const correctAnswer = currentCard.answers.find(answer => answer.correct).text;
+
+        const correctAnswers = currentCard.answers.filter(answer => answer.correct).map(answer => answer.text);
 
         checkboxes.forEach(checkbox => {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
             const answerText = label.textContent;
 
-            if (answerText === correctAnswer) {
+            if (correctAnswers.includes(answerText)) {
                 label.style.color = 'green';
             } else {
                 label.style.color = 'red';
