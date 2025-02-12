@@ -313,8 +313,8 @@ export const answers = [
     new Answer(248, 'false', false, 62),
 
     new Answer(249, 'function drive() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
-    new Answer(250, 'drive() { console.log(`Driving ${this.make} ${this.model}`); }', true, 63),
-    new Answer(251, 'this.drive = function() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
+    new Answer(250, 'drive() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
+    new Answer(251, 'this.drive = function() { console.log(`Driving ${this.make} ${this.model}`); }', true, 63),
     new Answer(252, 'drive: function() { console.log(`Driving ${this.make} ${this.model}`); }', false, 63),
 
     new Answer(253, 'color', false, 64),
@@ -323,7 +323,7 @@ export const answers = [
     new Answer(256, 'None of the above', false, 64),
 
     new Answer(257, 'let showInfo = function() { console.log("Hi"); }', false, 65),
-    new Answer(258, 'showInfo = function() { return "Hi"; }', false, 65),
+    new Answer(258, 'showInfo = function() { return "Hi"; }', true, 65),
     new Answer(259, 'showInfo() { return "Hi"; }', true, 65),
     new Answer(260, 'function showInfo() { return "Hi"; }', false, 65),
 
@@ -387,9 +387,9 @@ export const answers = [
     new Answer(307, 'Incorrect, class definition should not be followed with a semi-colon', false, 77),
     new Answer(308, 'Correct', true, 77),
 
-    new Answer(309, 'class Point { constructor(x, y); setColor(color) { this.color = color; }}', false, 78),
-    new Answer(310, 'class Point { constructor(x, y) {  this.x = x;  this.y = y; } setColor = function(color) {  this.color = color; }}', false, 78),
-    new Answer(311, 'class Point { constructor(x, y) {  this.x = x; this.y = y; } } Point.prototype.setColor = function(color) { this.color = color; }', true, 78),
+    new Answer(309, 'class Point { constructor(x, y) {  this.x = x; this.y = y; } } Point.prototype.setColor = function(color) { this.color = color; }', true, 78),
+    new Answer(310, 'class Point { constructor(x, y); setColor(color) { this.color = color; }}', false, 78),
+    new Answer(311, 'class Point { constructor(x, y) {  this.x = x;  this.y = y; } setColor = function(color) {  this.color = color; }}', true, 78),
     new Answer(312, 'function Point(x, y) { this.x = x; this.y = y; } Point.prototype.setColor = function(color) { this.color = color; }', false, 78),
 
     new Answer(313, 'Error', false, 79),
