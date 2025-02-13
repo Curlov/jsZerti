@@ -556,12 +556,12 @@ export const cards = [
         sections[3].id),
 
     new Card(90, 'Which methods allows you to replace selected elements of an array with other elements given in the method call?',
-        sections[2].id),
+        sections[3].id),
 
     new Card(91, 'What should be inserted at the marked location in the following code to log the second y value in the points array to the console?<br>' +
         'let points = [{x: 10, y: 20}, {x: 0, y: 30}, {x: 20, y: 100}];<br>' +
         '//Insert line here',
-        sections[3].id),
+        sections[2].id),
 
     new Card(92, 'What is the output of the following code?<br>' +
         'var name = "John";<br>' +
@@ -572,7 +572,7 @@ export const cards = [
         'console.log(num1 < num2);<br>' +
         'let points = [{x: 10, y: 20}, {x: 0, y: 30}, {x: 20, y: 100}];<br>' +
         'console.log(points[1].y);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(93, 'What will be the value of result after the following code is executed?<br>' +
         'var num = 10;<br>' +
@@ -582,131 +582,131 @@ export const cards = [
     new Card(94, 'What will be logged to the console after the following code is executed?<br>' +
         'var myArray = [1, 2, 3, 4, 5];<br>' +
         'console.log(myArray.length);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(95, 'Which of the following statements about an object of the Set class is not true?',
-        sections[3].id),
+        sections[2].id),
 
     new Card(96, 'Which of the following statements about an object of the Map class is not true?',
-        sections[3].id),
+        sections[2].id),
 
     new Card(97, 'The shape object can be converted to JSON format using the built-in command:',
-        sections[3].id),
+        sections[2].id),
 
     new Card(98, 'What will appear in the console as a result of code execution?<br>' +
         'console.log(`${Math.floor(5.4)} ${Math.ceil(1.2)} ${Math.round(2.5)}`);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(99, 'What will appear in the console as a result of code execution?<br>' +
         'console.log(`${"str".match("a")}`);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(100, 'What is the value of result after the following code is executed?<br>' +
         'var str = "Hello World!";<br>' +
         'var result = str.toUpperCase();',
-        sections[3].id),
+        sections[2].id),
     new Card(101, 'Analyze the following code:<br>' +
         'let str = "sample string";<br>' +
         'console.log(`${str.includes(\'s\')} ${str.index0f(\'s\')} ${str.lastIndex0f(\'s\')}`);<br>' +
         'What will appear in the console?',
-        sections[3].id),
+        sections[2].id),
 
     new Card(102, 'Which line of code returns the current year?',
-        sections[3].id),
+        sections[2].id),
 
     new Card(103, 'There is one line missing in the code below:<br>' +
         'let x = [1, 2, 3, 4];<br>' +
         '// Insert line of code here<br>' +
         'console.log(result);<br>' +
         'Which missing line will result in the console output "1010"',
-        sections[3].id),
+        sections[2].id),
 
     new Card(104, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.slice(1, 4);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(105, 'What will be the value of result after the following code is executed?<br>' +
         'var str = "Hello World!";<br>' +
         'var result = str.slice(0, 5);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(106, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.slice(3);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(107, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.splice(2, 2);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(108, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.splice(2, 0, 6, 7, 8);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(109, 'What will be the value of arr after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'arr.splice(2, 1, 6, 7, 8);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(110, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.join("-");',
-        sections[3].id),
+        sections[2].id),
 
     new Card(111, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = ["apple", "banana", "cherry"];<br>' +
         'var result = arr.join("-");',
-        sections[3].id),
+        sections[2].id),
 
     new Card(112, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.filter(function(num) { return num % 2 === 0; });',
-        sections[3].id),
+        sections[2].id),
 
     new Card(113, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [3, 1, 4, 2, 5];<br>' +
         'var result = arr.sort();',
-        sections[3].id),
+        sections[2].id),
 
     new Card(114, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.map(function(num) { return num * 2; });',
-        sections[3].id),
+        sections[2].id),
 
     new Card(115, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [{name: \'John\', age: 20}, {name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}];<br>' +
         'var result = arr.map(function(obj) { return obj.age; }).filter(function(age) { return age >= 25; });',
-        sections[3].id),
+        sections[2].id),
 
     new Card(116, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [{name: \'John\', age: 20}, {name: \'Jane\', age: 25}, {name: \'Jim\', age: 30}];<br>' +
         'var result = arr.reduce(function(acc, obj) { acc[obj.name] = obj.age; return acc; }, {});',
-        sections[3].id),
+        sections[2].id),
 
     new Card(117, 'What will be the value of result after the following code is executed?<br>' +
         'var arr = [5, 12, 8, 130, 44];<br>' +
         'var result = arr.find(function(element) { return element > 10; });',
-        sections[3].id),
+        sections[2].id),
 
     new Card(118, 'What will be the value of result after the following code is executed?<br>' +
         'var str = "The quick brown fox";<br>' +
         'var result = str.replace(/[aeiou]/gi, \'*\');',
-        sections[3].id),
+        sections[2].id),
 
     new Card(119, 'What will be the value of result after the following code is executed?<br>' +
         'var str = "Hello, World!";<br>' +
         'var result = str.match(/[A-Z]/g);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(120, 'What will be the value of result after the following code is executed?<br>' +
         'function Animal(name) { this.name = name; }<br>' +
         'Animal.prototype.getName = function() { return this.name; };<br>' +
         'var a = new Animal("Lion");<br>' +
         'var result = a.getName();',
-        sections[3].id),
+        sections[1].id),
 
     new Card(121, 'What is the result of the following code and why?<br>' +
         'const car = { make: \'Tesla\', model: \'Model S\', displayMakeAndModel: function() { console.log(`The car is a ${this.make} ${this.model}.`); } };<br>' +
