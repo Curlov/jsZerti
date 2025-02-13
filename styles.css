@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
@@ -55,4 +56,35 @@ button:active {
 small{
     color: #b5b5b5;
     font-size: 12px;
+}
+
+#home {
+    position: fixed;
+    bottom: 70px;
+    right: 70px;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f8f5ef;
+    border: #49495a solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home a {
+    color: #000;
+    text-decoration: none;
+}
+
+#home a:hover {
+    color: #007bff;
+}
+
+#result-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
