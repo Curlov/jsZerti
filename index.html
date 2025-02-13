@@ -16,19 +16,18 @@
   <div class="row justify-content-center w-100">
     <div class="col-12 col-md-8 col-lg-6">
       <div class="card shadow-sm p-4">
-        <h5 class="text-center mb-4">Wähle einen Bereich aus Karten aus unserem Pool, den du bearbeiten möchtest:</h5>
+        <!-- Info Button -->
+        <p>JSA-41-01
+          <button type="button" class="btn btn-sm btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#infoModal" id="uniqueButton">
+            <i class="fas fa-info-circle"></i>
+          </button>
+        </p>
+        <h5 class="text-center mb-4">Wähle einen Bereich und eine Kategorie aus den Karten in unserem Pool aus, die du bearbeiten möchtest:</h5>
         <p class="text-center mb-4">Derzeit befinden sich <span id="totalNumberOfCards"></span> Karten in dem Pool!
         </p>
-        <!-- Sections with Info Button -->
+        <!-- Sections -->
         <div class="checkbox-container mb-3">
-          <p>
-            Choose the category
-            <button type="button" class="btn btn-sm btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#infoModal" id="uniqueButton">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </p>
         </div>
-
         <!-- Modal for Additional Info -->
         <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -62,7 +61,7 @@
           <label for="endQuestion" class="form-label">Endfrage</label>
           <input type="number" id="endQuestion" class="form-control" value="" placeholder="Endfrage eingeben">
         </div>
-        <div class="d-none mb-3" id="error-message" role="alert">Fehler</div>
+        <div class="d-none mb-3" id="error-message" role="alert" style="color: red;">Fehler</div>
         <div class="d-flex justify-content-center">
           <button id="submitCardRange" class="btn btn-primary btn-lg">Karten anfordern</button>
         </div>
