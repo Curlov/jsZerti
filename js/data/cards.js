@@ -745,7 +745,7 @@ export const cards = [
     new Card(127, 'What is the result of the following code, and why?<br>' +
         'function add(a = 0, b = 0) { return a + b; }<br>' +
         'console.log(add(undefined, 5));',
-        sections[3].id),
+        sections[0].id),
 
     new Card(128, 'What is the output of the following code?<br>' +
         'let array = [1, 2, 3];<br>' +
@@ -775,7 +775,7 @@ export const cards = [
         'let add = (x, y) => x + y;<br>' +
         'let result = numbers.reduce(add, 0);<br>' +
         'console.log(result);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(132, 'What will the output be after executing the following code?<br>' +
         'let person = { name: "John", greet: function () { return `Hello, ${this.name}`; } };<br>' +
@@ -795,7 +795,7 @@ export const cards = [
         sections[3].id),
 
     new Card(135, 'Which of the following is the correct way to define a function with default parameters in JavaScript?',
-        sections[3].id),
+        sections[0].id),
 
     new Card(136, 'What will the following code log to the console?<br>' +
         'let obj = { name: "John" };<br>' +
@@ -861,12 +861,12 @@ export const cards = [
         'let obj1 = {name: "John"}; let obj2 = {age: 30};<br>' +
         'let merge = function(a, b) { return {...a, ...b}; };<br>' +
         'console.log(merge(obj1, obj2));',
-        sections[3].id),
+        sections[0].id),
 
     new Card(148, 'What is the output of the following code snippet?<br>' +
         'function add(a = 5, b = 10) { return a + b; }<br>' +
         'console.log(add());',
-        sections[3].id),
+        sections[0].id),
 
     new Card(149, 'What is the expected output of the following JavaScript code?<br>' +
         'function* generator() { yield 1; yield 2; yield 3; }<br>' +
@@ -878,7 +878,7 @@ export const cards = [
         'const add = (a, b) => a + b;<br>' +
         'const double = n => add(n, n);<br>' +
         'console.log(double(3));',
-        sections[3].id),
+        sections[0].id),
 
     new Card(151, 'What is the correct way to wait for the result of a Promise before returning the final value in an asynchronous function?',
         sections[3].id),
@@ -891,7 +891,7 @@ export const cards = [
     new Card(153, 'What will the following code output and why?<br>' +
         'function logNum(num = 0, base = 10) { console.log(Math.log(num) / Math.log(base)); }<br>' +
         'logNum(); logNum(2); logNum(2, 2); logNum(undefined, 2);',
-        sections[3].id),
+        sections[2].id),
 
     new Card(154, 'What will be the output in the following code, when executed?<br>' +
         'const p1 = new Promise((resolve, reject) => { setTimeout(() => resolve("Promise 1"), 1000); });<br>' +
