@@ -618,9 +618,9 @@ export const answers = [
     new Answer(492, 'Hello, I am undefined', false, 123),
 
     new Answer(493, 'fetch(\'https://api.example.com/data\').then((response) => response.json().text()).then((json) => console.log(json));', false, 124),
-    new Answer(494, 'fetch(\'https://api.example.com/data\',{ method: \'GET\', headers: { \'Content-Type\': \'application/json\' }, }).then((response) => response.json()) .then((json) => console.log(json));', false, 124),
+    new Answer(494, 'fetch(\'https://api.example.com/data\',{ method: \'GET\', headers: { \'Content-Type\': \'application/json\' }, }).then((response) => response.json()) .then((json) => console.log(json));', true, 124),
     new Answer(495, 'fetch(\'https://api.example.com/data\').then((response) => response.json()).then((json) => console.log(json));', true, 124),
-    new Answer(496, 'fetch(\'https://api.example.com/data\').then((response) => response.text()).then((data) => JSON.parse(data)).then((json) => console.log(json));', false, 124),
+    new Answer(496, 'fetch(\'https://api.example.com/data\').then((response) => response.text()).then((data) => JSON.parse(data)).then((json) => console.log(json));', true, 124),
 
     new Answer(497, 'function outerFunction() { var outerVariable = "outer"; return function innerFunction() { return outerVariable; }}', true, 125),
     new Answer(498, 'var outerVariable = "outer";function outerFunction() { return function innerFunction() { return outerVariable; }}', false, 125),
@@ -762,7 +762,7 @@ export const answers = [
     new Answer(607, '2 3', false, 152),
     new Answer(608, '1 2', true, 152),
 
-    new Answer(609, 'NaN 0.6931471805599453 1 NaN', true, 153),
+    new Answer(609, '-Infinity 0.30102999566398114 1 -Infinity', true, 153),
     new Answer(610, 'NaN NaN NaN NaN', false, 153),
     new Answer(611, '0 0.6931471805599453 1 NaN',false, 153),
     new Answer(612, '0 NaN 1 NaN', false, 153),
