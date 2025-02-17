@@ -762,7 +762,7 @@ export const answers = [
     new Answer(607, '2 3', false, 152),
     new Answer(608, '1 2', true, 152),
 
-    new Answer(609, 'NaN 0.6931471805599453 1 NaN', true, 153),
+    new Answer(609, '-Infinity 0.30102999566398114 1 -Infinity', true, 153),
     new Answer(610, 'NaN NaN NaN NaN', false, 153),
     new Answer(611, '0 0.6931471805599453 1 NaN',false, 153),
     new Answer(612, '0 NaN 1 NaN', false, 153),
