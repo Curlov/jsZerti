@@ -641,7 +641,7 @@ export const cards = [
         'var result = arr.splice(2, 2);',
         sections[2].id),
 
-    new Card(108, 'What will be the value of result after the following code is executed?<br>' +
+    new Card(108, 'What will be the value of arr after the following code is executed?<br>' +
         'var arr = [1, 2, 3, 4, 5];<br>' +
         'var result = arr.splice(2, 0, 6, 7, 8);',
         sections[2].id),

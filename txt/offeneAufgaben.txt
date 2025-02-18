@@ -1,0 +1,14 @@
+angeklickte Antwort in collectAnswers speichern:
+
+1. auf jedem checkbox-Feld ein addEventListener setzen, der eine Funktion aufruft:
+
+- wenn das Feld angeklickt ist, dann die cardId und die answerIds in 
+collectAnswers gespeichert werden
+- wenn das Feld weggeklickt wurde (Haken entfernt), dann die cardId mit der answerId aus
+collect Answers löschen
+
+
+2. beim Anzeigen jeder Seite überprüfen, ob cardId in collectAnswers vorkommt. Falls ja:
+- bei den answerIds programmieren, dass ein Haken in der entsprechenden checkbox gesetzt ist.
+
+3. Sitzung im Browser speichern mit Datum, collectAnswers und allen Karten aus der Sitzung.
