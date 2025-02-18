@@ -337,15 +337,15 @@ export const answers = [
     new Answer(267, 'null', false, 67),
     new Answer(268, '5', true, 67),
 
-    new Answer(269, '_name = 30;', false, 68),
+    new Answer(269, '_name = 30;', true, 68),
     new Answer(270, 'constructor() { this._name = 30 }', true, 68),
     new Answer(271, 'var _name = 30;', false, 68),
     new Answer(272, 'let _name = 30;', false, 68),
 
     new Answer(273, 'var _age = 0;', false, 69),
-    new Answer(274, '_age = 0;', false, 69),
+    new Answer(274, '_age = 0;', true, 69),
     new Answer(275, 'let _age = 0;', false, 69),
-    new Answer(276, 'this._age = 0;', true, 69),
+    new Answer(276, 'this._age = 0;', false, 69),
 
     new Answer(277, 'let _x = 0;', false, 70),
     new Answer(278, 'this._x = 0;', false, 70),
@@ -752,7 +752,7 @@ export const answers = [
     new Answer(599, '12', false, 150),
     new Answer(600, '15', false, 150),
 
-    new Answer(601, 'Use a .then() block to handle the resolved value.', false, 151),
+    new Answer(601, 'Use a .then() block to handle the resolved value.', true, 151),
     new Answer(602, 'Wrap the Promise in a setTimeout() call.', false, 151),
     new Answer(603, 'None of the above.', false, 151),
     new Answer(604, 'Use the await keyword before the Promise.', true, 151),
