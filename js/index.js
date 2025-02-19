@@ -25,7 +25,7 @@ function submitCardRange() {
     errorMessage.classList.add('d-none');
 
     // Prüfen ob Start und End angegeben wurden und ob die Kartennummern gültig sind.
-    if (start || end) {
+    if ((!start && end) || (!end && start)) {
         if (!end) {
             errorMessage.textContent = "Die Endkarte fehlt. Bitte geben Sie eine gültige Endkarte ein.";
         } else if (!start) {
@@ -46,7 +46,8 @@ function submitCardRange() {
         errorMessage.classList.remove('d-none');
         return;
     }
-    const selectedSections = Array.from(document.querySelectorAll('.checkbox-container input:checked')).map(checkbox => parseInt(checkbox.value));
+    const selectedSections = Array.from(document.querySelectorAll('.checkbox-container input:checked'))
+        .map(checkbox => parseInt(checkbox.value));
 
     // Redirect to card.html with start and end as GET params
     window.location.href = `card.html?start=${start}&end=${end}&sections=${selectedSections.join(',')}`;
