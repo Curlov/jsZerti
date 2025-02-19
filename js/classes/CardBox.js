@@ -48,7 +48,7 @@ export class CardBox {
         // Ruft die ID der aktuellen Karte ab
         const cardId = this.#cards[this.#currentIndex].id;
         // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
-        const checkboxes = document.querySelectorAll('.checkmark');
+        const checkboxes = Array.from(document.querySelectorAll('.checkmark'));
 
         // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
         const answerIds = checkboxes.flatMap(checkbox => checkbox.checked ? [checkbox.id] : []);

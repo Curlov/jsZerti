@@ -64,7 +64,7 @@ document.querySelector('#check-btn').addEventListener('click', () => {
 // to choose cards from the pool. Otherwise, default to the first 10 cards
 const params = new URLSearchParams(window.location.search);
 const start = params.get('start') || 1; // Default to 1 if no start param
-const end = params.get('end') || 10;   // Default to 10 if no end param
+const end = params.get('end') || cards.length;   // Default to all cards if no end param
 const selectedSections = params.get('sections') ? params.get('sections').split(',').map(Number) : [];
 const cardBox = loadCardsFromPool(start, end, selectedSections);
 

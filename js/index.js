@@ -25,12 +25,10 @@ function submitCardRange() {
     errorMessage.classList.add('d-none');
 
     // Prüfen ob Start und End angegeben wurden und ob die Kartennummern gültig sind.
-    if (!start || !end) {
-        if (!start && !end) {
-            errorMessage.textContent = "Bitte geben Sie sowohl eine Start- als auch eine Endkarte ein.";
-        } else if (!end) {
+    if (start || end) {
+        if (!end) {
             errorMessage.textContent = "Die Endkarte fehlt. Bitte geben Sie eine gültige Endkarte ein.";
-        } else {
+        } else if (!start) {
             errorMessage.textContent = "Die Startkarte fehlt. Bitte geben Sie eine gültige Startkarte ein.";
         }
         errorMessage.classList.remove('d-none');
