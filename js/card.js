@@ -1,7 +1,6 @@
 import { CardPool } from "./classes/CardPool.js";
 import { CardBox } from './classes/CardBox.js';
 import { cards } from './data/cards.js';
-import {Section} from "./classes/Section.js"
 import {sections} from "./data/sections.js";
 
 const loadCardsFromPool = (start, end, selectedSections) => {
@@ -97,4 +96,3 @@ const loadSession = function() {
 loadSession();
 
 showCard(cardBox.currentIndex);
-

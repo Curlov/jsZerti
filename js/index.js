@@ -1,5 +1,8 @@
-import {cards} from "./data/cards.js";
-import {sections} from "./data/sections.js";
+import { cards } from "./data/cards.js";
+import { sections } from "./data/sections.js";
+
+// Function to include EventListener on keypress
+const handleKeyPress = (event) => event.key === 'Enter' && submitCardRange();
 
 // How many cards are in the pool? Display it to the user.
 const totalNumberOfCards = cards.length;
@@ -11,13 +14,6 @@ document.querySelector('#submitCardRange').addEventListener('click', submitCardR
 // EventListener on keypress to select startQuestion/endQuestion
 document.querySelector('#startQuestion').addEventListener('keypress', handleKeyPress);
 document.querySelector('#endQuestion').addEventListener('keypress', handleKeyPress);
-
-// Function to include EventListener on keypress
-function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        submitCardRange();
-    }
-}
 
 // Function to read startQuestion/endQuestion
 function submitCardRange() {
@@ -56,13 +52,9 @@ function submitCardRange() {
 
     // Redirect to card.html with start and end as GET params
     window.location.href = `card.html?start=${start}&end=${end}&sections=${selectedSections.join(',')}`;
-
-
 }
 
-
 //Checkboxes
-
 const containerEl = document.querySelector('.checkbox-container');
 sections.forEach(section => {
     const sectionCards = cards.filter(element => {
@@ -76,11 +68,8 @@ sections.forEach(section => {
     checkboxEl.value = section.id;
     checkboxEl.style.marginRight = "10px";
 
-
     labelEl.appendChild(checkboxEl);
     labelEl.appendChild(document.createTextNode(`${section.title} (${sectionCards.length} cards)`));
     divEl.appendChild(labelEl);
     containerEl.appendChild(divEl);
 });
-
-

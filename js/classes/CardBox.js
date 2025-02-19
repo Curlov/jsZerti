@@ -10,7 +10,7 @@ export class CardBox {
 
     getNextCard() {
         this.resetStyles();
-        if (this.#currentIndex < this.#cards.length -1) {
+        if (this.#currentIndex < this.#cards.length - 1) {
             return this.#cards[++this.#currentIndex];
         } else {
             const resultMessage = document.querySelector("#result-message");
@@ -21,18 +21,12 @@ export class CardBox {
 
     getPreviousCard() {
         this.resetStyles();
-        if (this.#currentIndex > 0) {
-            return this.#cards[--this.#currentIndex];
-        } else {
-            return this.#cards[this.#currentIndex];
-        }
+        return this.#currentIndex > 0 ? this.#cards[--this.#currentIndex] : this.#cards[this.#currentIndex];
     }
 
     resetStyles() {
         const labels = document.querySelectorAll('label');
-        labels.forEach(label => {
-            label.style.color = '';
-        });
+        labels.forEach(label => label.style.color = '');
     }
 
     checkAnswer() {
@@ -40,33 +34,25 @@ export class CardBox {
         const currentCard = this.#cards[this.#currentIndex];
         const checkboxes = document.querySelectorAll('.checkmark');
 
-        const correctAnswers = currentCard.answers.filter(answer => answer.correct).map(answer => answer.text);
+        const correctAnswers = currentCard.answers.flatMap(answer => answer.correct ? [answer.text] : []);
 
         checkboxes.forEach(checkbox => {
             const label = document.querySelector(`label[for="${checkbox.id}"]`);
             const answerText = label.textContent;
 
-            if (correctAnswers.includes(answerText)) {
-                label.style.color = 'green';
-            } else {
-                label.style.color = 'red';
-            }
+            correctAnswers.includes(answerText) ? label.style.color = 'green' : label.style.color = 'red';
         });
     }
 
     collectAnswer() {
         // Ruft die ID der aktuellen Karte ab
         const cardId = this.#cards[this.#currentIndex].id;
-        const answerIds = [];
         // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = document.querySelectorAll('.checkmark');
+
         // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                // Wenn die Checkbox ausgewählt ist, wird ihre ID zum Array hinzugefügt
-                answerIds.push(checkbox.id);
-            }
-        });
+        const answerIds = checkboxes.flatMap(checkbox => checkbox.checked ? [checkbox.id] : []);
+
         // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
         const cardIndex = this.#collectAnswers.findIndex(
             collectAnswer => collectAnswer.cardId === cardId
@@ -86,9 +72,8 @@ export class CardBox {
 
         // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false; // Alle Kontrollkästchen auf "nicht geprüft" setzen
-        });
+        // Alle Kontrollkästchen auf "nicht geprüft" setzen
+        checkboxes.forEach(checkbox => checkbox.checked = false);
 
         // Gespeicherte Antworten für die aktuelle Karte finden
         const savedAnswer = this.#collectAnswers.find(
@@ -98,12 +83,11 @@ export class CardBox {
         if (savedAnswer) {
             savedAnswer.answerIds.forEach(answerId => { // Für jede gespeicherte Antwort
                 const checkbox = document.querySelector(`#${answerId}`); // Das entsprechende Kontrollkästchen auswählen
-                if (checkbox) {
-                    checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
-                }
+                if (checkbox) checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
             });
         }
     }
+
     getProzentCorrectAnswers() {
         let correctCount = 0;
         let cardCount = 0;
@@ -146,7 +130,6 @@ export class CardBox {
             resultMessage;
 
     }
-
 
     get currentIndex() {
         return this.#currentIndex;

@@ -1,7 +1,4 @@
-
 import { answers} from "../data/answers.js";
-import { sections} from "../data/sections.js";
-
 
 export class Card {
     #id;
