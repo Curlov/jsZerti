@@ -1,4 +1,5 @@
-import {Section} from "../classes/Section.js"
+import { Section } from "../classes/Section.js"
+
 export const sections = [
     new Section(1, 'Classless Objects', 'Basic object creation, handling object properties, using dot and bracket notations, property existence tests, property enumeration methods, object comparison techniques, object copying mechanisms, methods implementation, and organizing and configuring objects.'),
     new Section(2, 'Classes and Class-based Approach', 'Class design and declarations, creating objects from classes, class properties management, getters and setters, class inheritance, static members, and comparison between classes and constructors.'),

@@ -6,17 +6,9 @@ const handleKeyPress = (event) => event.key === 'Enter' && submitCardRange();
 
 // How many cards are in the pool? Display it to the user.
 const totalNumberOfCards = cards.length;
-document.querySelector('#totalNumberOfCards').innerHTML = totalNumberOfCards;
-
-// EventListener on button to select a set of cards
-document.querySelector('#submitCardRange').addEventListener('click', submitCardRange);
-
-// EventListener on keypress to select startQuestion/endQuestion
-document.querySelector('#startQuestion').addEventListener('keypress', handleKeyPress);
-document.querySelector('#endQuestion').addEventListener('keypress', handleKeyPress);
 
 // Function to read startQuestion/endQuestion
-function submitCardRange() {
+const submitCardRange = function() {
     const start = document.querySelector('#startQuestion').value;
     const end = document.querySelector('#endQuestion').value;
 
@@ -55,6 +47,7 @@ function submitCardRange() {
 
 //Checkboxes
 const containerEl = document.querySelector('.checkbox-container');
+
 sections.forEach(section => {
     const sectionCards = cards.filter(element => {
         return element.sectionId === section.id;
@@ -72,3 +65,12 @@ sections.forEach(section => {
     divEl.appendChild(labelEl);
     containerEl.appendChild(divEl);
 });
+
+document.querySelector('#totalNumberOfCards').innerHTML = totalNumberOfCards;
+
+// EventListener on button to select a set of cards
+document.querySelector('#submitCardRange').addEventListener('click', submitCardRange);
+
+// EventListener on keypress to select startQuestion/endQuestion
+document.querySelector('#startQuestion').addEventListener('keypress', handleKeyPress);
+document.querySelector('#endQuestion').addEventListener('keypress', handleKeyPress);

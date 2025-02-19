@@ -26,7 +26,7 @@ const loadCardsFromPool = (start, end, selectedSections) => {
   return cardBox;
 }
 
-function getSectionTitle(sectionId) {
+const getSectionTitle = function(sectionId) {
   const section = sections.find(s => s.id === sectionId);
   return section ? section.title : '';
 }
@@ -44,6 +44,24 @@ const showCard = (currentCard) => {
   cardBox.checkedAnswers();
 }
 
+// funktion um bereits gegebene antworten aus dem local storage zu laden
+// und collectAnswers werden in cardbox gesetzt
+const loadSession = function() {
+  const sessionData = JSON.parse(localStorage.getItem('sessionData'));
+
+  if (sessionData && sessionData.collectAnswers) {
+    cardBox.setCollectedAnswers(sessionData.collectAnswers);
+  }
+}
+
+// If start and end positions are given in the GET params from index.html, use them 
+// to choose cards from the pool. Otherwise, default to the first 10 cards
+const params = new URLSearchParams(window.location.search);
+const start = params.get('start') || 1; // Default to 1 if no start param
+const end = params.get('end') || cards.length;   // Default to all cards if no end param
+const selectedSections = params.get('sections') ? params.get('sections').split(',').map(Number) : [];
+const cardBox = loadCardsFromPool(start, end, selectedSections);
+
 document.querySelector('#forward-btn').addEventListener('click', () => {
   cardBox.collectAnswer()
   cardBox.getNextCard();
@@ -60,15 +78,6 @@ document.querySelector('#check-btn').addEventListener('click', () => {
   cardBox.checkAnswer();
 });
 
-// If start and end positions are given in the GET params from index.html, use them 
-// to choose cards from the pool. Otherwise, default to the first 10 cards
-const params = new URLSearchParams(window.location.search);
-const start = params.get('start') || 1; // Default to 1 if no start param
-const end = params.get('end') || cards.length;   // Default to all cards if no end param
-const selectedSections = params.get('sections') ? params.get('sections').split(',').map(Number) : [];
-const cardBox = loadCardsFromPool(start, end, selectedSections);
-
-
 // funktion um gegebene antworten im local storage zu speichern
 // inkl. datum- u. zeitangabe und aller zugehöriger cards
 document.querySelector('#save-btn').addEventListener('click', () => {
@@ -82,16 +91,6 @@ document.querySelector('#save-btn').addEventListener('click', () => {
   }
   localStorage.setItem('sessionData', JSON.stringify(sessionData));
 });
-
-// funktion um bereits gegebene antworten aus dem local storage zu laden
-// und collectAnswers werden in cardbox gesetzt
-const loadSession = function() {
-  const sessionData = JSON.parse(localStorage.getItem('sessionData'));
-
-  if (sessionData && sessionData.collectAnswers) {
-    cardBox.setCollectedAnswers(sessionData.collectAnswers);
-  }
-}
 
 loadSession();
 

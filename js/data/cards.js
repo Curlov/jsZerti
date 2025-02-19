@@ -1,5 +1,4 @@
 import { Card } from "../classes/Card.js";
-import { answers }  from './answers.js';
 import {sections} from "./sections.js";
 
 export const cards = [
@@ -929,6 +928,4 @@ export const cards = [
         'const printPersonName = function(greeting) { console.log(`${greeting} ${this.fullName()}`); };<br>' +
         'printPersonName.call(person, \'Hello\');',
         sections[3].id),
-
-
 ];

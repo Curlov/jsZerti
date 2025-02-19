@@ -1,7 +1,6 @@
 import { Answer } from "../classes/Answer.js";
 
 export const answers = [
-
     new Answer(1, 'shape1.x == shape2.y', false, 1),
     new Answer(2, `(shape1.x == shape2.x) && (shape1.y == shape2.y)`, true, 1),
     new Answer(3, 'shape1 == shape2', false, 1),
@@ -801,6 +800,4 @@ export const answers = [
     new Answer(638, 'Hello John Doe', true, 160),
     new Answer(639, 'Hello undefined undefined', false, 160),
     new Answer(640, 'undefined Hello John Doe', false, 160),
-
-
 ];
