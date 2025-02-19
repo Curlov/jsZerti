@@ -1,26 +1,14 @@
-import {cards} from "./data/cards.js";
-import {sections} from "./data/sections.js";
+import { cards } from "./data/cards.js";
+import { sections } from "./data/sections.js";
+
+// Function to include EventListener on keypress
+const handleKeyPress = (event) => event.key === 'Enter' && submitCardRange();
 
 // How many cards are in the pool? Display it to the user.
 const totalNumberOfCards = cards.length;
-document.querySelector('#totalNumberOfCards').innerHTML = totalNumberOfCards;
-
-// EventListener on button to select a set of cards
-document.querySelector('#submitCardRange').addEventListener('click', submitCardRange);
-
-// EventListener on keypress to select startQuestion/endQuestion
-document.querySelector('#startQuestion').addEventListener('keypress', handleKeyPress);
-document.querySelector('#endQuestion').addEventListener('keypress', handleKeyPress);
-
-// Function to include EventListener on keypress
-function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        submitCardRange();
-    }
-}
 
 // Function to read startQuestion/endQuestion
-function submitCardRange() {
+const submitCardRange = function() {
     const start = document.querySelector('#startQuestion').value;
     const end = document.querySelector('#endQuestion').value;
 
@@ -29,12 +17,10 @@ function submitCardRange() {
     errorMessage.classList.add('d-none');
 
     // Prüfen ob Start und End angegeben wurden und ob die Kartennummern gültig sind.
-    if (!start || !end) {
-        if (!start && !end) {
-            errorMessage.textContent = "Bitte geben Sie sowohl eine Start- als auch eine Endkarte ein.";
-        } else if (!end) {
+    if ((!start && end) || (!end && start)) {
+        if (!end) {
             errorMessage.textContent = "Die Endkarte fehlt. Bitte geben Sie eine gültige Endkarte ein.";
-        } else {
+        } else if (!start) {
             errorMessage.textContent = "Die Startkarte fehlt. Bitte geben Sie eine gültige Startkarte ein.";
         }
         errorMessage.classList.remove('d-none');
@@ -52,18 +38,16 @@ function submitCardRange() {
         errorMessage.classList.remove('d-none');
         return;
     }
-    const selectedSections = Array.from(document.querySelectorAll('.checkbox-container input:checked')).map(checkbox => parseInt(checkbox.value));
+    const selectedSections = Array.from(document.querySelectorAll('.checkbox-container input:checked'))
+        .map(checkbox => parseInt(checkbox.value));
 
     // Redirect to card.html with start and end as GET params
     window.location.href = `card.html?start=${start}&end=${end}&sections=${selectedSections.join(',')}`;
-
-
 }
 
-
 //Checkboxes
-
 const containerEl = document.querySelector('.checkbox-container');
+
 sections.forEach(section => {
     const sectionCards = cards.filter(element => {
         return element.sectionId === section.id;
@@ -76,11 +60,17 @@ sections.forEach(section => {
     checkboxEl.value = section.id;
     checkboxEl.style.marginRight = "10px";
 
-
     labelEl.appendChild(checkboxEl);
     labelEl.appendChild(document.createTextNode(`${section.title} (${sectionCards.length} cards)`));
     divEl.appendChild(labelEl);
     containerEl.appendChild(divEl);
 });
 
+document.querySelector('#totalNumberOfCards').innerHTML = totalNumberOfCards;
 
+// EventListener on button to select a set of cards
+document.querySelector('#submitCardRange').addEventListener('click', submitCardRange);
+
+// EventListener on keypress to select startQuestion/endQuestion
+document.querySelector('#startQuestion').addEventListener('keypress', handleKeyPress);
+document.querySelector('#endQuestion').addEventListener('keypress', handleKeyPress);
