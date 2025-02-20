@@ -47,20 +47,18 @@ export class CardBox {
     collectAnswer() {
         // Ruft die aktuelle Karte ab
         const card = this.#cards[this.#currentIndex];
-        // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
-        const checkboxes = Array.from(document.querySelectorAll('.checkmark'));
 
         // Falls noch keine Antworten für diese Karte gespeichert sind, initialisiere ein leeres Array
-        const selectedAnswers = this.#collectAnswers.get(card.id) || [];
-
-        checkboxes.forEach(checkbox => {
+        const selectedAnswers = [];
+        
+        document.querySelectorAll('.checkmark').forEach(checkbox => {
             const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
             if (checkbox.checked) {
                 const answer = card.answers.find(answer => answer.text === answerText);
                 if (answer && !selectedAnswers.includes(answer)) {
                     selectedAnswers.push(answer);
                 }
-            }
+            } 
         });
 
         // Aktualisiere die Map mit der neuen Antwortliste
@@ -69,8 +67,6 @@ export class CardBox {
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
     checkedAnswers() {
-        const currentCard = this.#cards[this.#currentIndex];
-
         // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
 
@@ -78,7 +74,7 @@ export class CardBox {
         checkboxes.forEach(checkbox => checkbox.checked = false);
 
         // Gespeicherte Antworten für die aktuelle Karte finden
-        const savedAnswer = this.#collectAnswers.get(currentCard.id);
+        const savedAnswer = this.#collectAnswers.get(this.#cards[this.#currentIndex].id);
 
         // Wenn gespeicherte Antworten existieren
         if (savedAnswer) {

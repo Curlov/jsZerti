@@ -2,6 +2,7 @@ import { CardPool } from "./classes/CardPool.js";
 import { CardBox } from './classes/CardBox.js';
 import { cards } from './data/cards.js';
 import { sections } from "./data/sections.js";
+import { Answer } from "./classes/Answer.js";
 
 const loadCardsFromPool = (start, end, selectedSections) => {
   // Sanitize user input to avoid invalid data
@@ -51,8 +52,13 @@ const showCard = (currentCard) => {
 const loadSession = function() {
   const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
+  // Deserialisiert die Antworten
+  const collectAnswers = sessionData.collectAnswers.map(([cardId, answers]) => {
+    return [cardId, answers.map(answer => new Answer(answer.id, answer.text, answer.correct, answer.cardId))]
+  })
+
   if (sessionData && sessionData.collectAnswers) {
-    cardBox.setCollectedAnswers(sessionData.collectAnswers);
+    cardBox.setCollectedAnswers(collectAnswers);
   }
 }
 
@@ -94,7 +100,8 @@ document.querySelector('#save-btn').addEventListener('click', () => {
   const sessionData = {
     date: new Date().toISOString(),
     collectAnswers,
-    // NOTE: Wird im Moment nicht genutzt und müsste, damit es funktioniert, per Hand serialisiert werden
+    // INFO: cards wird im Moment nicht genutzt und müsste, damit es funktioniert, 
+    // per Hand serialisiert werden, siehe: Answer#toJSON();
     // cards: cardBox.cards
   }
 
