@@ -2,7 +2,7 @@ export class CardBox {
     #id;
     #cards = [];
     #currentIndex = 0;
-    #collectAnswers = [];
+    #collectAnswers = new Map();
 
     constructor(id) {
         this.#id = id;
@@ -50,16 +50,21 @@ export class CardBox {
         // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = Array.from(document.querySelectorAll('.checkmark'));
 
-        const givenAnswers = [];
+        // Falls noch keine Antworten für diese Karte gespeichert sind, initialisiere ein leeres Array
+        const selectedAnswers = this.#collectAnswers.get(card.id) || [];
 
         checkboxes.forEach(checkbox => {
             const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
             if (checkbox.checked) {
-                givenAnswers.push(card.answers.find(answer => answer.text === answerText));    
+                const answer = card.answers.find(answer => answer.text === answerText);
+                if (answer && !selectedAnswers.includes(answer)) {
+                    selectedAnswers.push(answer);
+                }
             }
-        })
+        });
 
-        this.#collectAnswers[card.id] = { givenAnswers };
+        // Aktualisiere die Map mit der neuen Antwortliste
+        this.#collectAnswers.set(card.id, selectedAnswers);
     }
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
@@ -73,13 +78,11 @@ export class CardBox {
         checkboxes.forEach(checkbox => checkbox.checked = false);
 
         // Gespeicherte Antworten für die aktuelle Karte finden
-        const savedAnswer = this.#collectAnswers[currentCard.id];
+        const savedAnswer = this.#collectAnswers.get(currentCard.id);
+
         // Wenn gespeicherte Antworten existieren
         if (savedAnswer) {
-            // const givenAnswersText = currentCard.answers.
-            //     flatMap(answer => savedAnswer.answerIds.includes(answer.id) ? [answer.text] : []);
-
-            const givenAnswersText = savedAnswer.givenAnswers.map(answer => answer.text);
+            const givenAnswersText = savedAnswer.map(answer => answer.text);
 
             checkboxes.forEach(checkbox => {
                 const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
@@ -90,6 +93,7 @@ export class CardBox {
         }
     }
 
+    // FIX: Nach Änderung von this.#collectAnswers funktioniert getProzentCorrectAnswers nicht mehr
     getProzentCorrectAnswers() {
         let correctCount = 0;
         let cardCount = 0;
@@ -170,6 +174,6 @@ export class CardBox {
     }
 
     setCollectedAnswers(savedAnswers) {
-        this.#collectAnswers = savedAnswers;
+        this.#collectAnswers = new Map(savedAnswers);
     }
 }

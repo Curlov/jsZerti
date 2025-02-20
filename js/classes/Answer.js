@@ -11,6 +11,10 @@ export class Answer {
         this.#cardId = cardId;
     }
 
+    toJSON() {
+        return { id: this.#id, text: this.#text, correct: this.#correct, cardId: this.#cardId };
+    }
+
     get cardId() {
         return this.#cardId;
     }

@@ -109,12 +109,18 @@ document.querySelector('#save-btn').addEventListener('click', () => {
   // zuerst aktuelle antworten aus collectAnswer() sammeln und speichern sobald save gedrückt wird
   cardBox.collectAnswer();
 
+  const collectAnswers = [];
+  cardBox.collectedAnswers.forEach((answers, cardId) => {
+    collectAnswers.push([cardId, answers.map(answer => answer.toJSON())]);
+  });
+
   const sessionData = {
     date: new Date().toISOString(),
-    collectAnswers: cardBox.collectedAnswers,
-    cards: cardBox.cards
+    collectAnswers,
+    // NOTE: Wird im Moment nicht genutzt und müsste, damit es funktioniert, per Hand serialisiert werden
+    // cards: cardBox.cards
   }
-  console.log(sessionData);
+
   localStorage.setItem('sessionData', JSON.stringify(sessionData));
 });
 
