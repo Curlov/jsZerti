@@ -1,7 +1,7 @@
 import { CardPool } from "./classes/CardPool.js";
 import { CardBox } from './classes/CardBox.js';
 import { cards } from './data/cards.js';
-import {sections} from "./data/sections.js";
+import { sections } from "./data/sections.js";
 
 const loadCardsFromPool = (start, end, selectedSections) => {
   // Sanitize user input to avoid invalid data
@@ -23,6 +23,8 @@ const loadCardsFromPool = (start, end, selectedSections) => {
   // start - 1 as the array starts with index 0
   cardBox.loadCards(cardPool.cards.slice(start - 1, end));
 
+  cardBox.shuffleCards();
+
   return cardBox;
 }
 
@@ -33,7 +35,7 @@ const getSectionTitle = function(sectionId) {
 
 // Show the current Card into the DOM
 const showCard = (currentCard) => {
-  document.querySelector('#number').innerHTML = '#' + cardBox.cards[currentCard].id || '#';
+  document.querySelector('#number').innerHTML = '#' + (cardBox.cards[currentCard].id || '#');
   document.querySelector('#section').innerHTML = getSectionTitle(cardBox.cards[currentCard].sectionId || '');
   document.querySelector('#question').innerHTML = cardBox.cards[currentCard].question || 'Keine Frage gefunden';
   document.querySelector('#answerA').innerHTML = cardBox.cards[currentCard].answers[0].text || 'Keine Antwort gefunden';
@@ -42,6 +44,29 @@ const showCard = (currentCard) => {
   document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
 
   cardBox.checkedAnswers();
+
+  shuffleAnswers();
+};
+
+// Antworten shuffeln
+const shuffleAnswers = () => {
+  const tbody = document.querySelector("tbody");
+
+  // Nur die <tr> mit der Klasse .shuffle-group auswählen
+  const rows = Array.from(tbody.querySelectorAll("tr.shuffle-group"));
+  const buttons = document.querySelector('#buttons');
+
+  // Fisher-Yates-Shuffle
+  for (let i = rows.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [rows[i], rows[j]] = [rows[j], rows[i]]; // Swap in Array
+  }
+
+  // Neue Reihenfolge ins DOM schreiben
+  rows.forEach(row => tbody.appendChild(row));
+
+  // Buttons wieder anhängen
+  tbody.appendChild(buttons);
 }
 
 // funktion um bereits gegebene antworten aus dem local storage zu laden

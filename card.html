@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div id="home">
-    <!-- Font Awesome home icon -->
-    <a href="index.html"><i class="fas fa-home"></i></a>
-</div>
-<!-- Result Message -->
-<div class="result-container">
-    <p id="result-message"></p>
-</div>
+    <div id="home">
+        <!-- Font Awesome home icon -->
+        <a href="index.html"><i class="fas fa-home"></i></a>
+    </div>
+    <!-- Result Message -->
+    <div class="result-container">
+        <p id="result-message"></p>
+    </div>
     <div id="box">
         <table id="table">
             <tr style="min-height: 30%; height: 30%;">
@@ -35,7 +36,7 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="shuffle-group">
                 <td style="text-align: center">
                     <input type="checkbox" id="checkboxA" class="checkmark">
                 </td>
@@ -45,7 +46,7 @@
                     </label>
                 </td>
             </tr>
-            <tr>
+            <tr class="shuffle-group">
                 <td style="text-align: center">
                     <input type="checkbox" id="checkboxB" class="checkmark">
                 </td>
@@ -55,7 +56,7 @@
                     </label>
                 </td>
             </tr>
-            <tr>
+            <tr class="shuffle-group">
                 <td style="text-align: center">
                     <input type="checkbox" id="checkboxC" class="checkmark">
                 </td>
@@ -65,18 +66,18 @@
                     </label>
                 </td>
             </tr>
-            <tr>
-                <td style="text-align: center; border-bottom: 2px solid black;">
+            <tr class="shuffle-group">
+                <td style="text-align: center;">
                     <input type="checkbox" id="checkboxD" class="checkmark">
                 </td>
-                <td colspan="2" style="border-bottom: 2px solid black;">
+                <td colspan="2">
                     <label for="checkboxD" id="answerD">
                         label answerD
                     </label>
                 </td>
             </tr>
-            <tr style="min-height: 20%; height: 20%;">
-                <td colspan="3" style="min-width: 100%; width: 100%; text-align: center;">
+            <tr id="buttons" style="min-height: 20%; height: 20%;">
+                <td colspan="3" style="min-width: 100%; width: 100%; text-align: center; border-top: 2px solid black;">
                     <button id="back-btn">back</button>
                     <button id="check-btn">check</button>
                     <button id="forward-btn">forward</button>
