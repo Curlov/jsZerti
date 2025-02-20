@@ -114,6 +114,7 @@ document.querySelector('#save-btn').addEventListener('click', () => {
     collectAnswers: cardBox.collectedAnswers,
     cards: cardBox.cards
   }
+  console.log(sessionData);
   localStorage.setItem('sessionData', JSON.stringify(sessionData));
 });
 

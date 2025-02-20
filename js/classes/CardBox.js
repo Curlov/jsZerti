@@ -45,25 +45,21 @@ export class CardBox {
     }
 
     collectAnswer() {
-        // Ruft die ID der aktuellen Karte ab
-        const cardId = this.#cards[this.#currentIndex].id;
+        // Ruft die aktuelle Karte ab
+        const card = this.#cards[this.#currentIndex];
         // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
         const checkboxes = Array.from(document.querySelectorAll('.checkmark'));
 
-        // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
-        const answerIds = checkboxes.flatMap(checkbox => checkbox.checked ? [checkbox.id] : []);
+        const givenAnswers = [];
 
-        // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
-        const cardIndex = this.#collectAnswers.findIndex(
-            collectAnswer => collectAnswer.cardId === cardId
-        );
-        if (cardIndex !== -1) {
-            // Wenn bereits eine Antwort für diese Karte existiert, wird sie aktualisiert
-            this.#collectAnswers[cardIndex] = { cardId, answerIds };
-        } else {
-            // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
-            this.#collectAnswers.push({ cardId, answerIds });
-        }
+        checkboxes.forEach(checkbox => {
+            const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+            if (checkbox.checked) {
+                givenAnswers.push(card.answers.find(answer => answer.text === answerText));    
+            }
+        })
+
+        this.#collectAnswers[card.id] = { givenAnswers };
     }
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
@@ -72,19 +68,25 @@ export class CardBox {
 
         // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
+
         // Alle Kontrollkästchen auf "nicht geprüft" setzen
         checkboxes.forEach(checkbox => checkbox.checked = false);
 
         // Gespeicherte Antworten für die aktuelle Karte finden
-        const savedAnswer = this.#collectAnswers.find(
-            collectAnswer => collectAnswer.cardId === currentCard.id
-        );
+        const savedAnswer = this.#collectAnswers[currentCard.id];
         // Wenn gespeicherte Antworten existieren
         if (savedAnswer) {
-            savedAnswer.answerIds.forEach(answerId => { // Für jede gespeicherte Antwort
-                const checkbox = document.querySelector(`#${answerId}`); // Das entsprechende Kontrollkästchen auswählen
-                if (checkbox) checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
-            });
+            // const givenAnswersText = currentCard.answers.
+            //     flatMap(answer => savedAnswer.answerIds.includes(answer.id) ? [answer.text] : []);
+
+            const givenAnswersText = savedAnswer.givenAnswers.map(answer => answer.text);
+
+            checkboxes.forEach(checkbox => {
+                const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+                if (givenAnswersText.includes(answerText)) {
+                    checkbox.checked = true;
+                }
+            })
         }
     }
 
