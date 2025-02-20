@@ -48,18 +48,13 @@ export class CardBox {
         // Ruft die aktuelle Karte ab
         const card = this.#cards[this.#currentIndex];
 
-        // Falls noch keine Antworten für diese Karte gespeichert sind, initialisiere ein leeres Array
-        const selectedAnswers = [];
-        
-        document.querySelectorAll('.checkmark').forEach(checkbox => {
-            const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
-            if (checkbox.checked) {
-                const answer = card.answers.find(answer => answer.text === answerText);
-                if (answer && !selectedAnswers.includes(answer)) {
-                    selectedAnswers.push(answer);
-                }
-            } 
-        });
+        // Filtere nur die aktivierten Checkboxen
+        const selectedAnswers = Array.from(document.querySelectorAll('.checkmark'))
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => {
+                const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+                return card.answers.find(answer => answer.text === answerText);
+            })
 
         // Aktualisiere die Map mit der neuen Antwortliste
         this.#collectAnswers.set(card.id, selectedAnswers);
@@ -76,48 +71,33 @@ export class CardBox {
         // Gespeicherte Antworten für die aktuelle Karte finden
         const savedAnswer = this.#collectAnswers.get(this.#cards[this.#currentIndex].id);
 
-        // Wenn gespeicherte Antworten existieren
-        if (savedAnswer) {
-            const givenAnswersText = savedAnswer.map(answer => answer.text);
+        // Wenn keine gespeicherte Antworten existieren stoppe hier
+        if (!savedAnswer) return
 
-            checkboxes.forEach(checkbox => {
-                const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
-                if (givenAnswersText.includes(answerText)) {
-                    checkbox.checked = true;
-                }
-            })
-        }
+        const givenAnswersText = savedAnswer.map(answer => answer.text);
+
+        checkboxes.forEach(checkbox => {
+            const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+            checkbox.checked = givenAnswersText.includes(answerText); // true oder false
+        })
     }
 
-    // FIX: Nach Änderung von this.#collectAnswers funktioniert getProzentCorrectAnswers nicht mehr
     getProzentCorrectAnswers() {
         let correctCount = 0;
         let cardCount = 0;
 
-        this.#collectAnswers.forEach(collected => {
+        this.#collectAnswers.forEach((answers, cardId) => {
             // Finden der Karte anhand der cardId, wenn die Karte nicht gefunden wird oder keine Antworten existieren, überspringen
-            const card = this.#cards.find(c => c.id === collected.cardId);
-            if (!card || collected.answerIds.length === 0) {
-                // Entfernt Karten ohne Antworten oder nicht existierende Karten
-                return;
-            }
-            // Verknüpfen von checkbox.id mit dem Index (A → 0, B → 1, C → 2, D → 3)
-            const checkboxMap = { checkboxA: 0, checkboxB: 1, checkboxC: 2, checkboxD: 3 };
-            const answers = card.answers || []; // Alle möglichen Antworten für diese Karte holen
+            const card = this.#cards.find(c => c.id === cardId);
 
-            // Überprüfen, ob die ausgewählten Antworten korrekt sind
-            const userCorrect = collected.answerIds.map(checkboxId => {
-                const answerIndex = checkboxMap[checkboxId];
-                return answers[answerIndex]?.correct || false; // если индекс выходит за пределы, возвращаем false
-            });
-            // Zählen der richtigen Antworten für die Karte
-            const correctAnswersForCard = userCorrect.filter(isCorrect => isCorrect === true).length;
+            // Entfernt Karten ohne Antworten oder nicht existierende Karten
+            if (!card || answers.length === 0) return;
 
-            if (correctAnswersForCard > 0) {
-                correctCount += correctAnswersForCard; // Добавляем правильные ответы
-            }
-            // Nur Karten berücksichtigen, für die Antworten abgegeben wurden
-            cardCount += 1;
+            // Zähle die gesamtzahl der korrekten Antworten
+            cardCount += card.answers.filter(answer => answer.correct).length;
+
+            // Zähle die korrekt ausgewählten Antworten
+            correctCount += answers.filter(answer => answer.correct).length;
         });
 
         const percentage = cardCount === 0 ? 0 : (correctCount / cardCount) * 100;
@@ -126,11 +106,10 @@ export class CardBox {
             ? `<span style="color: green; font-weight: bold;">Bestanden</span>`
             : `<span style="color: red; font-weight: bold;">Nicht Bestanden</span>`;
         // Ergebnisstring mit den Prozentsätzen zurückgeben
-        return `${cardCount} Fragen wurden beantwortet.<br>` +
+        return `${cardCount} Antworten wurden gegeben.<br>` +
             `Davon waren ${correctCount} Antworten korrekt.<br>` +
             `Das sind ${percentage.toFixed(2)}% (${Math.round(percentage)}%) von den beantworteten Fragen.<br><br>` +
             resultMessage;
-
     }
 
     // Fisher-Yates-Shuffle on #cards
