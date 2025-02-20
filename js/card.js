@@ -44,30 +44,7 @@ const showCard = (currentCard) => {
   document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
 
   cardBox.checkedAnswers();
-
-  shuffleAnswers();
 };
-
-// Antworten shuffeln
-const shuffleAnswers = () => {
-  const tbody = document.querySelector("tbody");
-
-  // Nur die <tr> mit der Klasse .shuffle-group auswählen
-  const rows = Array.from(tbody.querySelectorAll("tr.shuffle-group"));
-  const buttons = document.querySelector('#buttons');
-
-  // Fisher-Yates-Shuffle
-  for (let i = rows.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [rows[i], rows[j]] = [rows[j], rows[i]]; // Swap in Array
-  }
-
-  // Neue Reihenfolge ins DOM schreiben
-  rows.forEach(row => tbody.appendChild(row));
-
-  // Buttons wieder anhängen
-  tbody.appendChild(buttons);
-}
 
 // funktion um bereits gegebene antworten aus dem local storage zu laden
 // und collectAnswers werden in cardbox gesetzt

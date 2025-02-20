@@ -11,6 +11,15 @@ export class Card {
         this.#question = question;
         this.#sectionId = sectionId;
         this.#answers =  answers.filter(answer => answer.cardId === id);
+        this.shuffleAnswers();
+    }
+
+    // Fisher-Yates-Shuffle on #answers
+    shuffleAnswers() {
+        for (let i = this.#answers.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.#answers[i], this.#answers[j]] = [this.#answers[j], this.#answers[i]];
+        }
     }
 
     get answers() {
