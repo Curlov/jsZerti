@@ -87,11 +87,11 @@ export class CardBox {
         let cardCount = 0;
 
         this.#collectAnswers.forEach((answers, cardId) => {
-            // Finden der Karte anhand der cardId, wenn die Karte nicht gefunden wird oder keine Antworten existieren, überspringen
+            // Finden der Karte anhand der cardId
             const card = this.#cards.find(c => c.id === cardId);
 
-            // Entfernt Karten ohne Antworten oder nicht existierende Karten
-            if (!card || answers.length === 0) return;
+            // Entfernt nicht existierende Karten
+            if (!card) return;
 
             // Zähle die gesamtzahl der korrekten Antworten
             cardCount += card.answers.filter(answer => answer.correct).length;
@@ -106,8 +106,8 @@ export class CardBox {
             ? `<span style="color: green; font-weight: bold;">Bestanden</span>`
             : `<span style="color: red; font-weight: bold;">Nicht Bestanden</span>`;
         // Ergebnisstring mit den Prozentsätzen zurückgeben
-        return `${cardCount} Antworten wurden gegeben.<br>` +
-            `Davon waren ${correctCount} Antworten korrekt.<br>` +
+        return `Es gab ${cardCount} richtige Antworten.<br>` +
+            `Davon wurden ${correctCount} Antworten korrekt ausgewählt.<br>` +
             `Das sind ${percentage.toFixed(2)}% (${Math.round(percentage)}%) von den beantworteten Fragen.<br><br>` +
             resultMessage;
     }
