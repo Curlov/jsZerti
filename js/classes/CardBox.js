@@ -2,7 +2,7 @@ export class CardBox {
     #id;
     #cards = [];
     #currentIndex = 0;
-    #collectAnswers = [];
+    #collectAnswers = new Map();
 
     constructor(id) {
         this.#id = id;
@@ -37,7 +37,7 @@ export class CardBox {
         const correctAnswers = currentCard.answers.flatMap(answer => answer.correct ? [answer.text] : []);
 
         checkboxes.forEach(checkbox => {
-            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            const label = this.getAnswerField(checkbox);
             const answerText = label.textContent;
 
             correctAnswers.includes(answerText) ? label.style.color = 'green' : label.style.color = 'red';
@@ -45,77 +45,64 @@ export class CardBox {
     }
 
     collectAnswer() {
-        // Ruft die ID der aktuellen Karte ab
-        const cardId = this.#cards[this.#currentIndex].id;
-        // Wählt alle Checkboxen mit der Klasse 'checkmark' aus
-        const checkboxes = Array.from(document.querySelectorAll('.checkmark'));
+        // Ruft die aktuelle Karte ab
+        const card = this.#cards[this.#currentIndex];
 
-        // Überprüft jede Checkbox, ob sie ausgewählt ist (checked)
-        const answerIds = checkboxes.flatMap(checkbox => checkbox.checked ? [checkbox.id] : []);
+        // Filtere nur die aktivierten Checkboxen
+        const selectedAnswers = Array.from(document.querySelectorAll('.checkmark'))
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => { // Wähle das Answer-Objekt aus das dem Text entspricht
+                const answerText = this.getAnswerField(checkbox).textContent;
+                return card.answers.find(answer => answer.text === answerText);
+            })
 
-        // Sucht nach einer bereits gespeicherten Antwort für die aktuelle Karte
-        const cardIndex = this.#collectAnswers.findIndex(
-            collectAnswer => collectAnswer.cardId === cardId
-        );
-        if (cardIndex !== -1) {
-            // Wenn bereits eine Antwort für diese Karte existiert, wird sie aktualisiert
-            this.#collectAnswers[cardIndex] = { cardId, answerIds };
-        } else {
-            // Andernfalls wird eine neue Antwort für die Karte hinzugefügt
-            this.#collectAnswers.push({ cardId, answerIds });
-        }
+        // Aktualisiere die Map mit der neuen Antwortliste, der vom User gegebenen Antworten
+        // Map-Struktur: { cardId: [answer1, answer2] }, wobei answer1 und answer2 Answer-Objekte sind
+        this.#collectAnswers.set(card.id, selectedAnswers);
     }
 
     // Die Methode checkedAnswers überprüft, welche Antworten der Benutzer für die aktuelle Karte gespeichert hat.
     checkedAnswers() {
-        const currentCard = this.#cards[this.#currentIndex];
-
         // Alle Kontrollkästchen mit der Klasse 'checkmark' auswählen
         const checkboxes = document.querySelectorAll('.checkmark');
+
         // Alle Kontrollkästchen auf "nicht geprüft" setzen
         checkboxes.forEach(checkbox => checkbox.checked = false);
 
-        // Gespeicherte Antworten für die aktuelle Karte finden
-        const savedAnswer = this.#collectAnswers.find(
-            collectAnswer => collectAnswer.cardId === currentCard.id
-        );
-        // Wenn gespeicherte Antworten existieren
-        if (savedAnswer) {
-            savedAnswer.answerIds.forEach(answerId => { // Für jede gespeicherte Antwort
-                const checkbox = document.querySelector(`#${answerId}`); // Das entsprechende Kontrollkästchen auswählen
-                if (checkbox) checkbox.checked = true; // Kontrollkästchen auf "geprüft" setzen
-            });
-        }
+        // Gespeicherte Antworten für die aktuelle Karte finden (Array mit Answer-Objekten)
+        const savedAnswer = this.#collectAnswers.get(this.#cards[this.#currentIndex].id);
+
+        // Wenn keine gespeicherte Antworten existieren stoppe hier
+        if (!savedAnswer) return
+
+        // Die Texte der gespeicherten Antworten extrahieren
+        const givenAnswersText = savedAnswer.map(answer => answer.text);
+
+        // Über alle Checkboxen iterieren und, wenn die zugehörige Antwort gegeben wurde, die checkbox checken
+        checkboxes.forEach(checkbox => {
+            const answerText = this.getAnswerField(checkbox).textContent;
+            checkbox.checked = givenAnswersText.includes(answerText); // true oder false
+        })
     }
 
+    // TODO: Falsch positive Antworten als Minuspunkt?
+    // INFO: Überarbeitet um die Map this.#collectAnswers zu nutzen und maximal 100% zu erreichen
     getProzentCorrectAnswers() {
         let correctCount = 0;
         let cardCount = 0;
 
-        this.#collectAnswers.forEach(collected => {
-            // Finden der Karte anhand der cardId, wenn die Karte nicht gefunden wird oder keine Antworten existieren, überspringen
-            const card = this.#cards.find(c => c.id === collected.cardId);
-            if (!card || collected.answerIds.length === 0) {
-                // Entfernt Karten ohne Antworten oder nicht existierende Karten
-                return;
-            }
-            // Verknüpfen von checkbox.id mit dem Index (A → 0, B → 1, C → 2, D → 3)
-            const checkboxMap = { checkboxA: 0, checkboxB: 1, checkboxC: 2, checkboxD: 3 };
-            const answers = card.answers || []; // Alle möglichen Antworten für diese Karte holen
+        this.#collectAnswers.forEach((answers, cardId) => {
+            // Finden der Karte anhand der cardId
+            const card = this.#cards.find(c => c.id === cardId);
 
-            // Überprüfen, ob die ausgewählten Antworten korrekt sind
-            const userCorrect = collected.answerIds.map(checkboxId => {
-                const answerIndex = checkboxMap[checkboxId];
-                return answers[answerIndex]?.correct || false; // если индекс выходит за пределы, возвращаем false
-            });
-            // Zählen der richtigen Antworten für die Karte
-            const correctAnswersForCard = userCorrect.filter(isCorrect => isCorrect === true).length;
+            // Entfernt nicht existierende Karten
+            if (!card) return;
 
-            if (correctAnswersForCard > 0) {
-                correctCount += correctAnswersForCard; // Добавляем правильные ответы
-            }
-            // Nur Karten berücksichtigen, für die Antworten abgegeben wurden
-            cardCount += 1;
+            // Zähle die gesamtzahl der korrekten Antworten
+            cardCount += card.answers.filter(answer => answer.correct).length;
+
+            // Zähle die korrekt ausgewählten Antworten
+            correctCount += answers.filter(answer => answer.correct).length;
         });
 
         const percentage = cardCount === 0 ? 0 : (correctCount / cardCount) * 100;
@@ -124,11 +111,10 @@ export class CardBox {
             ? `<span style="color: green; font-weight: bold;">Bestanden</span>`
             : `<span style="color: red; font-weight: bold;">Nicht Bestanden</span>`;
         // Ergebnisstring mit den Prozentsätzen zurückgeben
-        return `${cardCount} Fragen wurden beantwortet.<br>` +
-            `Davon waren ${correctCount} Antworten korrekt.<br>` +
+        return `Es gab ${cardCount} richtige Antworten.<br>` +
+            `Davon wurden ${correctCount} Antworten korrekt ausgewählt.<br>` +
             `Das sind ${percentage.toFixed(2)}% (${Math.round(percentage)}%) von den beantworteten Fragen.<br><br>` +
             resultMessage;
-
     }
 
     // Fisher-Yates-Shuffle on #cards
@@ -137,6 +123,10 @@ export class CardBox {
             const j = Math.floor(Math.random() * (i + 1));
             [this.#cards[i], this.#cards[j]] = [this.#cards[j], this.#cards[i]];
         }
+    }
+
+    getAnswerField(checkbox) {
+        return document.querySelector(`label[for="${checkbox.id}"]`);
     }
 
     get currentIndex() {
@@ -167,7 +157,8 @@ export class CardBox {
         return this.#collectAnswers;
     }
 
+    // Erstelle eine neue Map mit den gespeicherten Antworten
     setCollectedAnswers(savedAnswers) {
-        this.#collectAnswers = savedAnswers;
+        this.#collectAnswers = new Map(savedAnswers);
     }
 }

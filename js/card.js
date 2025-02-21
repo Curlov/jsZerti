@@ -2,6 +2,7 @@ import { CardPool } from "./classes/CardPool.js";
 import { CardBox } from './classes/CardBox.js';
 import { cards } from './data/cards.js';
 import { sections } from "./data/sections.js";
+import { Answer } from "./classes/Answer.js";
 
 const loadCardsFromPool = (start, end, selectedSections) => {
   // Sanitize user input to avoid invalid data
@@ -44,30 +45,7 @@ const showCard = (currentCard) => {
   document.querySelector('#answerD').innerHTML = cardBox.cards[currentCard].answers[3].text || 'Keine Antwort gefunden';
 
   cardBox.checkedAnswers();
-
-  shuffleAnswers();
 };
-
-// Antworten shuffeln
-const shuffleAnswers = () => {
-  const tbody = document.querySelector("tbody");
-
-  // Nur die <tr> mit der Klasse .shuffle-group auswählen
-  const rows = Array.from(tbody.querySelectorAll("tr.shuffle-group"));
-  const buttons = document.querySelector('#buttons');
-
-  // Fisher-Yates-Shuffle
-  for (let i = rows.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [rows[i], rows[j]] = [rows[j], rows[i]]; // Swap in Array
-  }
-
-  // Neue Reihenfolge ins DOM schreiben
-  rows.forEach(row => tbody.appendChild(row));
-
-  // Buttons wieder anhängen
-  tbody.appendChild(buttons);
-}
 
 // funktion um bereits gegebene antworten aus dem local storage zu laden
 // und collectAnswers werden in cardbox gesetzt
@@ -75,7 +53,14 @@ const loadSession = function() {
   const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
   if (sessionData && sessionData.collectAnswers) {
-    cardBox.setCollectedAnswers(sessionData.collectAnswers);
+    // Deserialisiert die Antworten und erstellt neue Answer-Objekte. Übergibt die Daten noch
+    // als Array und überlässt die Umwandlung in eine Map der Klasse.
+    const collectAnswers = sessionData.collectAnswers.map(([cardId, answers]) => {
+      return [cardId, answers.map(answer => Answer.fromJSON(answer))]
+    })
+
+    // Übergibt die Daten an die CardBox-Klasse
+    cardBox.setCollectedAnswers(collectAnswers);
   }
 }
 
@@ -109,11 +94,23 @@ document.querySelector('#save-btn').addEventListener('click', () => {
   // zuerst aktuelle antworten aus collectAnswer() sammeln und speichern sobald save gedrückt wird
   cardBox.collectAnswer();
 
+  const collectAnswers = [];
+  // Über die Map iterieren und die Antwort-Objekte zu serialisieren 
+  // JSON.stringiy serialisiert keine Objekt-Instanzen, daher die Methode Answer#toJSON().
+  // Es wäre dann auch möglich wieder #stringify zu nutzen, bietet aber hier keinen Vorteil mehr. 
+  // siehe: https://dev.to/adamcoster/how-to-stringify-class-instances-in-javascript-and-express-js-co4
+  cardBox.collectedAnswers.forEach((answers, cardId) => {
+    collectAnswers.push([cardId, answers.map(answer => answer.toJSON())]);
+  });
+
   const sessionData = {
     date: new Date().toISOString(),
-    collectAnswers: cardBox.collectedAnswers,
-    cards: cardBox.cards
+    collectAnswers,
+    // INFO: cards wird im Moment nicht genutzt und müsste, damit es funktioniert, 
+    // auch eine #toJSON() erhalten, siehe: Answer#toJSON();
+    // cards: cardBox.cards
   }
+
   localStorage.setItem('sessionData', JSON.stringify(sessionData));
 });
 
