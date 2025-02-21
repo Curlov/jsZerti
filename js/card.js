@@ -52,12 +52,14 @@ const showCard = (currentCard) => {
 const loadSession = function() {
   const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
-  // Deserialisiert die Antworten
-  const collectAnswers = sessionData.collectAnswers.map(([cardId, answers]) => {
-    return [cardId, answers.map(answer => new Answer(answer.id, answer.text, answer.correct, answer.cardId))]
-  })
-
   if (sessionData && sessionData.collectAnswers) {
+    // Deserialisiert die Antworten und erstellt neue Answer-Objekte. Übergibt die Daten noch
+    // als Array und überlässt die Umwandlung in eine Map der Klasse.
+    const collectAnswers = sessionData.collectAnswers.map(([cardId, answers]) => {
+      return [cardId, answers.map(answer => Answer.fromJSON(answer))]
+    })
+
+    // Übergibt die Daten an die CardBox-Klasse
     cardBox.setCollectedAnswers(collectAnswers);
   }
 }
@@ -93,6 +95,10 @@ document.querySelector('#save-btn').addEventListener('click', () => {
   cardBox.collectAnswer();
 
   const collectAnswers = [];
+  // Über die Map iterieren und die Antwort-Objekte zu serialisieren 
+  // JSON.stringiy serialisiert keine Objekt-Instanzen, daher die Methode Answer#toJSON().
+  // Es wäre dann auch möglich wieder #stringify zu nutzen, bietet aber hier keinen Vorteil mehr. 
+  // siehe: https://dev.to/adamcoster/how-to-stringify-class-instances-in-javascript-and-express-js-co4
   cardBox.collectedAnswers.forEach((answers, cardId) => {
     collectAnswers.push([cardId, answers.map(answer => answer.toJSON())]);
   });
@@ -101,7 +107,7 @@ document.querySelector('#save-btn').addEventListener('click', () => {
     date: new Date().toISOString(),
     collectAnswers,
     // INFO: cards wird im Moment nicht genutzt und müsste, damit es funktioniert, 
-    // per Hand serialisiert werden, siehe: Answer#toJSON();
+    // auch eine #toJSON() erhalten, siehe: Answer#toJSON();
     // cards: cardBox.cards
   }
 

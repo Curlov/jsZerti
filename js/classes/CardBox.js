@@ -37,7 +37,7 @@ export class CardBox {
         const correctAnswers = currentCard.answers.flatMap(answer => answer.correct ? [answer.text] : []);
 
         checkboxes.forEach(checkbox => {
-            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            const label = this.getAnswerField(checkbox);
             const answerText = label.textContent;
 
             correctAnswers.includes(answerText) ? label.style.color = 'green' : label.style.color = 'red';
@@ -51,12 +51,13 @@ export class CardBox {
         // Filtere nur die aktivierten Checkboxen
         const selectedAnswers = Array.from(document.querySelectorAll('.checkmark'))
             .filter(checkbox => checkbox.checked)
-            .map(checkbox => {
-                const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+            .map(checkbox => { // Wähle das Answer-Objekt aus das dem Text entspricht
+                const answerText = this.getAnswerField(checkbox).textContent;
                 return card.answers.find(answer => answer.text === answerText);
             })
 
-        // Aktualisiere die Map mit der neuen Antwortliste
+        // Aktualisiere die Map mit der neuen Antwortliste, der vom User gegebenen Antworten
+        // Map-Struktur: { cardId: [answer1, answer2] }, wobei answer1 und answer2 Answer-Objekte sind
         this.#collectAnswers.set(card.id, selectedAnswers);
     }
 
@@ -68,20 +69,24 @@ export class CardBox {
         // Alle Kontrollkästchen auf "nicht geprüft" setzen
         checkboxes.forEach(checkbox => checkbox.checked = false);
 
-        // Gespeicherte Antworten für die aktuelle Karte finden
+        // Gespeicherte Antworten für die aktuelle Karte finden (Array mit Answer-Objekten)
         const savedAnswer = this.#collectAnswers.get(this.#cards[this.#currentIndex].id);
 
         // Wenn keine gespeicherte Antworten existieren stoppe hier
         if (!savedAnswer) return
 
+        // Die Texte der gespeicherten Antworten extrahieren
         const givenAnswersText = savedAnswer.map(answer => answer.text);
 
+        // Über alle Checkboxen iterieren und, wenn die zugehörige Antwort gegeben wurde, die checkbox checken
         checkboxes.forEach(checkbox => {
-            const answerText = checkbox.closest("tr").querySelector("td:nth-child(2) label").textContent;
+            const answerText = this.getAnswerField(checkbox).textContent;
             checkbox.checked = givenAnswersText.includes(answerText); // true oder false
         })
     }
 
+    // TODO: Falsch positive Antworten als Minuspunkt?
+    // INFO: Überarbeitet um die Map this.#collectAnswers zu nutzen und maximal 100% zu erreichen
     getProzentCorrectAnswers() {
         let correctCount = 0;
         let cardCount = 0;
@@ -120,6 +125,10 @@ export class CardBox {
         }
     }
 
+    getAnswerField(checkbox) {
+        return document.querySelector(`label[for="${checkbox.id}"]`);
+    }
+
     get currentIndex() {
         return this.#currentIndex;
     }
@@ -148,6 +157,7 @@ export class CardBox {
         return this.#collectAnswers;
     }
 
+    // Erstelle eine neue Map mit den gespeicherten Antworten
     setCollectedAnswers(savedAnswers) {
         this.#collectAnswers = new Map(savedAnswers);
     }
